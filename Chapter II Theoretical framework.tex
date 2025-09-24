@@ -1,16 +1,275 @@
-\section{TTE Communication Systems}
-\subsection{What is a TTE Communication System?}
-\subsection{TTE Communication System Architecture}
-\subsection{Motivation and Applications}
-\subsection{Main technical challenges}
-\subsection{State of the art}
-\subsection{TTE and other technologies for underground communication}
-\section{Physical Principles of transmission by Magnetic Induction}
-\subsection{Magnetic Induction}
-\subsection{Cuasistatic Magnetic Field}
-\subsection{Magnetic propagation models in conductive media}
-\subsection{Equivalent Circuit Model}
-\section{Characterization of the Medium}
-\section{Resonant coils and antennas for TTE}
-\section{Fundamentals of Digital Communication Systems}
-\section{DSP in TTE}
+% ======================= CHAPTER II =======================
+\chapter{Theoretical Framework}\label{ch:theoretical-framework}
+
+% NOTE: Original headings have been merged and expanded.
+% Original top-level sections mapped as follows:
+% - TTE Communication Systems -> Section 2.1
+% - Physical Principles of transmission by Magnetic Induction -> Section 2.2
+% - Characterization of the Medium -> Section 2.3
+% - Resonant coils and antennas for TTE -> Section 2.5
+% - Fundamentals of Digital Communication Systems -> Section 2.6
+% - DSP in TTE -> Section 2.10
+
+% ------------------------------------------------------------------
+\section{Overview of Through-The-Earth (TTE) Magnetic Induction Communication}\label{sec:overview-mI-TTE}
+\subsection{Definition and Scope of TTE MI Communication}
+% (From: What is a TTE Communication System?)
+% TODO: Define TTE, near-field magnetic induction vs radiative propagation.
+
+\subsection{System Architecture}\label{subsec:system-architecture}
+% (From: TTE Communication System Architecture)
+% TODO: High-level block diagram: Transmitter coil, power amplifier, matching network, channel (rock), receiver coil, LNA, filtering, demodulation, decoding.
+
+\subsection{Motivation and Application Domains}\label{subsec:motivation-applications}
+% (From: Motivation and Applications)
+% TODO: Safety, mining, drilling, rescue operations, structural monitoring, underground sensing.
+
+\subsection{Key Technical Challenges (Preview)}\label{subsec:key-challenges-preview}
+% (From: Main technical challenges, brief intro; detailed in Section \ref{sec:challenges-limitations})
+% TODO: Severe attenuation, limited bandwidth, alignment sensitivity, coil size constraints, interference, power budget.
+
+\subsection{State of the Art Overview}\label{subsec:state-of-art}
+% (From: State of the art)
+% TODO: Summarize major research milestones, typical frequency ranges (kHz--MHz), achieved ranges, data rates.
+
+\subsection{Comparison with Alternative Underground Technologies}\label{subsec:comparison-alternative-tech}
+% (From: TTE and other technologies for underground communication)
+% TODO: Compare MI vs RF (higher freq), acoustic, ELF, seismic, optical (impractical), leaky feeder, wired.
+
+\subsection{Comparison with Conventional RF in Lossy Media}\label{subsec:overview-mi-vs-rf}
+% (High-level comparison; deeper analysis in Section \ref{subsec:detailed-mi-rf-comparison})
+% TODO: Penetration advantages of quasi-static magnetic fields, reduced susceptibility to multipath, bandwidth trade-offs.
+
+% ------------------------------------------------------------------
+\section{Electromagnetic Fundamentals for MI Links}\label{sec:em-fundamentals}
+% (From: Physical Principles of transmission by Magnetic Induction)
+
+\subsection{Magnetic Induction Fundamentals}\label{subsec:magnetic-induction-fundamentals}
+% (From: Magnetic Induction)
+% TODO: Faraday's law, mutual inductance basics, coupling coefficient.
+
+\subsection{Quasi-Static Magnetic Field Regime}\label{subsec:quasi-static}
+% (From: Cuasistatic Magnetic Field)
+% TODO: Conditions for quasi-static approximation (r << lambda/2π), near-field decay (1/r^3) components.
+
+\subsection{Magnetic Flux, Mutual Inductance and Coupling Coefficient}\label{subsec:mutual-inductance}
+% TODO: Derive M for coaxial circular loops, mention misalignment effects (appendix option).
+
+\subsection{Skin Depth and Frequency-Dependent Attenuation in Rock}\label{subsec:skin-depth}
+% TODO: δ = \sqrt{2/(\omega \mu \sigma)}; impact on optimal frequency selection.
+
+\subsection{Propagation Models in Conductive Geological Media}\label{subsec:propagation-models}
+% (From: Magnetic propagation models in conductive media)
+% TODO: Analytical models, homogeneous vs layered media, empirical fits.
+
+\subsection{Equivalent Circuit Representations}\label{subsec:equivalent-circuit}
+% (From: Equivalent Circuit Model)
+% TODO: Series/parallel RLC, reflected impedance, transformer analogy.
+
+\subsection{Energy Transfer and Power Budget Foundations}\label{subsec:energy-transfer}
+% TODO: Link budget formulation in magnetic domain, transmit current, induced voltage, received power, SNR.
+
+\subsection{Detailed Comparison with RF Approaches}\label{subsec:detailed-mi-rf-comparison}
+% (From: Comparison of MI with Conventional RF communication in lossy media)
+% TODO: Loss mechanisms: conductive attenuation vs dielectric/ multipath; near-field stability vs fading.
+
+% ------------------------------------------------------------------
+\section{Geological Medium Characterization}\label{sec:geological-medium}
+% (From: Characterization of the Medium)
+\subsection{Electrical Properties of Rock: Conductivity, Permittivity, Permeability}\label{subsec:rock-properties}
+% TODO: Typical ranges, anisotropy.
+
+\subsection{Heterogeneity, Stratification and Anisotropy}\label{subsec:heterogeneity}
+% TODO: Impact on channel variability; probabilistic modeling.
+
+\subsection{Temperature, Moisture and Mineral Content Effects}\label{subsec:environmental-effects}
+% TODO: Parameter sensitivity.
+
+\subsection{Effective Medium and Mixing Models}\label{subsec:mixing-models}
+% TODO: Maxwell-Garnett, Bruggeman approximations.
+
+\subsection{Measurement Techniques for Material Parameters}\label{subsec:material-measurement}
+% TODO: Lab sample measurements, impedance spectroscopy, inductive probes.
+
+% ------------------------------------------------------------------
+\section{Magnetic Induction Channel Modeling}\label{sec:channel-modeling}
+\subsection{Geometric Configuration: Coil Orientation, Separation, Misalignment}\label{subsec:geometry}
+% TODO: Rotation matrices, coupling dependence.
+
+\subsection{Lumped-Element Channel Models}\label{subsec:lumped-models}
+% TODO: Mutual inductance + loss resistance representation.
+
+\subsection{Extended / Semi-Analytical or Distributed Models}\label{subsec:extended-models}
+% TODO: When lumped fails; frequency-dependent media parameters.
+
+\subsection{Channel Frequency Response H(f) and Impulse Response}\label{subsec:channel-response}
+% TODO: Derive |H(f)| for resonant matched coils.
+
+\subsection{Noise Sources: Thermal, Geological, External EMI}\label{subsec:noise-sources}
+% TODO: Noise modeling assumptions (AWGN + colored components).
+
+\subsection{SNR, Link Margin and Capacity Considerations}\label{subsec:snr-capacity}
+% TODO: Shannon capacity adaptation to narrowband MI.
+
+% ------------------------------------------------------------------
+\section{Transducer (Coil) and Resonant Antenna Design}\label{sec:coil-design}
+% (From: Resonant coils and antennas for TTE)
+\subsection{Coil Geometry: Radius, Turns, Wire Gauge}\label{subsec:coil-geometry}
+% TODO: Trade-offs: inductance vs resistance.
+
+\subsection{Core Materials: Air-Core vs Ferrite}\label{subsec:core-materials}
+% TODO: Permeability impact, saturation concerns.
+
+\subsection{Resonance, Quality Factor (Q) and Bandwidth}\label{subsec:q-bandwidth}
+% TODO: Q-limited symbol rate, detuning sensitivity.
+
+\subsection{Impedance Matching and Drive Circuits}\label{subsec:matching-networks}
+% TODO: L-match, transformer coupling, class D/E/F amplifiers.
+
+\subsection{Magnetic Field Pattern and Spatial Decay}\label{subsec:field-pattern}
+% TODO: 1/r^3 near-field decay, transition region.
+
+\subsection{Power Amplification, Drive Current and Efficiency}\label{subsec:power-amplification}
+% TODO: Current limits, thermal constraints.
+
+% ------------------------------------------------------------------
+\section{Digital Communication Fundamentals for MI Systems}\label{sec:digital-fundamentals}
+% (From: Fundamentals of Digital Communication Systems)
+\subsection{Signal Representation and Baseband vs Passband Considerations}\label{subsec:signal-representation}
+% TODO: Narrowband approximation.
+
+\subsection{Sampling, Aliasing and Bandlimitation Constraints}\label{subsec:sampling}
+% TODO: Coil bandwidth vs sampling rate.
+
+\subsection{Noise Modeling and Detection Basics}\label{subsec:noise-detection-basics}
+% TODO: Energy detection foundations.
+
+% ------------------------------------------------------------------
+\section{Non-Coherent FSK Modulation for MI Communication}\label{sec:noncoherent-fsk}
+\subsection{Rationale for Selecting Non-Coherent FSK}\label{subsec:rationale-fsk}
+% TODO: Robustness to phase instability; simple receiver.
+
+\subsection{Signal Space and Frequency Separation}\label{subsec:frequency-separation}
+% TODO: Δf selection vs symbol duration.
+
+\subsection{Demodulation Techniques: Filterbanks, Energy Detectors}\label{subsec:demodulation}
+% TODO: Implementation complexity trade-offs.
+
+\subsection{BER Performance in AWGN}\label{subsec:ber-awgn}
+% TODO: Closed-form BER expressions (appendix reference).
+
+\subsection{Impact of Channel Frequency Selectivity and Detuning}\label{subsec:selectivity-detuning}
+% TODO: Off-resonance degradation.
+
+% ------------------------------------------------------------------
+\section{Error Control Coding}\label{sec:error-control-coding}
+\subsection{Role of FEC in MI Links}\label{subsec:role-fec}
+% TODO: Reliability vs power.
+
+\subsection{Block Codes (Hamming, BCH, Reed--Solomon)}\label{subsec:block-codes}
+% TODO: Use cases (short frame protection).
+
+\subsection{Convolutional Codes and Viterbi Decoding}\label{subsec:convolutional}
+% TODO: Latency vs performance.
+
+\subsection{Modern Codes (LDPC, Polar) Suitability}\label{subsec:modern-codes}
+% TODO: Complexity vs embedded constraints.
+
+\subsection{Interleaving for Burst Error Mitigation}\label{subsec:interleaving}
+% TODO: Channel memory scenarios.
+
+\subsection{Coding Gain and Trade-offs}\label{subsec:coding-gain}
+% TODO: Example link budget improvement.
+
+% ------------------------------------------------------------------
+\section{System-Level Synchronization and Framing}\label{sec:synchronization}
+\subsection{Preamble Design and Frequency Stabilization}\label{subsec:preamble}
+% TODO: Non-coherent requirements.
+
+\subsection{Symbol Timing Recovery}\label{subsec:timing-recovery}
+% TODO: Energy envelope methods.
+
+\subsection{Packet Structure and Overhead}\label{subsec:packet-structure}
+% TODO: Header, payload, FEC, CRC.
+
+% ------------------------------------------------------------------
+\section{Measurement and Channel Characterization Techniques}\label{sec:measurement-techniques}
+\subsection{Laboratory Experimental Setups}\label{subsec:labb-setup}
+% TODO: Rock analogues, coil fixtures.
+
+\subsection{Transfer Function Measurement (Swept-Sine, MLS, Chirp)}\label{subsec:transfer-measurement}
+% TODO: Pros/cons of excitation signals.
+
+\subsection{Field Strength Measurement (Magnetometers, Search Coils)}\label{subsec:field-strength}
+% TODO: Calibration methods.
+
+\subsection{Calibration and Error Sources}\label{subsec:calibration}
+% TODO: Alignment, temperature drift, instrumentation noise.
+
+\subsection{Parameter Extraction (Mutual Inductance, Effective Conductivity)}\label{subsec:parameter-extraction}
+% TODO: Curve fitting strategies.
+
+\subsection{Uncertainty Analysis and Repeatability}\label{subsec:uncertainty}
+% TODO: Statistical treatment.
+
+% ------------------------------------------------------------------
+\section{Performance Metrics and Evaluation Framework}\label{sec:performance-metrics}
+\subsection{BER, FER, Throughput and Latency}\label{subsec:basic-metrics}
+% TODO: Definitions and measurement.
+
+\subsection{Energy per Bit and Efficiency Metrics}\label{subsec:energy-metrics}
+% TODO: E_b/N_0 vs P_tx constraints.
+
+\subsection{Range--Data Rate--Reliability Trade Space}\label{subsec:trade-space}
+% TODO: Pareto analysis concept.
+
+\subsection{Robustness to Misalignment and Orientation}\label{subsec:robustness-misalignment}
+% TODO: Orientation statistics.
+
+% ------------------------------------------------------------------
+\section{Challenges and Limitations}\label{sec:challenges-limitations}
+% (Expands on subsection Key Technical Challenges)
+\subsection{Severe Attenuation and Limited Bandwidth}\label{subsec:attenuation-bandwidth}
+\subsection{Coil Size vs Portability Constraints}\label{subsec:coil-size}
+\subsection{Frequency Drift and Detuning}\label{subsec:frequency-drift}
+\subsection{Coupling Variability and Misalignment}\label{subsec:coupling-variability}
+\subsection{Interference and Regulatory Considerations}\label{subsec:interference}
+
+% ------------------------------------------------------------------
+\section{Signal Processing (DSP) Techniques in TTE MI Systems}\label{sec:dsp-tte}
+% (From: DSP in TTE)
+\subsection{Filtering and Noise Reduction}\label{subsec:filtering-noise}
+% TODO: Narrowband filters, adaptive filtering.
+
+\subsection{Adaptive Thresholding and Detection}\label{subsec:adaptive-detection}
+% TODO: Non-coherent detection improvements.
+
+\subsection{Channel Estimation / Tracking Approaches}\label{subsec:channel-estimation}
+% TODO: Estimating effective gain via pilots.
+
+\subsection{Time/Frequency Synchronization Enhancements}\label{subsec:dsp-synchronization}
+% TODO: Sliding correlation.
+
+\subsection{Resource-Constrained Implementation Considerations}\label{subsec:resource-constraints}
+% TODO: MCU vs FPGA vs ASIC trade-offs.
+
+% ------------------------------------------------------------------
+\section{Emerging Enhancements and Research Directions}\label{sec:emerging}
+\subsection{Adaptive Frequency and Power Control}\label{subsec:adaptive-frequency}
+\subsection{Multi-Coil Arrays and MIMO Concepts}\label{subsec:multi-coil}
+\subsection{Hybrid MI--Acoustic or MI--RF Schemes}\label{subsec:hybrid-schemes}
+\subsection{Machine Learning for Channel Estimation and Detection}\label{subsec:ml-channel}
+\subsection{Ultra-Low-Power Hardware Advances}\label{subsec:ultra-low-power}
+
+% ------------------------------------------------------------------
+\section{Summary of Theoretical Foundations}\label{sec:summary-theory}
+% TODO: Recap key points, lead into next chapter.
+
+% ------------------------------------------------------------------
+% Optional Appendices for this chapter (if not placed at end of thesis)
+% \appendix
+% \section{Derivation of Mutual Inductance for Misaligned Circular Loops}
+% \section{Approximate BER Expressions for Non-Coherent M-ary FSK}
+% \section{Skin Depth Tables for Representative Rock Types}
+% \section{Measurement Instrumentation Calibration Notes}
+% ------------------------------------------------------------------

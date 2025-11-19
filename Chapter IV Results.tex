@@ -11,11 +11,58 @@
 \section{Software Developement}
 \subsection{Modulation system}
 \subsubsection{Non-coherent FSK}
+ The detection system works as a typical non-coherent FSK receiver. 
+The incoming signal is filtered at the beggining to reduce the noise influence in terms os  operations in the time domain.
+%is there any best way of describing this? What are the others benefits of filtering the signas with a digital bandpassfilter,if are any ?
+Then, the signal is sampled by an ADC and processed digitally to extract the information. A model of thw whole system is presented in Figure \ref{fig:detection-system}.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{img/Diagrama_Receptor.png}
+    \caption{Block diagram of the non-coherent FSK detection system.}
+    \label{fig:detection-system}
+\end{figure}
+
+Why a Non coherent FSK system?
+The non-coherent FSK system is selected due to its robustness to phase variations and frequency offsets %(Include bibiliography about this) 
+In comparisson for example models based on PSK or QAM, that are more sensitive to phase noise and frequency offsets. FSK modulation allows the receiver to detect the transmitted symbols based on energy detection in specific frequency bands, without requiring precise phase synchronization. This characteristic makes non-coherent FSK particularly suitable for TTE communication systems, where the channel conditions can be highly variable and unpredictable.
+Here is a diagram of the non-coherent FSK modulation and demodulation process in Figure \ref{fig:fsk-mod-demod}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{img/Diagrama_Receptor.png}
+    \caption{Block diagram of the non-coherent FSK modulation and demodulation process.}
+    \label{fig:fsk-mod-demod}
+\end{figure}
+
+As I mentiones brewly the last paragraph, at the beggining the digital signal in filtered and then passes to a Window of len N, that is an important number, the dimensions of this Window
+determine the cost of the processing process, that's because the bigger the window is, the main process that's comes right after is the correlation.
+
+\subsubsection{Correlation Process}
+
+Correlation is a mathematical operation that measures the similarity between two signals as a function of the time-lag applied to one of them %Include Bibliography. 
+In the context of signal processing, correlation is often used to detect the presence of a known signal (template) within a received signal that may be corrupted by noise.
+In the non-coherent FSK detection system, the correlation process is used to compare the received signal with predefined reference signals corresponding to each of the FSK frequencies. 
+The correlation here is performs between the received signal (or a portion of it) and a known preamble.
+This preamble is a specific sequence of symbols that is transmitted at the beginning of each data packet. The purpose of the preamble is to help the receiver synchronize with the incoming signal and accurately detect the start of the data transmission. %Include Reference)
+Here we have several main design parameters: an optimar lenght of preamble, its structure, and optimal use of our computation resources, thats because as bigger the lenght of correlation inputs, more calculus to do in each earing time. %Improve redaction
+The size of the window is key of the times that the function \textit{Correlation by parts} is called. 
+The output of the correlation process is a correlation coefficient that indicates the degree of similarity between the received signal and the reference signal at different time lags. A high correlation coefficient at a specific time lag suggests that the known signal is present in the received signal at that time.
+% Include bibliography
+The correlation formula (\ref{eq:correlation}), given in previous chapter, is used as a the main operation of correlation IQ System.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{img/Diagrama_Receptor.png}
+    \caption{Block diagram of the correlation by parts process.}
+    \label{fig:correlation-by-parts}
+\end{figure}
+
+In the last diagram is clear that the incoming signal is partitioned in several parts M, where M is the dimension of the preamble in terms of symbols quantity.
+Each section named $S_N$ in correlationed with the $"N"$ symbol of the preamble. The structure of $S_N$ is defined as the size of a symbol $M$ plus the sample difference of between preamble (P) and the window size (S). As greater is this difference , the peak of the correlation (the point that the whole structure of the preamble is detected with the system ) can be detected with correlation a bigger instance of earing. That means that we are working with a major amount of data and real-time signal chunks. 
+That could work for example if the criteria of detection del preamble are multiple identifications of these peaks levels. In our model we try to minimize the amount of data to process, to reduce time of calculation of time domain chunks, If we exceed the time that ,
 \subsubsection{Ortogonality and Bandwidth}
 \subsubsection{Preamble design}
 \subsubsection{Decimation?}
-\subsubsection{Performance metrics}
-
+\subsection{Performance metrics}
 \section{Testing and Validation}
 \subsection{Radiolink simulation}
 \subsection{Induction Pattern}

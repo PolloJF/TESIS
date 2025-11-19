@@ -11,7 +11,10 @@
 % - DSP in TTE -> Section 2.10
 
 % ------------------------------------------------------------------
-\section{Overview of Through-The-Earth (TTE) Magnetic Induction Communication}\label{sec:overview-mI-TTE}
+\section{Overview of Through-The-Earth (TTE) Magnetic Induction Communication}
+
+En este capítulo se presentan los fundamentos teóricos y el marco conceptual para lograr comunicación efectiva a través de la roca. Se abordan los principios físicos de la inducción magnética, las características del medio geológico, el modelado del canal, el diseño de transductores (bobinas), y los fundamentos de la comunicación digital aplicados a sistemas TTE. Además, se discuten técnicas de procesamiento de señales digitales (DSP) relevantes y se identifican los principales desafíos técnicos asociados con la comunicación TTE mediante inducción magnética.
+\label{sec:overview-mI-TTE}
 \subsection{Definition and Scope of TTE MI Communication}
 % (From: What is a TTE Communication System?)
 % TODO: Define TTE, near-field magnetic induction vs radiative propagation.
@@ -234,6 +237,8 @@
 \subsection{Frequency Drift and Detuning}\label{subsec:frequency-drift}
 \subsection{Coupling Variability and Misalignment}\label{subsec:coupling-variability}
 \subsection{Interference and Regulatory Considerations}\label{subsec:interference}
+\subsection{Detection System}
+
 
 % ------------------------------------------------------------------
 \section{Signal Processing (DSP) Techniques in TTE MI Systems}\label{sec:dsp-tte}
@@ -249,6 +254,10 @@
 
 \subsection{Time/Frequency Synchronization Enhancements}\label{subsec:dsp-synchronization}
 % TODO: Sliding correlation.
+
+\begin{equation}
+    z_i(T) = \int_{0}^{T} r(t)s_i(t) \, dt, \quad i=1, \dots, M
+\end{equation}
 
 \subsection{Resource-Constrained Implementation Considerations}\label{subsec:resource-constraints}
 % TODO: MCU vs FPGA vs ASIC trade-offs.

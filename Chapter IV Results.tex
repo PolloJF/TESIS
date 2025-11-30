@@ -3,11 +3,100 @@
 
 \section{Hardware Developement}
 
+El hardware del sistema de comunicación TTE fue diseñado y construido para cumplir con un conjunto específico de requisitos y restricciones.
+En primer lugar el sistema debe ser capaz de satisfacer la prueba de concepto logrando comunicación a una diatancia media pero significativa en un entorno subterráneo.
+Asismismo el equipo no debe ser extremadamente voluminoso o pesado para facilitar su transporte y versatilidad en su uso.
 \subsection{Design}
-\subsection{Coil}
-\subsection{Amplifier}
-\subsection{Switching Circuit}
 
+El sistema de comunicación TTE está compuesto por varios elementos que trabajan en conjunto para lograr la transmisión y recepción de datos mediante inducción magnética.
+El elemento principal es la bobina resonante, la cual está diseñada para generar y recibir campos magnéticos en una frecuencia específica. Además de la bobina, 
+el sistema incluye un amplificador para aumentar la potencia del mensaje transmitido y un sistema de switching para intercambiar la conexión de la bobina resonante entre los canales de entrada y salida del sistema.
+\subsection{Coil}
+La bobina resonante corresponde a al elemento encargado de transmitir el campo magnético variable al circular corriente por su estrcutura (Transmisor) y de entregar la fem inducida en presencia al atravesar por su estructira las líneas de campo magnético transmitido (Receptor). En vista de lograr el objetivo de comunicación a distancia significativa, la bobina debe ser diseñada para maximizar la eficiencia de la transferencia de energía magnética entre el transmisor y el receptor, es por esto que se optó en primera instancia por un diseño simple toroidal, donde las variables de diseño y construcción se reducen a número de vueltas $N$, diámetro de la estructura $D$, y el calibre del conductor $C$.
+\newp
+Para esta primera versión se fijó el diámetro de la bobina en 55 cm, ya que correspondía a un tamaño manejable y portátil. El calibre del conductor se seleccionó en función de su costo, resistencia eléctrica y peso, optando por un cable de cobre esmaltado de 17 AWG. A continuación se muestra una tabla de resistencia eléctrica en función del calibre del conductor, entregada por el fabricante.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|c|}
+    \hline
+    \textbf{Calibre (AWG)} & \textbf{Diámetro (mm)} & \textbf{Resistencia (ohm/m)} \\ \hline
+    10                     & 2.588                  & 0.00328                      \\ \hline
+    12                     & 2.053                  & 0.00521                      \\ \hline
+    14                     & 1.628                  & 0.00829                      \\ \hline
+    16                     & 1.291                  & 0.01317                      \\ \hline
+    17                     & 1.150                  & 0.01660                      \\ \hline
+    18                     & 1.024                  & 0.02100                      \\ \hline
+    20                     & 0.812                  & 0.03340                      \\ \hline
+    \end{tabular}
+    \caption{Resistencia eléctrica en función del calibre del conductor.}
+    \label{tab:resistance-table}
+\end{table}
+%Ajustar valores segun tabla real.
+
+De esta manera al escoger tal calibre, el cual corresponde a 1.15 mm de diámetro y considerando una masa total cercana a los $1.5 Kg$, se logra una extensión total de 156 metros, lo que se traduce en $N=90$, con esta extensión la resistencia total de la bobina resulta en 2.6 ohmios. Sin embargo al ser medida de forma experimental el valor de resistencia total es de $3 \Omega$, un valor ideal considerando la resistencia a la cual opera el amplificador clase D seleccionado para el proyecto.
+\newp
+Ya definida la geometría y características de la bobina, se procede a calcular los parámetros eléctricos asociados a la misma. En primera instancia se calcula la inductancia de la bobina utilizando la fórmula para una bobina toroidal:
+\begin{equation}
+    L = \frac{\mu N^2 A}{l}  %%Comprobar
+\end{equation}
+Donde:
+\begin{itemize}
+    \item $L$ es la inductancia en Henrios (H).
+    \item $\mu$ es la permeabilidad del núcleo (para aire, $\mu_0 = 4\pi \times 10^{-7} H/m$).
+    \item $N$ es el número de vueltas.
+    \item $A$ es el área de la sección transversal del toroide en metros cuadrados ($m^2$).
+    \item $l$ es la longitud media del camino magnético en metros (m).
+\end{itemize}
+Considerando un área de sección transversal aproximada de $A = 0.2375 m^2$ y una longitud media del camino magnético de $l = 1.7 m$, se obtiene una inductancia teórica de $L \approx  H$. Sin embargo, al medir la inductancia de la bobina construida utilizando un medidor LCR, se obtiene un valor experimental de $L_1 = 10.67  mH$ y $L_2 = 10.55 mH$. Esta discrepancia puede atribuirse a factores como la distribución no uniforme del campo magnético, las pérdidas en el conductor y las tolerancias en la construcción de la bobina.
+\newp
+Finalmente, se calcula la capacitancia necesaria para sintonizar la bobina a la frecuencia de resonancia deseada, que en este caso es de 3.2 kHz. La frecuencia de resonancia $f_0$ de un circuito LC está dada por la fórmula:
+\begin{equation}
+    f_0 = \frac{1}{2\pi \sqrt{LC}}
+\end{equation}
+Despejando para la capacitancia $C$, se obtiene:
+\begin{equation}
+    C = \frac{1}{(2\pi f_0)^2 L}
+\end{equation}
+
+De esta menera la capacitancia necesaria para sintonizar la bobina a $\approx 3.2 kHz$ resulta en $C \approx 237 \mu F$ para $L_1$ y $C \approx 240 \mu F$ para $L_2$. Se seleccionaron capacitores cerámicos de 470 $\mu F$  dispuesto en serie para alcanzar el valor deseado, considerando la tolerancia de los componentes. A continuación se muestra una figura de la bobina construida:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{img/coil.png}
+    \caption{Bobina resonante construida para el sistema TTE.}
+    \label{fig:coil}
+\end{figure}
+
+Al medir la función de transferencia para en un sistema donde se tiene una de las bobinas sintonizadas y otra más pequeña sin sintonizar puede observarse en la figura \ref{fig:transfer-function} para $L_1$ y $L_2$ que la frecuencia de resonancia se encuentra cercana a los 3.2 kHz, cumpliendo con el diseño inicial.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{img/TF_L1_L2.png}
+    \caption{Función de transferencia del sistema de bobinas resonantes.}
+    \label{fig:transfer-function}
+\end{figure}
+
+Se muestra a continuación la función de transferencia del sistema completo medido a una distancia de 2 metros entre las bobinas.
+
+
+
+
+\subsection{Amplifier}
+
+El amplificador escogido para la aplicación corresponde a un amplificador de audio clase D basado en los chips TPA3116D2 y NE5532 de Texas Instruments. Este amplificador es capaz de entregar una potencia máxima de 150W Mono, considerando una tensión de 26 V.
+\newp 
+La elección de este amplificador se basa en su bajo costo, disponibilidad en el mercado y su alta eficiencia al corresponder a un amplificador conmutado, lo que minimiza las pérdidas de potencia y la generación de calor. Además como se enunció anteriormente el sistema operará en un rango de frecuencia en torno a los 3.2 kHz, dentro del espectro audible. A continuación se muestra una figura del amplificador utilizado:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{img/amp.png}
+    \caption{Amplificador de audio clase D TPA3116D2.}
+    \label{fig:amplifier}
+\end{figure}
+
+
+\subsection{Switching Circuit}
+\subsection{Other Considerations}
 \section{Software Developement}
 \subsection{Modulation system}
 \subsubsection{Non-coherent FSK}
@@ -48,7 +137,7 @@ Here we have several main design parameters: an optimar lenght of preamble, its 
 The size of the window is key of the times that the function \textit{Correlation by parts} is called. 
 The output of the correlation process is a correlation coefficient that indicates the degree of similarity between the received signal and the reference signal at different time lags. A high correlation coefficient at a specific time lag suggests that the known signal is present in the received signal at that time.
 % Include bibliography
-The correlation formula (\ref{eq:correlation}), given in previous chapter, is used as a the main operation of correlation IQ System.
+The correlation formula (\ref{eq:Correlation}), given in previous chapter, is used as a the main operation of correlation IQ System.
 \begin{figure}
     \centering
     \includegraphics[width=0.8\textwidth]{img/Diagrama_Receptor.png}

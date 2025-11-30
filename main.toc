@@ -1,0 +1,124 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {chapter}{\numberline {1}background and motivation}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Introduction}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Motivation}{1}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Hipothesis}{2}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Objectives}{2}{section.1.4}%
+\contentsline {subsection}{\numberline {1.4.1}General Objective}{2}{subsection.1.4.1}%
+\contentsline {subsection}{\numberline {1.4.2}Specific Objectives}{2}{subsection.1.4.2}%
+\contentsline {section}{\numberline {1.5}Document Structure}{2}{section.1.5}%
+\contentsline {chapter}{\numberline {2}Theoretical Framework}{4}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Overview of Through-The-Earth (TTE) Magnetic Induction Communication}{4}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Definition and Scope of TTE MI Communication}{4}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}System Architecture}{4}{subsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.1.3}Motivation and Application Domains}{4}{subsection.2.1.3}%
+\contentsline {subsection}{\numberline {2.1.4}Key Technical Challenges (Preview)}{4}{subsection.2.1.4}%
+\contentsline {subsection}{\numberline {2.1.5}State of the Art Overview}{4}{subsection.2.1.5}%
+\contentsline {subsection}{\numberline {2.1.6}Comparison with Alternative Underground Technologies}{4}{subsection.2.1.6}%
+\contentsline {subsection}{\numberline {2.1.7}Comparison with Conventional RF in Lossy Media}{4}{subsection.2.1.7}%
+\contentsline {section}{\numberline {2.2}Electromagnetic Fundamentals for MI Links}{4}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Magnetic Induction Fundamentals}{4}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Quasi-Static Magnetic Field Regime}{4}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Magnetic Flux, Mutual Inductance and Coupling Coefficient}{4}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.4}Skin Depth and Frequency-Dependent Attenuation in Rock}{4}{subsection.2.2.4}%
+\contentsline {subsection}{\numberline {2.2.5}Propagation Models in Conductive Geological Media}{5}{subsection.2.2.5}%
+\contentsline {subsection}{\numberline {2.2.6}Equivalent Circuit Representations}{5}{subsection.2.2.6}%
+\contentsline {subsection}{\numberline {2.2.7}Energy Transfer and Power Budget Foundations}{5}{subsection.2.2.7}%
+\contentsline {subsection}{\numberline {2.2.8}Detailed Comparison with RF Approaches}{5}{subsection.2.2.8}%
+\contentsline {section}{\numberline {2.3}Geological Medium Characterization}{5}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Electrical Properties of Rock: Conductivity, Permittivity, Permeability}{5}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Heterogeneity, Stratification and Anisotropy}{5}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Temperature, Moisture and Mineral Content Effects}{5}{subsection.2.3.3}%
+\contentsline {subsection}{\numberline {2.3.4}Effective Medium and Mixing Models}{5}{subsection.2.3.4}%
+\contentsline {subsection}{\numberline {2.3.5}Measurement Techniques for Material Parameters}{5}{subsection.2.3.5}%
+\contentsline {section}{\numberline {2.4}Magnetic Induction Channel Modeling}{5}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Geometric Configuration: Coil Orientation, Separation, Misalignment}{5}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Lumped-Element Channel Models}{5}{subsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.4.3}Extended / Semi-Analytical or Distributed Models}{5}{subsection.2.4.3}%
+\contentsline {subsection}{\numberline {2.4.4}Channel Frequency Response H(f) and Impulse Response}{5}{subsection.2.4.4}%
+\contentsline {subsection}{\numberline {2.4.5}Noise Sources: Thermal, Geological, External EMI}{5}{subsection.2.4.5}%
+\contentsline {subsection}{\numberline {2.4.6}SNR, Link Margin and Capacity Considerations}{5}{subsection.2.4.6}%
+\contentsline {section}{\numberline {2.5}Transducer (Coil) and Resonant Antenna Design}{5}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1}Coil Geometry: Radius, Turns, Wire Gauge}{5}{subsection.2.5.1}%
+\contentsline {subsection}{\numberline {2.5.2}Core Materials: Air-Core vs Ferrite}{5}{subsection.2.5.2}%
+\contentsline {subsection}{\numberline {2.5.3}Resonance, Quality Factor (Q) and Bandwidth}{5}{subsection.2.5.3}%
+\contentsline {subsection}{\numberline {2.5.4}Impedance Matching and Drive Circuits}{5}{subsection.2.5.4}%
+\contentsline {subsection}{\numberline {2.5.5}Magnetic Field Pattern and Spatial Decay}{5}{subsection.2.5.5}%
+\contentsline {subsection}{\numberline {2.5.6}Power Amplification, Drive Current and Efficiency}{5}{subsection.2.5.6}%
+\contentsline {section}{\numberline {2.6}Digital Communication Fundamentals for MI Systems}{6}{section.2.6}%
+\contentsline {subsection}{\numberline {2.6.1}Signal Representation and Baseband vs Passband Considerations}{6}{subsection.2.6.1}%
+\contentsline {subsection}{\numberline {2.6.2}Sampling, Aliasing and Bandlimitation Constraints}{6}{subsection.2.6.2}%
+\contentsline {subsection}{\numberline {2.6.3}Noise Modeling and Detection Basics}{6}{subsection.2.6.3}%
+\contentsline {section}{\numberline {2.7}Non-Coherent FSK Modulation for MI Communication}{6}{section.2.7}%
+\contentsline {subsection}{\numberline {2.7.1}Rationale for Selecting Non-Coherent FSK}{6}{subsection.2.7.1}%
+\contentsline {subsection}{\numberline {2.7.2}Signal Space and Frequency Separation}{6}{subsection.2.7.2}%
+\contentsline {subsection}{\numberline {2.7.3}Demodulation Techniques: Filterbanks, Energy Detectors}{6}{subsection.2.7.3}%
+\contentsline {subsection}{\numberline {2.7.4}BER Performance in AWGN}{6}{subsection.2.7.4}%
+\contentsline {subsection}{\numberline {2.7.5}Impact of Channel Frequency Selectivity and Detuning}{6}{subsection.2.7.5}%
+\contentsline {section}{\numberline {2.8}Error Control Coding}{6}{section.2.8}%
+\contentsline {subsection}{\numberline {2.8.1}Role of FEC in MI Links}{6}{subsection.2.8.1}%
+\contentsline {subsection}{\numberline {2.8.2}Block Codes (Hamming, BCH, Reed--Solomon)}{6}{subsection.2.8.2}%
+\contentsline {subsection}{\numberline {2.8.3}Convolutional Codes and Viterbi Decoding}{6}{subsection.2.8.3}%
+\contentsline {subsection}{\numberline {2.8.4}Modern Codes (LDPC, Polar) Suitability}{6}{subsection.2.8.4}%
+\contentsline {subsection}{\numberline {2.8.5}Interleaving for Burst Error Mitigation}{6}{subsection.2.8.5}%
+\contentsline {subsection}{\numberline {2.8.6}Coding Gain and Trade-offs}{6}{subsection.2.8.6}%
+\contentsline {section}{\numberline {2.9}System-Level Synchronization and Framing}{6}{section.2.9}%
+\contentsline {subsection}{\numberline {2.9.1}Preamble Design and Frequency Stabilization}{6}{subsection.2.9.1}%
+\contentsline {subsection}{\numberline {2.9.2}Symbol Timing Recovery}{6}{subsection.2.9.2}%
+\contentsline {subsection}{\numberline {2.9.3}Packet Structure and Overhead}{6}{subsection.2.9.3}%
+\contentsline {section}{\numberline {2.10}Measurement and Channel Characterization Techniques}{6}{section.2.10}%
+\contentsline {subsection}{\numberline {2.10.1}Laboratory Experimental Setups}{7}{subsection.2.10.1}%
+\contentsline {subsection}{\numberline {2.10.2}Transfer Function Measurement (Swept-Sine, MLS, Chirp)}{7}{subsection.2.10.2}%
+\contentsline {subsection}{\numberline {2.10.3}Field Strength Measurement (Magnetometers, Search Coils)}{7}{subsection.2.10.3}%
+\contentsline {subsection}{\numberline {2.10.4}Calibration and Error Sources}{7}{subsection.2.10.4}%
+\contentsline {subsection}{\numberline {2.10.5}Parameter Extraction (Mutual Inductance, Effective Conductivity)}{7}{subsection.2.10.5}%
+\contentsline {subsection}{\numberline {2.10.6}Uncertainty Analysis and Repeatability}{7}{subsection.2.10.6}%
+\contentsline {section}{\numberline {2.11}Performance Metrics and Evaluation Framework}{7}{section.2.11}%
+\contentsline {subsection}{\numberline {2.11.1}BER, FER, Throughput and Latency}{7}{subsection.2.11.1}%
+\contentsline {subsection}{\numberline {2.11.2}Energy per Bit and Efficiency Metrics}{7}{subsection.2.11.2}%
+\contentsline {subsection}{\numberline {2.11.3}Range--Data Rate--Reliability Trade Space}{7}{subsection.2.11.3}%
+\contentsline {subsection}{\numberline {2.11.4}Robustness to Misalignment and Orientation}{7}{subsection.2.11.4}%
+\contentsline {section}{\numberline {2.12}Challenges and Limitations}{7}{section.2.12}%
+\contentsline {subsection}{\numberline {2.12.1}Severe Attenuation and Limited Bandwidth}{7}{subsection.2.12.1}%
+\contentsline {subsection}{\numberline {2.12.2}Coil Size vs Portability Constraints}{7}{subsection.2.12.2}%
+\contentsline {subsection}{\numberline {2.12.3}Frequency Drift and Detuning}{7}{subsection.2.12.3}%
+\contentsline {subsection}{\numberline {2.12.4}Coupling Variability and Misalignment}{7}{subsection.2.12.4}%
+\contentsline {subsection}{\numberline {2.12.5}Interference and Regulatory Considerations}{7}{subsection.2.12.5}%
+\contentsline {subsection}{\numberline {2.12.6}Detection System}{7}{subsection.2.12.6}%
+\contentsline {section}{\numberline {2.13}Signal Processing (DSP) Techniques in TTE MI Systems}{7}{section.2.13}%
+\contentsline {subsection}{\numberline {2.13.1}Filtering and Noise Reduction}{7}{subsection.2.13.1}%
+\contentsline {subsection}{\numberline {2.13.2}Adaptive Thresholding and Detection}{7}{subsection.2.13.2}%
+\contentsline {subsection}{\numberline {2.13.3}Channel Estimation / Tracking Approaches}{7}{subsection.2.13.3}%
+\contentsline {subsection}{\numberline {2.13.4}Time/Frequency Synchronization Enhancements}{7}{subsection.2.13.4}%
+\contentsline {subsection}{\numberline {2.13.5}Resource-Constrained Implementation Considerations}{8}{subsection.2.13.5}%
+\contentsline {section}{\numberline {2.14}Emerging Enhancements and Research Directions}{8}{section.2.14}%
+\contentsline {subsection}{\numberline {2.14.1}Adaptive Frequency and Power Control}{8}{subsection.2.14.1}%
+\contentsline {subsection}{\numberline {2.14.2}Multi-Coil Arrays and MIMO Concepts}{8}{subsection.2.14.2}%
+\contentsline {subsection}{\numberline {2.14.3}Hybrid MI--Acoustic or MI--RF Schemes}{8}{subsection.2.14.3}%
+\contentsline {subsection}{\numberline {2.14.4}Machine Learning for Channel Estimation and Detection}{8}{subsection.2.14.4}%
+\contentsline {subsection}{\numberline {2.14.5}Ultra-Low-Power Hardware Advances}{8}{subsection.2.14.5}%
+\contentsline {section}{\numberline {2.15}Summary of Theoretical Foundations}{8}{section.2.15}%
+\contentsline {chapter}{\numberline {3}Methodology}{9}{chapter.3}%
+\contentsline {chapter}{\numberline {4}Results}{10}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Hardware Developement}{10}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Design}{10}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Coil}{10}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.3}Amplifier}{13}{subsection.4.1.3}%
+\contentsline {subsection}{\numberline {4.1.4}Switching Circuit}{13}{subsection.4.1.4}%
+\contentsline {subsection}{\numberline {4.1.5}Other Considerations}{13}{subsection.4.1.5}%
+\contentsline {section}{\numberline {4.2}Software Developement}{13}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Modulation system}{13}{subsection.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.1.1}Non-coherent FSK}{13}{subsubsection.4.2.1.1}%
+\contentsline {subsubsection}{\numberline {4.2.1.2}Correlation Process}{14}{subsubsection.4.2.1.2}%
+\contentsline {subsubsection}{\numberline {4.2.1.3}Ortogonality and Bandwidth}{15}{subsubsection.4.2.1.3}%
+\contentsline {subsubsection}{\numberline {4.2.1.4}Preamble design}{15}{subsubsection.4.2.1.4}%
+\contentsline {subsubsection}{\numberline {4.2.1.5}Decimation?}{15}{subsubsection.4.2.1.5}%
+\contentsline {subsection}{\numberline {4.2.2}Performance metrics}{15}{subsection.4.2.2}%
+\contentsline {section}{\numberline {4.3}Testing and Validation}{16}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Radiolink simulation}{16}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Induction Pattern}{16}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}Measurements underground}{16}{subsection.4.3.3}%
+\contentsline {section}{\numberline {4.4}Results Summary}{16}{section.4.4}%
+\contentsline {chapter}{\numberline {5}Analysis}{17}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Discussion and Conclusions}{18}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Discussion}{18}{section.6.1}%

@@ -71,12 +71,48 @@ De esta menera la capacitancia necesaria para sintonizar la bobina a $\approx 3.
 Al medir la función de transferencia para en un sistema donde se tiene una de las bobinas sintonizadas y otra más pequeña sin sintonizar puede observarse en la figura \ref{fig:transfer-function} para $L_1$ y $L_2$ que la frecuencia de resonancia se encuentra cercana a los 3.2 kHz, cumpliendo con el diseño inicial.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{img/TF_L1_L2.png}
+    \includegraphics[width=1\textwidth]{img/TF_L1_L2.png}
     \caption{Función de transferencia del sistema de bobinas resonantes.}
     \label{fig:transfer-function}
 \end{figure}
 
-Se muestra a continuación la función de transferencia del sistema completo medido a una distancia de 2 metros entre las bobinas.
+Se muestra a continuación la función de transferencia del sistema completo (end-to-end) medido a una distancia de 2 metros entre las bobinas.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{img/Desfase_end_2_end_2.jpg}
+        \caption{Phase shift}
+        \label{fig:sub2-transfer-function-system}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{img/Relacion_de_potencia_end_2_end_3.jpg}
+        \caption{Power relation}
+        \label{fig:sub1-transfer-function-system}
+    \end{subfigure}
+    \caption{Transfer function of complete system at 2 meters distance.}
+    \label{fig:transfer-function-system}
+\end{figure}
+
+
+If we review particularly the power relation graph in figure \ref{fig:sub1-transfer-function-system} we can observe that the maximum power transfer occurs at a frequency of approximately 3.2 kHz, specifically at 3150 Hz, at this point we have an approximaly analog bandwidth of ~450 Hz considering a decaiment of 3 dB from center frequency. Here it's a zoom of this graph in figure \ref{fig:zoom-transfer-function-system}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{img/bw end-2-end.png}
+    \caption{Bandwidth available for end-to-end system at 2 meters distance.}
+    \label{fig:zoom-transfer-function-system}
+
+\end{figure}
+
+If we consider this geometry and values of the coil, we can estimate the magnetic field generated at the center of the coil using the formula decribed on section 2 \ref{equation_of_magnetic_field} for the magnetic field at the center of a circular loop:
+
+
+
+
 
 
 
@@ -149,9 +185,106 @@ In the last diagram is clear that the incoming signal is partitioned in several 
 Each section named $S_N$ in correlationed with the $"N"$ symbol of the preamble. The structure of $S_N$ is defined as the size of a symbol $M$ plus the sample difference of between preamble (P) and the window size (S). As greater is this difference , the peak of the correlation (the point that the whole structure of the preamble is detected with the system ) can be detected with correlation a bigger instance of earing. That means that we are working with a major amount of data and real-time signal chunks. 
 That could work for example if the criteria of detection del preamble are multiple identifications of these peaks levels. In our model we try to minimize the amount of data to process, to reduce time of calculation of time domain chunks, If we exceed the time that ,
 \subsubsection{Ortogonality and Bandwidth}
+
+Tal y como se mencionó en capítulos anteriores, la ortogonalidad entre las portadoras es un aspecto crucial en los sistemas de modulación FSK, ya que garantiza que las señales transmitidas en diferentes frecuencias no interfieran entre sí, dicho de otra manera, la energía de un símbolo transmitido en una frecuencia determinada no entra en el canal espectral de un símbolo adyacente en cuanto a la constelación de símbolos.
+/newp
+Para que se cumpla la condición de ortogonalidad se debe considerar la relación entre la frecuencia de sampleo y la cantidad de muestras por símbolo, es decir el valor inverso de la duración temporal de cada símbolo. La relación entre las frecuencias de las portadoras $f_1$ y $f_2$ debe cumplir con la siguiente ecuación:
+
+\begin{equation}
+    f_2 - f_1 = \frac{k}{T_s} = \frac{k f_s}{N_s}
+\end{equation}
+
+En este caso, se tiene que la frecuencia de sampleo es de 48 kHz, y debe definirse la cantidad de muestras por símbolo $N_s$. Para determinar el valor óptimo de $N_s$, se realizaron diversas pruebas variando este parámetro y observando su impacto en la tasa de error de símbolos demodulados (SER) del sistema. A continuación se muestra la variación de SER en función del largo del símbolo para un valor de SNR definido, el cual corresponde al objetivo mínimo a lograr con el sistema de comunicación TTE, en este caso $SNR=-10 dB$ %detallar luego el criterio para cálculo de SNR (en la banda, qué banda) .
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{img/SER_vs_Ns.png}
+    \caption{SER vs Ns for 8-FSK and 16-FSK at SNR = -10 dB.}
+    \label{fig:SER-vs-Ns}
+\end{figure}
+
+Considerando un Bandwidth de 200 Hz se tiene que un largo de símbolo de 24000 es un valor ideal considerando modelos de 8 y 16 FSK, en este punto marcado con una línea punteada roja en la figura \ref{fig:SER-vs-Ns} muestra una tasa de error cercana al 12\% en el caso de 16 símbolos y 5\% en el caso de 8 símbolos. Para ambos modelos este nivel de error es aceptable considerando que posteriormente se incluirá un código de corrección de errores simple. Se opta por este largo de símbolo y no uno mayor que pudiese disminuir aún el SER debido a que no se desea sav¿crificar en demacía la tasa de datos el sistema, manteniendo un compromiso adecuado entre velocidad de transmisión y robustez frente al ruido.
+\newp
+De esta manera ya habiendo fijado el valor de $N_s=24000$, se procede a calcular la separación entre las frecuencias de las portadoras para cumplir con la condición de ortogonalidad. Considerando $k=1$ se tiene que la separación mínima entre las portadoras es de 2 Hz. Sin embargo, teniendo en cuenta que la resolución de la FFT en el demodulador depende de la cantidad de muestras por símbolo, se opta por seleccionar una separación mayor dejando canales espectrales sin utilizar para evitar interferencias entre símbolos adyacentes. Mas adelante se observará la diferencia de desempeño al considerar un modelo de demodulación single channel y tomando el máximo entre el canal del símbolo esperado y sus adyacentes.
+
+
 \subsubsection{Preamble design}
+
+Tal y como se explicó en el diseño del sistema de recepción y detección del mensaje, el preámbulo juega un rol fundamental en la sincronización y posterior demodulación de los símbolos transmitidos. El preámbulo debe ser diseñado cuidadosamente para maximizar la probabilidad de detección en presencia de ruido y otras distorsiones del canal.
+\newp
+En este sentido se optó por una secuencia de símbolos aleatorios generada de forma computacional, la cual es conocida tanto por el transmisor como por el receptor. Esta secuencia debe ser lo suficientemente larga para proporcionar una referencia clara para la detección, pero no tan larga como para consumir un tiempo excesivo de transmisión.
+\newp
+Se definió entonces un largo total de 12 segundos de preámbulo. Este valor fue definido a partir de meses de pruebas a diferentes distancias de comunicación en entornos subterráneos, en tanto el peak de correlación fuese visible en las condiciones de comunicación objetivo del proyecto no había un límite para su extensión temporal. Este largo de preámbulo en particular es la consecuencia del trade off entre probabailidad de detección y un tiempo de transmisión aceptable para la aplicación.
+\newp  
+A continuación se muestran los resultados de correlación IQ y correlación simple para distintas estructuras de preámbulo considerando un largo total de 12 segundos.
+
+%\begin{figure}[H]
+%    \centering
+%    \begin{subfigure}[b]{0.49\textwidth}
+%        \centering
+%        \includegraphics[width=\textwidth]{img/Correlacion_IQ_4simbolos.png}
+%        \caption{4-symbol preamble}
+%        \label{fig:sub1-preamble-corr}
+%    \end{subfigure}
+%    \hfill
+%    \begin{subfigure}[b]{0.49\textwidth}
+%        \centering
+%        \includegraphics[width=\textwidth]{img/Correlacion_IQ_8simbolos.png}
+%        \caption{8-symbol preamble}
+%        \label{fig:sub2-preamble-corr}
+%    \end{subfigure}
+%    \vfill
+%    \begin{subfigure}[b]{0.49\textwidth}
+%        \centering
+%        \includegraphics[width=\textwidth]{img/Correlacion_IQ_16simbolos.png}
+%        \caption{16-symbol preamble}
+%        \label{fig:sub3-preamble-corr}
+%    \end{subfigure}
+%    \hfill
+%    \begin{subfigure}[b]{0.49\textwidth}
+%        \centering
+%        \includegraphics[width=\textwidth]{img/Correlacion_IQ_32simbolos.png}
+%        \caption{32-symbol preamble}
+%        \label{fig:sub4-preamble-corr}
+%    \end{subfigure}
+%    \caption{IQ Correlation for different preamble structures with 12 seconds length.}
+%    \label{fig:preamble-corr}
+%\end{figure}
+
+En la figura %\ref{fig:preamble-corr} 
+se observa que si bien el nivel de correlación IQ es similar para cada topología de preámbulo considerada, a medida que se incrementa el número de símbolos  en la secuencia, el peak de correlación es más "delgado", es decir, se concentra en un menor número de instantes de earing. Esto es beneficioso para el sistema de detección, ya que permite una identificación más precisa del inicio del mensaje transmitido.
+
 \subsubsection{Decimation?}
-\subsection{Performance metrics}
+
+Se evaluó la inclusión de un proceso de decimación en la etapa de recepción del sistema, con el objetivo de reducir la cantidad de datos a procesar y así disminuir el tiempo de cálculo necesario para la demodulación del mensaje. La decimación como se explicó en la sección 2 consiste en reducir la tasa de sampleo del señal recibida, manteniendo la información esencial para la detección y demodulación.
+\newp
+De esta manera se implemenntó el proceso de decimación evaluando 2 etapas de filtrado y downsampling. En la primera etapa se aplicó un filtro digital basa banda que funciona entre 3100 y 3300 Hz, seguido de un downsampling por un factor de 12. Es importante destacar que al considerar tal factor de decimación, la frecuencia de Nyquist del sistema resultante es de 4000 Hz, por lo que las zonas rescatables se encuentran cada 2000 Hz, para este primer caso se toma la segunda zona de Nyquist, considerando el intervalo entre 2000 y 4000 Hz, el filtro pasabanda debe eliminar todas las componentes fuera de este rango para evitar aliasing.
+\newp
+En la segunda etapa se aplica un filtro pasabanda entre 700 y 900 Hz, seguido de un downsampling por un factor de 4. En este caso la frecuencia de Nyquist del sistema resultante es de 1000 Hz, por lo que se rescata nuevamente la segunda zona entre 500 y 1000 Hz. Nuevamente se cumple que el filtro pasabanda está dentro de esa ventana, suprimiendo las componentes fuera de ese rango para evitar aliasing.
+\newp
+De esta manera se logra reducir la tasa de sampleo del sistema original de 48 kHz a una tasa final de 1000 Hz, lo que representa una reducción significativa en la cantidad de datos a procesar. A continuación se muestran los resultados obtenidos al aplicar el proceso de decimación en términos de la tasa de error de símbolos (SER).
+
+
+%\begin{figure}[H]
+%    \centering
+%    \includegraphics[width=0.7\textwidth]{img/SER_vs_SNR_decimation.png}
+%    \caption{SER vs SNR for 8-FSK and 16-FSK with decimation.}
+%    \label{fig:SER-vs-SNR-decimation}
+%\end{figure}
+
+Si bien el proceso de decimación logra reducir la cantidad de datos a procesar, se observa luego de la realización de múltiples pruebas en terreno que la variabilidad del "peak" de correlación se incrementa al aplicar este proceso, lo que dificulta la detección precisa del inicio del mensaje transmitido. %% A qué podría deberse
+\newp
+A continuación se muestra una simulación de la variabilidad del peak de correlación al aplicar el proceso de decimación en comparación con el sistema sin decimación.
+
+%\begin{figure}[H]
+%    \centering
+%    \includegraphics[width=0.7\textwidth]{img/Correlacion_decimation_vs_no_decimation.png}
+%    \caption{Correlation peak variability with and without decimation.}
+%    \label{fig:corr-peak-variability}
+%\end{figure}
+
+De esta manera se decide no incluir el proceso de decimación en la versión final del sistema de recepción, considerando que los equipos utilizados para realizar los procesos de detección en tiempo real poseen capacidad de computo suficiente para no demorar más del tiempo disponible entre ciclos de escucha.
+
 \section{Testing and Validation}
 \subsection{Radiolink simulation}
 \subsection{Induction Pattern}

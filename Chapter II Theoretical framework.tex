@@ -47,6 +47,30 @@ En este capítulo se presentan los fundamentos teóricos y el marco conceptual p
 \section{Electromagnetic Fundamentals for MI Links}\label{sec:em-fundamentals}
 % (From: Physical Principles of transmission by Magnetic Induction)
 
+%Add equation for Magnetic flux at a distance D from a circular coil of radius a, N turns, carrying current I:
+
+According to Faraday's law, the voltage induced by a magnetic field that goes through a conductive closed loop depends on the temporal variation of the magnetic flux that enters the loop orthogonally. As a result, the voltage induced at the antenna due to the magnetic field is given by:
+
+\begin{equation}
+    \label{equation_of_magnetic_induction}
+    \begin{split}
+        V_{rx}(\omega) &= -j\omega N_{rx}\int_{S}\mu H\cdot dS \\
+                       &= -j\omega\mu N_{rx}S_{rx}H \cos(\varphi)
+    \end{split}
+\end{equation}
+
+where $N_{rx}e~S_{rx}$ are the number of turns and the area of the receiving loop, respectively, and is the angle between the magnetic field and the loop axis, that is orthogonal to its plane. 
+
+La aproximación más simple para el campo magnético creado por una pequeña antena de bucle (usando una aproximación de campo cuasi-estático) es:
+
+\begin{equation}
+    \label{equation_of_magnetic_field}
+    H_{qe}=\frac{m_{d}}{4\pi r^{3}}\{2~cos(\theta)\hat{r}+sin(\theta)\hat{\theta}\}
+\end{equation}
+
+where $m_{d}=N_{tx}I_{tx}\pi a^{2}$ is the magnetic dipole moment of the transmitting coil, $r$ is the distance from the coil center to the observation point, and $\theta$ is the angle between the coil axis and the line connecting the coil center to the observation point. 
+
+\cite{carreno2016through}.
 
 \subsection{Magnetic Induction Fundamentals}\label{subsec:magnetic-induction-fundamentals}
 % (From: Magnetic Induction)

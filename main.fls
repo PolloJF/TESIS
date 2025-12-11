@@ -50,10 +50,6 @@ INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\generic\tracklang\tracklan
 INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\generic\tracklang\tracklang.tex
 INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\generic\tracklang\tracklang.tex
 INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\generic\tracklang\tracklang.tex
-INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\latex\tocbibind\tocbibind.sty
-INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\latex\tocbibind\tocbibind.sty
-INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\latex\natbib\natbib.sty
-INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\latex\natbib\natbib.sty
 INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\generic\babel\babel.sty
 INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\generic\babel\babel.sty
 INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\generic\babel\txtbabel.def
@@ -520,6 +516,8 @@ INPUT .\main.lof
 INPUT .\main.lof
 INPUT main.lof
 OUTPUT main.lof
+INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-rm.enc
+INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-mathit.enc
 INPUT .\Chapter I Introduction.tex
 INPUT .\Chapter I Introduction.tex
 INPUT Chapter I Introduction.tex
@@ -560,8 +558,6 @@ INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-mathsy.e
 INPUT .\Chapter II Theoretical framework.tex
 INPUT .\Chapter II Theoretical framework.tex
 INPUT Chapter II Theoretical framework.tex
-INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-mathit.enc
-INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-rm.enc
 INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-mathex.enc
 INPUT .\Chapter III Methodology.tex
 INPUT .\Chapter III Methodology.tex
@@ -569,6 +565,20 @@ INPUT Chapter III Methodology.tex
 INPUT .\Chapter IV Results.tex
 INPUT .\Chapter IV Results.tex
 INPUT Chapter IV Results.tex
+INPUT .\img\esquema_blanco.png
+INPUT .\img\esquema_blanco.png
+INPUT .\img\esquema_blanco.png
+INPUT .\img\esquema_blanco.png
+INPUT .\img\esquema_blanco.png
+INPUT .\img\esquema_blanco.png
+INPUT .\img\esquema_blanco.png
+INPUT .\img\schematic.png
+INPUT .\img\schematic.png
+INPUT .\img\schematic.png
+INPUT .\img\schematic.png
+INPUT .\img\schematic.png
+INPUT .\img\schematic.png
+INPUT .\img\schematic.png
 INPUT .\img\coil.png
 INPUT .\img\coil.png
 INPUT .\img\coil.png
@@ -583,6 +593,28 @@ INPUT .\img\TF_L1_L2.png
 INPUT .\img\TF_L1_L2.png
 INPUT .\img\TF_L1_L2.png
 INPUT .\img\TF_L1_L2.png
+INPUT .\img\Desfase_end_2_end_2.jpg
+INPUT .\img\Desfase_end_2_end_2.jpg
+INPUT .\img\Desfase_end_2_end_2.jpg
+INPUT .\img\Desfase_end_2_end_2.jpg
+INPUT .\img\Desfase_end_2_end_2.jpg
+INPUT .\img\Desfase_end_2_end_2.jpg
+INPUT .\img\Desfase_end_2_end_2.jpg
+INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmr10.tfm
+INPUT .\img\Relacion_de_potencia_end_2_end_3.jpg
+INPUT .\img\Relacion_de_potencia_end_2_end_3.jpg
+INPUT .\img\Relacion_de_potencia_end_2_end_3.jpg
+INPUT .\img\Relacion_de_potencia_end_2_end_3.jpg
+INPUT .\img\Relacion_de_potencia_end_2_end_3.jpg
+INPUT .\img\Relacion_de_potencia_end_2_end_3.jpg
+INPUT .\img\Relacion_de_potencia_end_2_end_3.jpg
+INPUT .\img\bw end-2-end.png
+INPUT .\img\bw end-2-end.png
+INPUT .\img\bw end-2-end.png
+INPUT .\img\bw end-2-end.png
+INPUT .\img\bw end-2-end.png
+INPUT .\img\bw end-2-end.png
+INPUT .\img\bw end-2-end.png
 INPUT .\img\amp.png
 INPUT .\img\amp.png
 INPUT .\img\amp.png
@@ -590,6 +622,27 @@ INPUT .\img\amp.png
 INPUT .\img\amp.png
 INPUT .\img\amp.png
 INPUT .\img\amp.png
+INPUT .\img\GLI.png
+INPUT .\img\GLI.png
+INPUT .\img\GLI.png
+INPUT .\img\GLI.png
+INPUT .\img\GLI.png
+INPUT .\img\GLI.png
+INPUT .\img\GLI.png
+INPUT .\img\selector.png
+INPUT .\img\selector.png
+INPUT .\img\selector.png
+INPUT .\img\selector.png
+INPUT .\img\selector.png
+INPUT .\img\selector.png
+INPUT .\img\selector.png
+INPUT .\img\sbp3.png
+INPUT .\img\sbp3.png
+INPUT .\img\sbp3.png
+INPUT .\img\sbp3.png
+INPUT .\img\sbp3.png
+INPUT .\img\sbp3.png
+INPUT .\img\sbp3.png
 INPUT .\img\Diagrama_Receptor.png
 INPUT .\img\Diagrama_Receptor.png
 INPUT .\img\Diagrama_Receptor.png
@@ -597,23 +650,113 @@ INPUT .\img\Diagrama_Receptor.png
 INPUT .\img\Diagrama_Receptor.png
 INPUT .\img\Diagrama_Receptor.png
 INPUT .\img\Diagrama_Receptor.png
-INPUT .\img\Diagrama_Receptor.png
-INPUT .\img\Diagrama_Receptor.png
-INPUT .\img\Diagrama_Receptor.png
-INPUT .\img\Diagrama_Receptor.png
-INPUT .\img\Diagrama_Receptor.png
-INPUT .\img\Diagrama_Receptor.png
-INPUT .\img\Diagrama_Receptor.png
-INPUT .\img\Diagrama_Receptor.png
+INPUT .\img\Simulacion corr IQ.png
+INPUT .\img\Simulacion corr IQ.png
+INPUT .\img\Simulacion corr IQ.png
+INPUT .\img\Simulacion corr IQ.png
+INPUT .\img\Simulacion corr IQ.png
+INPUT .\img\Simulacion corr IQ.png
+INPUT .\img\Simulacion corr IQ.png
+INPUT .\img\Simulacion corr modelos_2.png
+INPUT .\img\Simulacion corr modelos_2.png
+INPUT .\img\Simulacion corr modelos_2.png
+INPUT .\img\Simulacion corr modelos_2.png
+INPUT .\img\Simulacion corr modelos_2.png
+INPUT .\img\Simulacion corr modelos_2.png
+INPUT .\img\Simulacion corr modelos_2.png
+INPUT .\img\SER_vs_Ns.png
+INPUT .\img\SER_vs_Ns.png
+INPUT .\img\SER_vs_Ns.png
+INPUT .\img\SER_vs_Ns.png
+INPUT .\img\SER_vs_Ns.png
+INPUT .\img\SER_vs_Ns.png
+INPUT .\img\SER_vs_Ns.png
+INPUT .\img\mina\Catemu.jpg
+INPUT .\img\mina\Catemu.jpg
+INPUT .\img\mina\Catemu.jpg
+INPUT .\img\mina\Catemu.jpg
+INPUT .\img\mina\Catemu.jpg
+INPUT .\img\mina\Catemu.jpg
+INPUT .\img\mina\Catemu.jpg
+INPUT .\img\mina\Entrada.png
+INPUT .\img\mina\Entrada.png
+INPUT .\img\mina\Entrada.png
+INPUT .\img\mina\Entrada.png
+INPUT .\img\mina\Entrada.png
+INPUT .\img\mina\Entrada.png
+INPUT .\img\mina\Entrada.png
+INPUT .\img\mina\SNR ENTRADA.png
+INPUT .\img\mina\SNR ENTRADA.png
+INPUT .\img\mina\SNR ENTRADA.png
+INPUT .\img\mina\SNR ENTRADA.png
+INPUT .\img\mina\SNR ENTRADA.png
+INPUT .\img\mina\SNR ENTRADA.png
+INPUT .\img\mina\SNR ENTRADA.png
+INPUT .\img\mina\Manto 1 setup.png
+INPUT .\img\mina\Manto 1 setup.png
+INPUT .\img\mina\Manto 1 setup.png
+INPUT .\img\mina\Manto 1 setup.png
+INPUT .\img\mina\Manto 1 setup.png
+INPUT .\img\mina\Manto 1 setup.png
+INPUT .\img\mina\Manto 1 setup.png
+INPUT .\img\mina\SNR MANTO 1.png
+INPUT .\img\mina\SNR MANTO 1.png
+INPUT .\img\mina\SNR MANTO 1.png
+INPUT .\img\mina\SNR MANTO 1.png
+INPUT .\img\mina\SNR MANTO 1.png
+INPUT .\img\mina\SNR MANTO 1.png
+INPUT .\img\mina\SNR MANTO 1.png
+INPUT .\img\mina\corrs Manto 1.png
+INPUT .\img\mina\corrs Manto 1.png
+INPUT .\img\mina\corrs Manto 1.png
+INPUT .\img\mina\corrs Manto 1.png
+INPUT .\img\mina\corrs Manto 1.png
+INPUT .\img\mina\corrs Manto 1.png
+INPUT .\img\mina\corrs Manto 1.png
+INPUT .\img\mina\Nivel sup Setup.png
+INPUT .\img\mina\Nivel sup Setup.png
+INPUT .\img\mina\Nivel sup Setup.png
+INPUT .\img\mina\Nivel sup Setup.png
+INPUT .\img\mina\Nivel sup Setup.png
+INPUT .\img\mina\Nivel sup Setup.png
+INPUT .\img\mina\Nivel sup Setup.png
+INPUT .\img\mina\SNR sup 1.png
+INPUT .\img\mina\SNR sup 1.png
+INPUT .\img\mina\SNR sup 1.png
+INPUT .\img\mina\SNR sup 1.png
+INPUT .\img\mina\SNR sup 1.png
+INPUT .\img\mina\SNR sup 1.png
+INPUT .\img\mina\SNR sup 1.png
+INPUT .\img\mina\setup refugio.jpeg
+INPUT .\img\mina\setup refugio.jpeg
+INPUT .\img\mina\setup refugio.jpeg
+INPUT .\img\mina\setup refugio.jpeg
+INPUT .\img\mina\setup refugio.jpeg
+INPUT .\img\mina\setup refugio.jpeg
+INPUT .\img\mina\setup refugio.jpeg
+INPUT .\img\mina\SNR 120m.png
+INPUT .\img\mina\SNR 120m.png
+INPUT .\img\mina\SNR 120m.png
+INPUT .\img\mina\SNR 120m.png
+INPUT .\img\mina\SNR 120m.png
+INPUT .\img\mina\SNR 120m.png
+INPUT .\img\mina\SNR 120m.png
+INPUT .\img\mina\corrs 120 m.png
+INPUT .\img\mina\corrs 120 m.png
+INPUT .\img\mina\corrs 120 m.png
+INPUT .\img\mina\corrs 120 m.png
+INPUT .\img\mina\corrs 120 m.png
+INPUT .\img\mina\corrs 120 m.png
+INPUT .\img\mina\corrs 120 m.png
 INPUT .\Chapter V Analysis.tex
 INPUT .\Chapter V Analysis.tex
 INPUT Chapter V Analysis.tex
-INPUT .\Chapter VI Discussion and Conclusions.tex
-INPUT .\Chapter VI Discussion and Conclusions.tex
-INPUT Chapter VI Discussion and Conclusions.tex
-INPUT .\Bibliography.tex
-INPUT .\Bibliography.tex
-INPUT Bibliography.tex
+INPUT .\Chapter VI Conclusions and Future Work.tex
+INPUT .\Chapter VI Conclusions and Future Work.tex
+INPUT Chapter VI Conclusions and Future Work.tex
+INPUT .\main.bbl
+INPUT .\main.bbl
+INPUT main.bbl
 INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\generic\stringenc\se-utf8.def
 INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\generic\stringenc\se-utf8.def
 INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\generic\stringenc\se-utf8.def
@@ -624,6 +767,8 @@ INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmbxi10.
 INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmbxi10.pfb
 INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmex10.pfb
 INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmex10.pfb
+INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmmi10.pfb
+INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmmi10.pfb
 INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmmi12.pfb
 INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmmi12.pfb
 INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmmi8.pfb

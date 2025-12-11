@@ -47,6 +47,23 @@ En este capítulo se presentan los fundamentos teóricos y el marco conceptual p
 \section{Electromagnetic Fundamentals for MI Links}\label{sec:em-fundamentals}
 % (From: Physical Principles of transmission by Magnetic Induction)
 
+
+Ampère's Law, in the context of magnetostatics, provides the fundamental relationship between a circulating magnetic field (B) and the electric current (J) that produces it. Specifically, the differential form states that the curl of the magnetic field is directly proportional to the current density \cite{griffiths2023introduction}:
+
+\begin{equation}
+    \label{equation_of_ampere_law}
+    \nabla \times B = \mu_{0} J
+\end{equation}
+
+This law is particularly useful for calculating magnetic fields when physical symmetry is present, serving a role analogous to Gauss's Law in electrostatics. However, this formulation holds strictly only for steady currents, as applying the divergence to the magnetostatic version reveals an inconsistency when charge density is changing over time. James Clerk Maxwell resolved this theoretical flaw by incorporating the displacement current term:
+
+\begin{equation}
+    \label{equation_of_ampere_maxwell}
+    \nabla \times B = \mu_{0} J + \mu_{0} \epsilon_{0} \frac{\partial E}{\partial t}
+\end{equation}
+
+This extended form, known as the Ampère-Maxwell Law, accounts for time-varying electric fields and is essential for describing electromagnetic wave propagation. In the context of magnetic induction communication systems, this law underpins the generation and behavior of magnetic fields produced by time-varying currents in transmitting coils.
+
 %Add equation for Magnetic flux at a distance D from a circular coil of radius a, N turns, carrying current I:
 
 According to Faraday's law, the voltage induced by a magnetic field that goes through a conductive closed loop depends on the temporal variation of the magnetic flux that enters the loop orthogonally. As a result, the voltage induced at the antenna due to the magnetic field is given by:
@@ -283,6 +300,12 @@ where $m_{d}=N_{tx}I_{tx}\pi a^{2}$ is the magnetic dipole moment of the transmi
 \begin{equation}
     \label{eq:Correlation}
     z_i(T) = \int_{0}^{T} r(t)s_i(t) \, dt, \quad i=1, \dots, M
+\end{equation}
+
+The version for digital signals is given by:
+\begin{equation}
+    \label{eq:Correlation_dig}
+    z_i[n] = \sum_{k=0}^{N-1} r[k]s_i[k+n], \quad i=1, \dots, M
 \end{equation}
 
 \subsection{Resource-Constrained Implementation Considerations}\label{subsec:resource-constraints}

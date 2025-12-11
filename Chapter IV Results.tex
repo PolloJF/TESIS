@@ -3,14 +3,43 @@
 
 \section{Hardware Developement}
 
-El hardware del sistema de comunicación TTE fue diseñado y construido para cumplir con un conjunto específico de requisitos y restricciones.
+El hardware del sistema de comunicación TTE, el cual fue bautizado como MAGIC \textit{(MAGnetic Induction Communication)} fue diseñado y construido para cumplir con un conjunto específico de requisitos y restricciones.
 En primer lugar el sistema debe ser capaz de satisfacer la prueba de concepto logrando comunicación a una diatancia media pero significativa en un entorno subterráneo.
 Asismismo el equipo no debe ser extremadamente voluminoso o pesado para facilitar su transporte y versatilidad en su uso.
+\newp
+The communication system is defined primarly by the magnetic coupling principe between two resonant coils, one used as transmitter and the other as receiver. Also the system has to be bidirectional, so both coils can work as transmitter or receiver depending on the comunication direction.
 \subsection{Design}
 
 El sistema de comunicación TTE está compuesto por varios elementos que trabajan en conjunto para lograr la transmisión y recepción de datos mediante inducción magnética.
 El elemento principal es la bobina resonante, la cual está diseñada para generar y recibir campos magnéticos en una frecuencia específica. Además de la bobina, 
-el sistema incluye un amplificador para aumentar la potencia del mensaje transmitido y un sistema de switching para intercambiar la conexión de la bobina resonante entre los canales de entrada y salida del sistema.
+el sistema incluye un amplificador para aumentar la potencia del mensaje transmitido y un sistema de switching para intercambiar la conexión de la bobina resonante entre los canales de entrada y salida del sistema, dependiendo de la dirección de comunicación deseada (TX o RX).
+\newp
+Here is a conceptual diagram of the complete system in figure \ref{fig:system-diagram}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{img/esquema_blanco.png}
+    \caption{Conceptual diagram of the complete TTE communication system.}
+    \label{fig:system-diagram}
+
+\end{figure}
+
+As shown in the diagram, we can start from left to right with the generation of a text message, wich is codificated and modulated digitally in a computer. Then the digital signal is converted to analog using a DAC, this signal is amplified using a class D audio amplifier to drive the resonant coil. The flux of current at the coil generates a variable magnetic field, as equation \ref{equation_of_ampere_maxwell} describes in section 2. This variable magnetic field, that is centered at a pretty low frequency (VLF band of radio), propagates through the environment, penetrating rock soil and solid material and reaching the receiving coil.
+\newp
+The magnetic flux that pass perpendicularly through the coil structure can induce a voltage in bornes of the receiving coil, according to Faraday's law of induction \ref{equation_of_magnetic_induction}. This signal can be digitalized using an ADC, demodulated, decoded and corrected in a computer to recover the original text message.
+\newp
+To answer a received message, the same process is followed in reverse thanks to the switching circuit.
+\newp
+The schematic diagram of the system is shown in figure \ref{fig:system-schematic}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{img/schematic.png}
+    \caption{Schematic diagram of the complete TTE communication system.}
+    \label{fig:system-schematic}
+\end{figure}
+
+As is shown in figure \ref{fig:system-schematic}, the system is composed by the following main blocks: Coil (1), Battery (2), USB audio Interface (3) and the core module that contains the Amplifier, a ground loop isolator and the switching Switching circuit(rest of diagram).
 \subsection{Coil}
 La bobina resonante corresponde a al elemento encargado de transmitir el campo magnético variable al circular corriente por su estrcutura (Transmisor) y de entregar la fem inducida en presencia al atravesar por su estructira las líneas de campo magnético transmitido (Receptor). En vista de lograr el objetivo de comunicación a distancia significativa, la bobina debe ser diseñada para maximizar la eficiencia de la transferencia de energía magnética entre el transmisor y el receptor, es por esto que se optó en primera instancia por un diseño simple toroidal, donde las variables de diseño y construcción se reducen a número de vueltas $N$, diámetro de la estructura $D$, y el calibre del conductor $C$.
 \newp
@@ -117,11 +146,13 @@ If we consider this geometry and values of the coil, we can estimate the magneti
 
 
 
-\subsection{Amplifier}
+\subsection{Amplifier and GLI}
 
-El amplificador escogido para la aplicación corresponde a un amplificador de audio clase D basado en los chips TPA3116D2 y NE5532 de Texas Instruments. Este amplificador es capaz de entregar una potencia máxima de 150W Mono, considerando una tensión de 26 V.
-\newp 
-La elección de este amplificador se basa en su bajo costo, disponibilidad en el mercado y su alta eficiencia al corresponder a un amplificador conmutado, lo que minimiza las pérdidas de potencia y la generación de calor. Además como se enunció anteriormente el sistema operará en un rango de frecuencia en torno a los 3.2 kHz, dentro del espectro audible. A continuación se muestra una figura del amplificador utilizado:
+The amplifier choosed for the application corresponds to a class D Power Amplifier Board XH-M544  based on the Texas Instruments chips TPA3116D2 and NE5532. This amplifier is capable of delivering a maximum power of 150W Mono, considering a voltage of 26 V.
+
+\newp
+This component was selected due to its ability to deliver high power output with high efficiency, which is crucial for driving the resonant coil effectively. The amplifier operates in class D mode, which means it uses pulse-width modulation (PWM) to amplify the input signal, resulting in lower heat dissipation and improved energy efficiency compared to traditional linear amplifiers. %ref pendiente.
+Also as was mentioned before, the system will operate in a frequency range around 3.2 kHz, within the audible spectrum. Here is a figure of the amplifier used:
 
 \begin{figure}[H]
     \centering
@@ -130,23 +161,54 @@ La elección de este amplificador se basa en su bajo costo, disponibilidad en el
     \label{fig:amplifier}
 \end{figure}
 
+The input signal to the amplifier is provided by a USB audio interface, and this signal is isolated from ground loops using a Ground Loop Isolator (GLI). The GLI is essential to prevent unwanted noise and hum that can be introduced into the audio signal due to differences in ground potential between the computer and the amplifier. By isolating the audio signal, the GLI helps maintain signal integrity and ensures that the transmitted message is clear and free from interference.
+%is neccesary if now we utilize a battery?
+\newp
+Here is a schematic diagram of the GLI used in MAGIC:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{img/GLI.png}
+    \caption{Schematic diagram of the Ground Loop Isolator (GLI).}
+    \label{fig:gli-schematic}
+\end{figure}
 
 \subsection{Switching Circuit}
-\subsection{Other Considerations}
+The switching circuit is essential for enabling bidirectional communication in the TTE system, for this prototype this function is supplied by a positional selector, that means, mannually.
+\newp
+Here is a schematic diagram of the positional selector used MAGIC:.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{img/selector.png}
+    \caption{Schematic diagram of the switching circuit.}
+    \label{fig:switching-circuit}
+
+\end{figure}
+
+This device conmute the bornes of the resonant coil between the amplifier output (TX mode) and the audio interface input (RX mode). When the selector is in position 1, the coil is connected to the amplifier output, allowing it to transmit signals. Conversely, when the selector is in position 2, the coil is connected to the audio interface input, enabling it to receive signals. Also the selector at TX mode allows the amplifier to be powered on.
+
+ 
+
+\subsection{Audio Interface}
+
+The audio interface selected for the TTE communication system is the SoundBlaster Play! 3 by Creative Labs. This USB audio interface is chosen for its high-quality audio conversion capabilities, compact size, input and output separately channel and ease of use. In terms of USB audio interfaces, the SoundBlaster Play! was the best option available considering cost and Portability.
+\newp
+Here is a figure of the audio interface used:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{img/sbp3.png}
+    \caption{USB Audio Interface SoundBlaster Play! 3.}
+    \label{fig:audio-interface}
+\end{figure}
+
+
 \section{Software Developement}
 \subsection{Modulation system}
 \subsubsection{Non-coherent FSK}
  The detection system works as a typical non-coherent FSK receiver. 
 The incoming signal is filtered at the beggining to reduce the noise influence in terms os  operations in the time domain.
 %is there any best way of describing this? What are the others benefits of filtering the signas with a digital bandpassfilter,if are any ?
-Then, the signal is sampled by an ADC and processed digitally to extract the information. A model of thw whole system is presented in Figure \ref{fig:detection-system}.
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{img/Diagrama_Receptor.png}
-    \caption{Block diagram of the non-coherent FSK detection system.}
-    \label{fig:detection-system}
-\end{figure}
-
+\newp
 Why a Non coherent FSK system?
 The non-coherent FSK system is selected due to its robustness to phase variations and frequency offsets %(Include bibiliography about this) 
 In comparisson for example models based on PSK or QAM, that are more sensitive to phase noise and frequency offsets. FSK modulation allows the receiver to detect the transmitted symbols based on energy detection in specific frequency bands, without requiring precise phase synchronization. This characteristic makes non-coherent FSK particularly suitable for TTE communication systems, where the channel conditions can be highly variable and unpredictable.
@@ -173,17 +235,109 @@ Here we have several main design parameters: an optimar lenght of preamble, its 
 The size of the window is key of the times that the function \textit{Correlation by parts} is called. 
 The output of the correlation process is a correlation coefficient that indicates the degree of similarity between the received signal and the reference signal at different time lags. A high correlation coefficient at a specific time lag suggests that the known signal is present in the received signal at that time.
 % Include bibliography
-The correlation formula (\ref{eq:Correlation}), given in previous chapter, is used as a the main operation of correlation IQ System.
-\begin{figure}
+The correlation formula (\ref{eq:Correlation_dig}), given in previous chapter, is used as a the main operation of correlation IQ System.
+
+
+
+\subsubsection{Correlation by parts algorithm}
+
+The correlation by parts algorithm is a method to efficiently compute the correlation between a received signal and the known parts of the preamble considering the similarity with in phase and cuadrature tones.
+\newp
+At the beggining we have a window of size $N_w$, wich is the size of the total preamble ($N_symbols$ multiplied by the size of each symbol $M$), plus the amount of samples incoming in an earing cicle ($N_c$). With this structure we allow only one instance of correlation where the incoming preamble is fully contained in the window. So from the window we can define $N_symbols$ parts, where each part $S_N$ corresponds to the section that could contain te $``N"th$ symbol of the preamble.
+\newp
+once we have the $S_N$ and $P_N$ (the $``N"th$ symbol of the preamble) we can compute the correlation between them using the formula (\ref{eq:Correlation_dig}). That is implemented as the scipy function \textit{correlate} with mode ``valid", that has an output size of the difference between the two arguments ($S_N - P_N$). For each of these $``N"$ calculus The $S_N$ signals are correlated with its corresponding $P_N$ symbol of and its version in cuadrature, that means the following:
+
+\begin{equation}
+\label{eq:corr_IQ}
+\begin{split}
+    I_{N} &= \sum_{k=0}^{M-1} S_{N}[k] \sin(2 \pi f_{N} k T_s) \\
+    Q_{N} &= \sum_{k=0}^{M-1} S_{N}[k] \cos(2 \pi f_{N} k T_s)
+\end{split}
+\end{equation}
+
+where $f_N$ is the frequency of the $``N"th$ symbol of the preamble and $T_s$ is the sampling period.
+\newp
+
+So at the output we have two arrays that represents the similarity of the incoming signal section with the correspondig symbol in phase and cuadrature. If we consider the totallity of operations we can define two Matrix I and Q of size $N_symbols$ x $n_c$, where each row corresponds to the arrays resulted in \ref{eq:corr_IQ}:
+
+\begin{equation}
+\label{eq:matrix_IQ}
+    I = \begin{bmatrix}
+    I_{1}[0] & I_{1}[1] & \dots & I_{1}[n_c-1] \\
+    I_{2}[0] & I_{2}[1] & \dots & I_{2}[n_c-1] \\
+    \vdots & \vdots & \ddots & \vdots \\
+    I_{N}[0] & I_{N}[1] & \dots & I_{N}[n_c-1]
+    \end{bmatrix}, \quad
+    Q = \begin{bmatrix}
+    Q_{1}[0] & Q_{1}[1] & \dots & Q_{1}[n_c-1] \\
+    Q_{2}[0] & Q_{2}[1] & \dots & Q_{2}[n_c-1] \\
+    \vdots & \vdots & \ddots & \vdots \\
+    Q_{N}[0] & Q_{N}[1] & \dots & Q_{N}[n_c-1]
+    \end{bmatrix}
+\end{equation}
+
+Then we take the absolut value of each element of the two matrix and sum them to obtain a final correlation matrix C:
+
+\begin{equation}
+\label{eq:final_correlation_matrix}
+    C = \begin{bmatrix}
+    |I_{1}[0]| + |Q_{1}[0]| & |I_{1}[1]| + |Q_{1}[1]| & \dots & |I_{1}[n_c-1]| + |Q_{1}[n_c-1]| \\
+    |I_{2}[0]| + |Q_{2}[0]| & |I_{2}[1]| + |Q_{2}[1]| & \dots & |I_{2}[n_c-1]| + |Q_{2}[n_c-1]| \\
+    \vdots & \vdots & \ddots & \vdots \\
+    |I_{N}[0]| + |Q_{N}[0]| & |I_{N}[1]| + |Q_{N}[1]| & \dots & |I_{N}[n_c-1]| + |Q_{N}[n_c-1]|
+    \end{bmatrix}
+\end{equation}
+
+So in the components of this last matrix we have a certain measure about similarity between the incoming signal sections and the preamble symbols, in every columns there is an intant of time so if we sum along the rows we can obtain a final correlation vector that indicates the total similarity between the incoming signal and the whole preamble at each instant of time:
+\begin{equation}
+\label{eq:final_correlation_vector}
+    V = \begin{bmatrix}
+    \sum_{n=1}^{N} C_{n}[0] & \sum_{n=1}^{N} C_{n}[1] & \dots & \sum_{n=1}^{N} C_{n}[n_c-1]
+    \end{bmatrix}
+\end{equation}
+
+As result we can see something like this:
+
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{img/Diagrama_Receptor.png}
-    \caption{Block diagram of the correlation by parts process.}
-    \label{fig:correlation-by-parts}
+    \includegraphics[width=0.7\textwidth]{img/Simulacion corr IQ.png}
+    \caption{Resulted Correlation by parts with 24 symbols preamble.}
+    \label{fig:corr-by-parts-diagram}
 \end{figure}
 
-In the last diagram is clear that the incoming signal is partitioned in several parts M, where M is the dimension of the preamble in terms of symbols quantity.
-Each section named $S_N$ in correlationed with the $"N"$ symbol of the preamble. The structure of $S_N$ is defined as the size of a symbol $M$ plus the sample difference of between preamble (P) and the window size (S). As greater is this difference , the peak of the correlation (the point that the whole structure of the preamble is detected with the system ) can be detected with correlation a bigger instance of earing. That means that we are working with a major amount of data and real-time signal chunks. 
-That could work for example if the criteria of detection del preamble are multiple identifications of these peaks levels. In our model we try to minimize the amount of data to process, to reduce time of calculation of time domain chunks, If we exceed the time that ,
+\subsubsection{Preamble design}
+
+Tal y como se explicó en el diseño del sistema de recepción y detección del mensaje, el preámbulo juega un rol fundamental en la sincronización y posterior demodulación de los símbolos transmitidos. El preámbulo debe ser diseñado cuidadosamente para maximizar la probabilidad de detección en presencia de ruido y otras distorsiones del canal.
+\newp
+En este sentido se optó por una secuencia de símbolos aleatorios generada de forma computacional, la cual es conocida tanto por el transmisor como por el receptor. Esta secuencia debe ser lo suficientemente larga para proporcionar una referencia clara para la detección, pero no tan larga como para consumir un tiempo excesivo de transmisión.
+\newp
+Se definió entonces un largo total de 12 segundos de preámbulo. Este valor fue definido a partir de meses de pruebas a diferentes distancias de comunicación en entornos subterráneos, en tanto el peak de correlación fuese visible en las condiciones de comunicación objetivo del proyecto no había un límite para su extensión temporal. Este largo de preámbulo en particular es la consecuencia del trade off entre probabailidad de detección y un tiempo de transmisión aceptable para la aplicación.
+\newp  
+A continuación se muestran los resultados de correlación por partes para distintas estructuras de preámbulo considerando un largo total de 12 segundos.
+
+\begin{figure}
+    \centering
+    \label{fig:preamble-corr-models}
+    \includegraphics[width=1\textwidth]{img/Simulacion corr modelos_2.png}
+    \caption{Correlation by parts for different preamble structures with 12 seconds length.}
+\end{figure}
+
+Some relevant data about this excersice is summarized in the following table:
+\newp
+
+\begin{tabular}{|l|l|l|l|l|l|l|}
+\hline N & M & Max Peak & Std Noise & Mean Noise & Ratio & Time (s) \\
+\hline 3 & 192000 & $4.00 \mathrm{e}+05$ & 4842.85 & 14029.95 & 16.86 & 0.81 \\
+\hline 6 & 96000 & $4.04 \mathrm{e}+05$ & 6141.66 & 22835.93 & 11.5 & 1.47 \\
+\hline 12 & 48000 & $4.19 \mathrm{e}+05$ & 4233.53 & 33777.56 & 9.91 & 2.58 \\
+\hline 24 & 24000 & $4.09 \mathrm{e}+05$ & 5155.71 & 48747.34 & 6.92 & 5.71 \\
+\hline 48 & 12000 & $4.05 \mathrm{e}+05$ & 4506.15 & 69383.46 & 5.17 & 13.72 \\
+\hline
+\end{tabular}
+
+En la figura %\ref{fig:preamble-corr} 
+se observa que si bien el nivel de correlación IQ es similar para cada topología de preámbulo considerada, a medida que se incrementa el número de símbolos  en la secuencia, el peak de correlación es más "delgado", es decir, se concentra en un menor número de instantes de earing. Esto es beneficioso para el sistema de detección, ya que permite una identificación más precisa del inicio del mensaje transmitido.
+
 \subsubsection{Ortogonality and Bandwidth}
 
 Tal y como se mencionó en capítulos anteriores, la ortogonalidad entre las portadoras es un aspecto crucial en los sistemas de modulación FSK, ya que garantiza que las señales transmitidas en diferentes frecuencias no interfieran entre sí, dicho de otra manera, la energía de un símbolo transmitido en una frecuencia determinada no entra en el canal espectral de un símbolo adyacente en cuanto a la constelación de símbolos.
@@ -208,51 +362,7 @@ Considerando un Bandwidth de 200 Hz se tiene que un largo de símbolo de 24000 e
 De esta manera ya habiendo fijado el valor de $N_s=24000$, se procede a calcular la separación entre las frecuencias de las portadoras para cumplir con la condición de ortogonalidad. Considerando $k=1$ se tiene que la separación mínima entre las portadoras es de 2 Hz. Sin embargo, teniendo en cuenta que la resolución de la FFT en el demodulador depende de la cantidad de muestras por símbolo, se opta por seleccionar una separación mayor dejando canales espectrales sin utilizar para evitar interferencias entre símbolos adyacentes. Mas adelante se observará la diferencia de desempeño al considerar un modelo de demodulación single channel y tomando el máximo entre el canal del símbolo esperado y sus adyacentes.
 
 
-\subsubsection{Preamble design}
 
-Tal y como se explicó en el diseño del sistema de recepción y detección del mensaje, el preámbulo juega un rol fundamental en la sincronización y posterior demodulación de los símbolos transmitidos. El preámbulo debe ser diseñado cuidadosamente para maximizar la probabilidad de detección en presencia de ruido y otras distorsiones del canal.
-\newp
-En este sentido se optó por una secuencia de símbolos aleatorios generada de forma computacional, la cual es conocida tanto por el transmisor como por el receptor. Esta secuencia debe ser lo suficientemente larga para proporcionar una referencia clara para la detección, pero no tan larga como para consumir un tiempo excesivo de transmisión.
-\newp
-Se definió entonces un largo total de 12 segundos de preámbulo. Este valor fue definido a partir de meses de pruebas a diferentes distancias de comunicación en entornos subterráneos, en tanto el peak de correlación fuese visible en las condiciones de comunicación objetivo del proyecto no había un límite para su extensión temporal. Este largo de preámbulo en particular es la consecuencia del trade off entre probabailidad de detección y un tiempo de transmisión aceptable para la aplicación.
-\newp  
-A continuación se muestran los resultados de correlación IQ y correlación simple para distintas estructuras de preámbulo considerando un largo total de 12 segundos.
-
-%\begin{figure}[H]
-%    \centering
-%    \begin{subfigure}[b]{0.49\textwidth}
-%        \centering
-%        \includegraphics[width=\textwidth]{img/Correlacion_IQ_4simbolos.png}
-%        \caption{4-symbol preamble}
-%        \label{fig:sub1-preamble-corr}
-%    \end{subfigure}
-%    \hfill
-%    \begin{subfigure}[b]{0.49\textwidth}
-%        \centering
-%        \includegraphics[width=\textwidth]{img/Correlacion_IQ_8simbolos.png}
-%        \caption{8-symbol preamble}
-%        \label{fig:sub2-preamble-corr}
-%    \end{subfigure}
-%    \vfill
-%    \begin{subfigure}[b]{0.49\textwidth}
-%        \centering
-%        \includegraphics[width=\textwidth]{img/Correlacion_IQ_16simbolos.png}
-%        \caption{16-symbol preamble}
-%        \label{fig:sub3-preamble-corr}
-%    \end{subfigure}
-%    \hfill
-%    \begin{subfigure}[b]{0.49\textwidth}
-%        \centering
-%        \includegraphics[width=\textwidth]{img/Correlacion_IQ_32simbolos.png}
-%        \caption{32-symbol preamble}
-%        \label{fig:sub4-preamble-corr}
-%    \end{subfigure}
-%    \caption{IQ Correlation for different preamble structures with 12 seconds length.}
-%    \label{fig:preamble-corr}
-%\end{figure}
-
-En la figura %\ref{fig:preamble-corr} 
-se observa que si bien el nivel de correlación IQ es similar para cada topología de preámbulo considerada, a medida que se incrementa el número de símbolos  en la secuencia, el peak de correlación es más "delgado", es decir, se concentra en un menor número de instantes de earing. Esto es beneficioso para el sistema de detección, ya que permite una identificación más precisa del inicio del mensaje transmitido.
 
 \subsubsection{Decimation?}
 
@@ -262,19 +372,11 @@ De esta manera se implemenntó el proceso de decimación evaluando 2 etapas de f
 \newp
 En la segunda etapa se aplica un filtro pasabanda entre 700 y 900 Hz, seguido de un downsampling por un factor de 4. En este caso la frecuencia de Nyquist del sistema resultante es de 1000 Hz, por lo que se rescata nuevamente la segunda zona entre 500 y 1000 Hz. Nuevamente se cumple que el filtro pasabanda está dentro de esa ventana, suprimiendo las componentes fuera de ese rango para evitar aliasing.
 \newp
-De esta manera se logra reducir la tasa de sampleo del sistema original de 48 kHz a una tasa final de 1000 Hz, lo que representa una reducción significativa en la cantidad de datos a procesar. A continuación se muestran los resultados obtenidos al aplicar el proceso de decimación en términos de la tasa de error de símbolos (SER).
-
-
-%\begin{figure}[H]
-%    \centering
-%    \includegraphics[width=0.7\textwidth]{img/SER_vs_SNR_decimation.png}
-%    \caption{SER vs SNR for 8-FSK and 16-FSK with decimation.}
-%    \label{fig:SER-vs-SNR-decimation}
-%\end{figure}
-
-Si bien el proceso de decimación logra reducir la cantidad de datos a procesar, se observa luego de la realización de múltiples pruebas en terreno que la variabilidad del "peak" de correlación se incrementa al aplicar este proceso, lo que dificulta la detección precisa del inicio del mensaje transmitido. %% A qué podría deberse
+De esta manera se logra reducir la tasa de sampleo del sistema original de 48 kHz a una tasa final de 1000 Hz, lo que representa una reducción significativa en la cantidad de datos a procesar.
 \newp
-A continuación se muestra una simulación de la variabilidad del peak de correlación al aplicar el proceso de decimación en comparación con el sistema sin decimación.
+Si bien el proceso de decimación logra reducir la cantidad de datos a procesar, se observa luego de la realización de múltiples pruebas en terreno que la variabilidad del "peak" de correlación se incrementa al aplicar este proceso, lo que dificulta la detección precisa del inicio del mensaje transmitido.
+\newp
+A continuación se muestra una medición hecha con una conexión directa (a través de un cable) entre el emisor y el receptor para evaluar la variabilidad del peak de correlación al aplicar el proceso de decimación en comparación con el sistema sin decimación.
 
 %\begin{figure}[H]
 %    \centering
@@ -285,9 +387,144 @@ A continuación se muestra una simulación de la variabilidad del peak de correl
 
 De esta manera se decide no incluir el proceso de decimación en la versión final del sistema de recepción, considerando que los equipos utilizados para realizar los procesos de detección en tiempo real poseen capacidad de computo suficiente para no demorar más del tiempo disponible entre ciclos de escucha.
 
+\subsubsection{Correction Error Code}
+
+Se busca determianr teóricamente la capacidad de corrección de reed solomon implementado en el sistema. Se utiliza RSCodec de la librería  reedsolo, la cual trabaja sobre una base de bytes. Como la base de caracteres de MAGIC también son 256 valores posibles la codificación toma dos símbolos contiguos (base 16) para formar un byte, así reed solomon es capaz de corregir X/2 bytes si se definen X bytes de paridad, como cada byte son 2 símbolos en base 16 se necesitarán 4 símbolos de paridad para poder corregir un caracter. Como cada caracter está compuesto por 2 símbolos el modelo implementado no posee la "granularidad" para corregir cada símbolo sinó que pares de los mismos. 
+
+De esta manera si se definen por ejemplo 20 símbolos de paridad, podrán corregirse 5 caracteres, independientemente de si estos caracteres están corruptos por 1 o los 2 símbolos que lo forman...
+
+
 \section{Testing and Validation}
 \subsection{Radiolink simulation}
 \subsection{Induction Pattern}
 \subsection{Measurements underground}
+
+El sistema de comunicación TTE denominado MAGIC (Magnetic Induction Communication) fue probado en las dependecnias del observatorio astronómico nacional de la universidad de Chile, ubicado en la comuna de Las Condes, Santiago. El entorno subterráneo del observatorio proporciona un escenario adecuado para evaluar el desempeño del sistema en condiciones similares a las que se encontrarían en aplicaciones reales de comunicación TTE. Particularmente se probó el sistema en dos líneas de comunicación las cuales están a 100 y 200 metros de distancia respectivamente. Estas líneas de comunicación se denominaran:
+\begin{itemize}
+    \item \textbf{Gautier-Copa de Agua:} Corresponde a la línea de comunicación más corta, con una distancia aproximada de 100 metros entre el transmisor y el receptor. Uno de los equipos será ubicado en el sibterráneo de uno de los telescopios ópticos del observatorio, a una profundidas aproximada de 3 metros. En tanto, el otro nodo se ubicará en el subterráneo de una antigua copa de agua a una profundidad aproximada de 20 metros bajo tierra.
+    \item \textbf{Gautier-Calicata:} Corresponde a la línea de comunicación más larga, con una distancia aproximada de 200 metros entre el transmisor y el receptor. Nuevamente uno de los equipos se ubica en el subterráneo del telescopio Gautier, mientras que el otro nodo se ubicará en una calicata de estudio geológico en los límites de las dependencias del observatorio, esta posee una profundidad aproximada de 5 metros.
+\end{itemize}
+
+A lo largo del desarrollo del proyecto se realizaron múltiples pruebas en terreno para evaluar el desempeño del sistema de comunicación TTE en las líneas de comunicación descritas anteriormente. Estas pruebas incluyeron la transmisión y recepción de mensajes utilizando diferentes configuraciones del sistema, así como la medición de parámetros clave como la tasa de error de símbolos (SER) y la relación señal a ruido (SNR) en el canal de comunicación. A continuación se muestran los resultados logrados en las últimas prueas realizadas en ambos escenarios de comunicación.
+
+\subsection{Performance in operational scenario}
+
+Due to good performance obtained in previous test, the system was tested in an operational scenario, that means a real mine. MAGIC system was tested in the "Mina Benjamin", part of the mining company "José Iván Rojas Virraroel" located in the V region of Chile.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\textwidth]{img/mina/Catemu.jpg}
+    \caption{$``Mina$ $Benjamin"$ in Catemu, V Region,Chile.}
+    \label{fig:mine}
+\end{figure}
+\newp
+The system was tested in four diferent communication lines, with distances between 15 and 120 meters, proving their capability horizontally and vertically. The test was the following:
+
+\begin{itemize}
+    \item Line of 15m: The Transmitter was located at the entrance of the mine, and the receiver with line of sight at 15 meters in. This test was made to prove the basic operation of the system after the trip.
+    \newp
+    As result the system was able to comunicate with a SER of 0\% and a SNR of 48 dB.
+
+    \begin{figure}[H]
+        \centering
+        \begin{subfigure}[b]{0.49\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{img/mina/Entrada.png}
+            \caption{Node at the entrance of the mine.}
+            \label{fig:15m_setup}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}[b]{0.49\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{img/mina/SNR ENTRADA.png}
+            \caption{Noise and Tone for SNR Measurement.}
+            \label{fig:15m_SNR}
+        \end{subfigure}
+        \caption{Results obtained at 15m distance in the mine.}
+        \label{fig:15m-results}
+    \end{figure}
+
+    \item Line of 14m: The transmitter was located at a certain mining mantle and the receiver in another mining mantle at a distance of 40m directly Through rock. This was the already a valuable measurement due to these two mantles are incommunicated. As result the system was able to communicate with a SER of 0\% and a SNR of 26 dB.
+    
+    \begin{figure}
+        \centering
+        \begin{subfigure}[b]{0.49\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{img/mina/Manto 1 setup.png}
+            \caption{Node at the mining mantle.}
+            \label{fig:40m_setup}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}[b]{0.49\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{img/mina/SNR MANTO 1.png}
+            \caption{Noise and Tone for SNR Measurement.}
+            \label{fig:40m_SNR}
+        \end{subfigure}
+        \caption{Results obtained at 40m distance in the mine.}
+        \label{fig:40m-results}
+    \end{figure}
+
+    Additionally here are some correlation forms of detection process at this distance:
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.7\textwidth]{img/mina/corrs Manto 1.png}
+        \caption{Correlation form at 40m distance in the mine.}
+        \label{fig:40m-corr}
+    \end{figure}
+    
+    \item Line of 20m: The transmitter was located at a tunnel in superior level and the receiver in a tunnel in an deep level, with a distance of 20m. This was the first vertical communication test. As result the system was able to communicate with a SER of 0\% and a SNR of 37 dB.
+    
+    \begin{figure}
+        \centering
+        \begin{subfigure}[b]{0.49\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{img/mina/Nivel sup Setup.png}
+            \caption{Node at the superior tunnel.}
+            \label{fig:20m_setup}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}[b]{0.49\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{img/mina/SNR sup 1.png}
+            \caption{Noise and Tone for SNR Measurement.}
+            \label{fig:20m_SNR}
+        \end{subfigure}
+        \caption{Results obtained at 20m distance in the mine.}
+        \label{fig:20m-results}
+    \end{figure}
+    
+    \item Line of 120m: The transmitter was located deep in mine at surface level and the receiver was located outside the mine, near of the offices, with a distance of 120m. This was the longest communication test. As result the system was able to communicate with an average SER of 0.35\%
+    %%Revisar, debo calcular SER para cada test en solitario
+    and a SNR of -9 dB.
+
+    \begin{figure}
+        \centering
+        \begin{subfigure}[b]{0.49\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{img/mina/setup refugio.jpeg}
+            \caption{Node at the surface level inside the mine.}
+            \label{fig:120m_setup}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}[b]{0.49\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{img/mina/SNR 120m.png}
+            \caption{Noise and Tone for SNR Measurement.}
+            \label{fig:120m_SNR}
+        \end{subfigure}
+        \caption{Results obtained at 120m distance in the mine.}
+        \label{fig:120m-results}
+        \end{figure}
+    Additionally here are some correlation forms of detection process at this distance:
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.7\textwidth]{img/mina/corrs 120 m.png}
+        \caption{Correlation forms at 120m distance in the mine.}
+        \label{fig:120m-corr}
+    \end{figure}
+\end{itemize}
 
 \section{Results Summary}

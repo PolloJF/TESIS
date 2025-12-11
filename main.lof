@@ -3,11 +3,26 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Bobina resonante construida para el sistema TTE.}}{12}{figure.caption.12}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Función de transferencia del sistema de bobinas resonantes.}}{12}{figure.caption.13}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Amplificador de audio clase D TPA3116D2.}}{13}{figure.caption.14}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Block diagram of the non-coherent FSK detection system.}}{14}{figure.caption.15}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Block diagram of the non-coherent FSK modulation and demodulation process.}}{14}{figure.caption.16}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Block diagram of the correlation by parts process.}}{15}{figure.caption.17}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Conceptual diagram of the complete TTE communication system.}}{12}{figure.caption.11}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Schematic diagram of the complete TTE communication system.}}{13}{figure.caption.12}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Bobina resonante construida para el sistema TTE.}}{15}{figure.caption.14}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Función de transferencia del sistema de bobinas resonantes.}}{16}{figure.caption.15}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Transfer function of complete system at 2 meters distance.}}{16}{figure.caption.16}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Bandwidth available for end-to-end system at 2 meters distance.}}{17}{figure.caption.17}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Amplificador de audio clase D TPA3116D2.}}{17}{figure.caption.18}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Schematic diagram of the Ground Loop Isolator (GLI).}}{18}{figure.caption.19}%
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Schematic diagram of the switching circuit.}}{19}{figure.caption.20}%
+\contentsline {figure}{\numberline {4.10}{\ignorespaces USB Audio Interface SoundBlaster Play! 3.}}{20}{figure.caption.21}%
+\contentsline {figure}{\numberline {4.11}{\ignorespaces Block diagram of the non-coherent FSK modulation and demodulation process.}}{21}{figure.caption.22}%
+\contentsline {figure}{\numberline {4.12}{\ignorespaces Resulted Correlation by parts with 24 symbols preamble.}}{23}{figure.caption.23}%
+\contentsline {figure}{\numberline {4.13}{\ignorespaces Correlation by parts for different preamble structures with 12 seconds length.}}{24}{figure.caption.24}%
+\contentsline {figure}{\numberline {4.14}{\ignorespaces SER vs Ns for 8-FSK and 16-FSK at SNR = -10 dB.}}{25}{figure.caption.25}%
+\contentsline {figure}{\numberline {4.15}{\ignorespaces $``Mina$ $Benjamin"$ in Catemu, V Region,Chile.}}{28}{figure.caption.26}%
+\contentsline {figure}{\numberline {4.16}{\ignorespaces Results obtained at 15m distance in the mine.}}{28}{figure.caption.27}%
+\contentsline {figure}{\numberline {4.17}{\ignorespaces Results obtained at 40m distance in the mine.}}{29}{figure.caption.28}%
+\contentsline {figure}{\numberline {4.18}{\ignorespaces Correlation form at 40m distance in the mine.}}{29}{figure.caption.29}%
+\contentsline {figure}{\numberline {4.19}{\ignorespaces Results obtained at 20m distance in the mine.}}{30}{figure.caption.30}%
+\contentsline {figure}{\numberline {4.20}{\ignorespaces Results obtained at 120m distance in the mine.}}{30}{figure.caption.31}%
+\contentsline {figure}{\numberline {4.21}{\ignorespaces Correlation forms at 120m distance in the mine.}}{31}{figure.caption.32}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }

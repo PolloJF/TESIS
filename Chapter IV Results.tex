@@ -3,16 +3,12 @@
 
 \section{Hardware Developement}
 
-El hardware del sistema de comunicación TTE, el cual fue bautizado como MAGIC \textit{(MAGnetic Induction Communication)} fue diseñado y construido para cumplir con un conjunto específico de requisitos y restricciones.
-En primer lugar el sistema debe ser capaz de satisfacer la prueba de concepto logrando comunicación a una diatancia media pero significativa en un entorno subterráneo.
-Asismismo el equipo no debe ser extremadamente voluminoso o pesado para facilitar su transporte y versatilidad en su uso.
+The hardware for the TTE communication system, named MAGIC \textit{MAG-netic Induction Communication}, was designed and built to meet a specific set of requirements and constraints. First, the system must be able to pass the proof of concept test by achieving communication over a medium but significant distance in an underground environment. Additionally, the equipment must not be excessively bulky or heavy to facilitate its transport and versatility.
 \newp
 The communication system is defined primarly by the magnetic coupling principe between two resonant coils, one used as transmitter and the other as receiver. Also the system has to be bidirectional, so both coils can work as transmitter or receiver depending on the comunication direction.
 \subsection{Design}
 
-El sistema de comunicación TTE está compuesto por varios elementos que trabajan en conjunto para lograr la transmisión y recepción de datos mediante inducción magnética.
-El elemento principal es la bobina resonante, la cual está diseñada para generar y recibir campos magnéticos en una frecuencia específica. Además de la bobina, 
-el sistema incluye un amplificador para aumentar la potencia del mensaje transmitido y un sistema de switching para intercambiar la conexión de la bobina resonante entre los canales de entrada y salida del sistema, dependiendo de la dirección de comunicación deseada (TX o RX).
+The TTE communication system comprises several elements that work together to transmit and receive data via magnetic induction. The main element is the resonant coil, which is designed to generate and receive magnetic fields at a specific frequency. In addition to the coil, the system includes an amplifier to boost the transmitted message and a switching system to change the resonant coil's connection between the system's input and output channels, depending on the desired communication direction (TX or RX).
 \newp
 Here is a conceptual diagram of the complete system in figure \ref{fig:system-diagram}.
 
@@ -41,15 +37,13 @@ The schematic diagram of the system is shown in figure \ref{fig:system-schematic
 
 As is shown in figure \ref{fig:system-schematic}, the system is composed by the following main blocks: Coil (1), Battery (2), USB audio Interface (3) and the core module that contains the Amplifier, a ground loop isolator and the switching Switching circuit(rest of diagram).
 \subsection{Coil}
-La bobina resonante corresponde a al elemento encargado de transmitir el campo magnético variable al circular corriente por su estrcutura (Transmisor) y de entregar la fem inducida en presencia al atravesar por su estructira las líneas de campo magnético transmitido (Receptor). En vista de lograr el objetivo de comunicación a distancia significativa, la bobina debe ser diseñada para maximizar la eficiencia de la transferencia de energía magnética entre el transmisor y el receptor, es por esto que se optó en primera instancia por un diseño simple toroidal, donde las variables de diseño y construcción se reducen a número de vueltas $N$, diámetro de la estructura $D$, y el calibre del conductor $C$.
-\newp
-Para esta primera versión se fijó el diámetro de la bobina en 55 cm, ya que correspondía a un tamaño manejable y portátil. El calibre del conductor se seleccionó en función de su costo, resistencia eléctrica y peso, optando por un cable de cobre esmaltado de 17 AWG. A continuación se muestra una tabla de resistencia eléctrica en función del calibre del conductor, entregada por el fabricante.
+The resonant coil is the element responsible for transmitting the changing magnetic field when current flows through its structure (Transmitter) and for delivering the induced electromotive force (EMF) when the transmitted magnetic field lines pass through its structure (Receiver). To achieve the goal of long-distance communication, the coil must be designed to maximize the efficiency of magnetic energy transfer between the transmitter and receiver. Therefore, a simple toroidal design was initially chosen, where the design and construction variables are reduced to the number of turns (N), the diameter of the structure (D), and the conductor gauge (C). For this first version, the coil diameter was set at 55 cm, as this size was manageable and portable. The conductor gauge was selected based on its cost, electrical resistance, and weight, opting for 17 AWG enamelled copper wire. A table of electrical resistance as a function of conductor gauge, provided by the manufacturer, is shown below.
 
 \begin{table}[H]
     \centering
     \begin{tabular}{|c|c|c|}
     \hline
-    \textbf{Calibre (AWG)} & \textbf{Diámetro (mm)} & \textbf{Resistencia (ohm/m)} \\ \hline
+    \textbf{Gauge (AWG)} & \textbf{Diameter (mm)} & \textbf{Resistance (ohm/m)} \\ \hline
     10                     & 2.588                  & 0.00328                      \\ \hline
     12                     & 2.053                  & 0.00521                      \\ \hline
     14                     & 1.628                  & 0.00829                      \\ \hline
@@ -58,46 +52,89 @@ Para esta primera versión se fijó el diámetro de la bobina en 55 cm, ya que c
     18                     & 1.024                  & 0.02100                      \\ \hline
     20                     & 0.812                  & 0.03340                      \\ \hline
     \end{tabular}
-    \caption{Resistencia eléctrica en función del calibre del conductor.}
+    \caption{Electrical resistance as a function of conductor gauge.}
     \label{tab:resistance-table}
 \end{table}
 %Ajustar valores segun tabla real.
 
-De esta manera al escoger tal calibre, el cual corresponde a 1.15 mm de diámetro y considerando una masa total cercana a los $1.5 Kg$, se logra una extensión total de 156 metros, lo que se traduce en $N=90$, con esta extensión la resistencia total de la bobina resulta en 2.6 ohmios. Sin embargo al ser medida de forma experimental el valor de resistencia total es de $3 \Omega$, un valor ideal considerando la resistencia a la cual opera el amplificador clase D seleccionado para el proyecto.
+Thus, by choosing this gauge, which corresponds to a diameter of 1.15 mm, and considering a total mass of approximately 1.5 kg, a total length of 156 meters is achieved, which translates to N = 90. With this length, the total resistance of the coil is 2.6 ohms. However, when measured experimentally, the total resistance value is 3 ohms, an ideal value considering the operating resistance of the class D amplifier selected for the project.
 \newp
-Ya definida la geometría y características de la bobina, se procede a calcular los parámetros eléctricos asociados a la misma. En primera instancia se calcula la inductancia de la bobina utilizando la fórmula para una bobina toroidal:
+With the geometry and characteristics of the coil defined, the associated electrical parameters are calculated. First, the coil's inductance is calculated using the formula for a toroidal coil:
+
 \begin{equation}
     L = \frac{\mu N^2 A}{l}  %%Comprobar
 \end{equation}
-Donde:
+Where:
+
 \begin{itemize}
-    \item $L$ es la inductancia en Henrios (H).
-    \item $\mu$ es la permeabilidad del núcleo (para aire, $\mu_0 = 4\pi \times 10^{-7} H/m$).
-    \item $N$ es el número de vueltas.
-    \item $A$ es el área de la sección transversal del toroide en metros cuadrados ($m^2$).
-    \item $l$ es la longitud media del camino magnético en metros (m).
+    \item $L$ is the inductance in Henries (H).
+    \item $\mu$ is the permeability of the core (for air, $\mu_0 = 4\pi \times 10^{-7} H/m$).
+    \item $N$ is the number of turns.
+    \item $A$ is the cross-sectional area of the toroid in square meters ($m^2$).
+    \item $l$ is the mean length of the magnetic path in meters (m).
 \end{itemize}
-Considerando un área de sección transversal aproximada de $A = 0.2375 m^2$ y una longitud media del camino magnético de $l = 1.7 m$, se obtiene una inductancia teórica de $L \approx  H$. Sin embargo, al medir la inductancia de la bobina construida utilizando un medidor LCR, se obtiene un valor experimental de $L_1 = 10.67  mH$ y $L_2 = 10.55 mH$. Esta discrepancia puede atribuirse a factores como la distribución no uniforme del campo magnético, las pérdidas en el conductor y las tolerancias en la construcción de la bobina.
+
+Considering an approximate cross-sectional area  of $A = -m^2$ and an average magnetic path length of $l = - m$, a theoretical inductance of $L ≈ -H$ is obtained. However, when measuring the inductance of the constructed coil using an LCR meter, experimental values of $L_1 = 10.67 mH$ and $L_2 = 10.55 mH$ are obtained. This discrepancy can be attributed to factors such as the non-uniform distribution of the magnetic field, conductor losses, and tolerances in the coil's construction.
 \newp
-Finalmente, se calcula la capacitancia necesaria para sintonizar la bobina a la frecuencia de resonancia deseada, que en este caso es de 3.2 kHz. La frecuencia de resonancia $f_0$ de un circuito LC está dada por la fórmula:
+At simulations on ANSYS Maxwell, the inductance results in $L \approx 5.7 mH$, a value that is the half of the experimental one, this difference can be explained because in the simulation the wire is considered as an ideal conductor with no thickness, while in the real coil the wire has a diameter of 1.15 mm that affects the magnetic field distribution and the inductance value. %Revisar
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\textwidth]{img/Maxwell_1.png}
+    \caption{Simulation of the magnetic field generated by the resonant coil in ANSYS Maxwell.}
+    \label{fig:ansys-coil}
+\end{figure}
+
+
+Finally, the capacitance needed to tune the coil to the desired resonant frequency is calculated, which in this case is 3.2 kHz. The resonant frequency f0 of an LC circuit is given by the formula:
 \begin{equation}
     f_0 = \frac{1}{2\pi \sqrt{LC}}
 \end{equation}
-Despejando para la capacitancia $C$, se obtiene:
+Solving for the capacitance $C$, we get:
 \begin{equation}
     C = \frac{1}{(2\pi f_0)^2 L}
 \end{equation}
 
-De esta menera la capacitancia necesaria para sintonizar la bobina a $\approx 3.2 kHz$ resulta en $C \approx 237 \mu F$ para $L_1$ y $C \approx 240 \mu F$ para $L_2$. Se seleccionaron capacitores cerámicos de 470 $\mu F$  dispuesto en serie para alcanzar el valor deseado, considerando la tolerancia de los componentes. A continuación se muestra una figura de la bobina construida:
+Thus, the capacitance required to tune the coil to approximately 3.2 kHz results in C ≈ 237 μF for L1 and C ≈ 240 μF for L2. 470 μF ceramic capacitors arranged in series were selected to achieve the desired value, taking into account component tolerances. A diagram of the constructed coil is shown below in figure \ref{fig:coil}.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{img/coil.png}
-    \caption{Bobina resonante construida para el sistema TTE.}
+    \caption{Resonant coil constructed for the TTE system.}
     \label{fig:coil}
 \end{figure}
 
-Al medir la función de transferencia para en un sistema donde se tiene una de las bobinas sintonizadas y otra más pequeña sin sintonizar puede observarse en la figura \ref{fig:transfer-function} para $L_1$ y $L_2$ que la frecuencia de resonancia se encuentra cercana a los 3.2 kHz, cumpliendo con el diseño inicial.
+\subsection{System characterization}
+
+Knowing the values of inductance and capacitance of the resonant coil, it's possible to characterize the transfer function of the system. Considering the schematic of the induced coupling between two symetrical resonant coils shown in figure \ref{fig:inductive-coupling-schematic}. We can determine the transfer function of the system using the equation described in section 2.3.1.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\textwidth]{img/spice.png}
+    \caption{Schematic of the inductive coupling between two resonant coils.}
+    \label{fig:inductive-coupling-schematic}
+\end{figure}
+
+Simulating the system in LTSpice we can obtain the theoretical transfer function of the system, as shown in figure \ref{fig:transfer-function-sim}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\textwidth]{img/spicetf.png}
+    \caption{Theoretical transfer function of the resonant coil system.}
+    \label{fig:transfer-function-sim}
+\end{figure}
+
+For python simulation we obtain a similar result shown in figure \ref{fig:transfer-function-py}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\textwidth]{img/tfpython.png}
+    \caption{Theoretical transfer function of the resonant coil system using Python.}
+    \label{fig:transfer-function-py}
+\end{figure}
+
+When measuring the transfer function for a system where one coil is tuned and another, smaller coil is untuned, as shown in Figure 4.6 for L1 and L2, it can be observed that the resonant frequency is close to 3.2 kHz, fulfilling the initial design.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{img/TF_L1_L2.png}
@@ -105,7 +142,7 @@ Al medir la función de transferencia para en un sistema donde se tiene una de l
     \label{fig:transfer-function}
 \end{figure}
 
-Se muestra a continuación la función de transferencia del sistema completo (end-to-end) medido a una distancia de 2 metros entre las bobinas.
+The transfer function of the complete system (end-to-end) measured at a distance of 2 meters between the coils is shown below.
 
 \begin{figure}[H]
     \centering
@@ -139,12 +176,7 @@ If we review particularly the power relation graph in figure \ref{fig:sub1-trans
 
 If we consider this geometry and values of the coil, we can estimate the magnetic field generated at the center of the coil using the formula decribed on section 2 \ref{equation_of_magnetic_field} for the magnetic field at the center of a circular loop:
 
-
-
-
-
-
-
+%ecuacion y calculos pendientes
 
 \subsection{Amplifier and GLI}
 
@@ -201,18 +233,201 @@ Here is a figure of the audio interface used:
     \label{fig:audio-interface}
 \end{figure}
 
+\subsection{Additional Components and considerations}
+
+The whole system is powered by a 24V Li-ion battery pack, providing sufficient voltage and current to drive the amplifier and other components. The use of a battery pack ensures portability and allows the system to operate in remote locations without access to mains power. The battery can provide 27 V at maximum charge, which is abive the operational voltage of the amplifier, generating interruptions in transmission, so a buck converter $XH-M400$ is used to regulate the voltage to a stable 24 V output.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\textwidth]{img/battery_and_buck.png}
+    \caption{24V Li-ion Battery Pack and Buck Converter.}
+    \label{fig:battery}
+\end{figure}
+
+This componens were packaging in addition with a switch and DC connectors in a 3D printed enclosure designed and printed for this specific purpose. Here is a figure of the result:
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\textwidth]{img/Ensamblaje_bat.jpg}
+    \caption{3D printed enclosure for the core module of MAGIC.}
+    \label{fig:enclosure}
+\end{figure}
+%incluir también imagenes reales de la construcción
+
+The rest of the components that are not marked in the schematic diagram on figure \ref{fig:system-schematic} are also enclosed in another 3D printed box, denominated core module of MAGIC, that contains the amplifier, GLI, positional selector and a voltimeter/amperimeter monitor. This module is connected to the coil due to typical DC connector and the audio interface using standard audio cables with 3.5 mm jacks.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\textwidth]{img/Ensamblaje_case_MAGIC_V1.jpg}
+    \caption{Core module of MAGIC communication system.}
+    \label{fig:core-module}
+\end{figure}
+
+Other pieces were designed and printed in 3D to support the coil, the conductors over the structure and to protect the capacitor bank. Here is a figure of these pieces:
+
+%Figura pendiente
+
+Finally the whole system is presented in figure \ref{fig:complete-system}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{img/MAGIC_complete_system.png}
+    \caption{Complete TTE communication system MAGIC.}
+    \label{fig:complete-system}
+\end{figure}
 
 \section{Software Developement}
-\subsection{Modulation system}
-\subsubsection{Non-coherent FSK}
- The detection system works as a typical non-coherent FSK receiver. 
-The incoming signal is filtered at the beggining to reduce the noise influence in terms os  operations in the time domain.
-%is there any best way of describing this? What are the others benefits of filtering the signas with a digital bandpassfilter,if are any ?
+
+
+%Actualizar imagen con la batería
+
+\subsection{Design}
+The software component of the TTE communication system is responsible for coding, modulate and generate the message signal at the Transmitter, and filter, detect, demodulate, and decode the recewived signals at the receiver. The software is developed in Python, leveraging libraries such as NumPy and SciPy for signal processing tasks.
 \newp
-Why a Non coherent FSK system?
-The non-coherent FSK system is selected due to its robustness to phase variations and frequency offsets %(Include bibiliography about this) 
+The modulation scheme selected for the system is non-coherent Frequency Shift Keying (FSK). This choice is motivated due to its robustness to phase variations. As it was explain in Chapter II, the composition of the media can produce significant phase shifts and frequency offsets that can affect the performance of coherent modulation schemes, in fact the magnetic coupling scheme is intrinsically dispersive at resonant frequency and that goes even worse when the constant of coupling $k$ is reduced by the distance and other attenuation sources.
+
+\subsection {Transmitter}
+
+The transmitter software is responsible for converting the text message into a modulated signal suitable for transmission via the resonant coil. The process involves several key steps:
+
+\subsubsection{Message coding and modulation}
+
+the function of MAGIC is generate a text message link so is necessary to generate in principe any letter of the alphabet and all the numbers, if we consider also other characters like punctuation marks and special symbols, the quantity o different characters to code increase significantly. In that way we can use the ASCII (American Standard Code for Information Interchange) coding scheme, that has 128 different characters.
+\newp
+To encode characters using FSK modulation, we can assign a unique frequency to each character. However, this means that we need at least 128 different frequencies in our constellation and also we have to consider a minimum spectral separation between tones to achieve the ortogonallity condition. This requirement can lead to a very wide bandwidth, and we want to concentrate the constellation at the center frequency of the resonant coil in order to favor the conditions of communication.
+\newp
+To address this challenge, we can implement a multi-level FSK scheme, where each symbol represents multiple bits of information. For example, if we use 16 different frequencies, each symbol can represent 4 bits (since $2^4 = 16$). If we use a combination of two symbols per character, we can represent 8 bits (1 byte) per character, which is enough to cover the entire ASCII set. Actually we can use the extended ASCII table that has 256 characters.
+\newp
+For example the character 'A' has an ASCII value of 65, we can obtain two hexadecimal digits from this value: 4 and 1, that corresponds to the integer division and the module of the original value and 16, then we transform the hexadecimal digits to its decimal form and map to the corresponding FSK frequency. In this case 4 maps to $f4$ and 1 maps to $f1$.
+
+\subsubsection{Ortogonality and Bandwidth}
+
+As mentioned in previous chapters, carrier orthogonality is a crucial aspect of FSK modulation systems, ensuring that signals transmitted at different frequencies do not interfere with each other. In other words, the energy of a symbol transmitted at a given frequency does not enter the spectral channel of an adjacent symbol within the symbol constellation. For orthogonality to be met, the relationship between the sampling frequency and the number of samples per symbol must be considered; that is, the inverse of the duration of each symbol. The relationship between the carrier frequencies f1 and f2 must satisfy the following equation:
+
+\begin{equation}
+    f_2 - f_1 = \frac{k}{T_s} = \frac{k f_s}{N_s}
+\end{equation}
+
+In this case, the sampling frequency is 48 kHz, and the number of samples per symbol, Ns, must be defined. To determine the optimal value of Ns, several tests were performed varying this parameter and observing its impact on the demodulated symbol error rate (SER) of the system. The variation of SER as a function of symbol length for a defined SNR value is shown below. This SNR corresponds to the minimum target to be achieved with the TTE communication system; in this case, $SNR = −10 dB$. %detallar luego el criterio para cálculo de SNR (en la banda, qué banda) .
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{img/SER_vs_Ns.png}
+    \caption{SER vs Ns for 8-FSK and 16-FSK at SNR = -10 dB.}
+    \label{fig:SER-vs-Ns}
+\end{figure}
+
+Considering a bandwidth of 200 Hz, a symbol length of 24000 is an ideal value for 8 and 16 FSK models. The point marked with a red dotted line in Figure \ref{fig:SER-vs-Ns} indicates an error rate of approximately 12\% for 16 symbols and 5\% for eight symbols. For both models, this error level is acceptable considering that a simple error correction code will be included later. This symbol length is chosen over a longer one that could further decrease the SER because the system's data rate is not to be sacrificed excessively, maintaining a suitable balance between transmission speed and noise robustness. Having thus set the value of Ns = 24000, the separation between the carrier frequencies is calculated to meet the orthogonality condition. Considering k = 1, the minimum separation between carriers is 2 Hz, however, given that the FFT resolution in the demodulator depends on the number of samples per symbol, a larger separation is selected, leaving spectral channels unused to avoid interference between adjacent symbols. Later, the difference in performance will be observed when considering a single-channel demodulation model and taking the maximum separation between the channel of the expected symbol and its adjacent symbols.
+
+\subsubsection{Constellation of frequencies}
+
+Once we have defined the number of symbols to use and the minimum frequency separation to achieve orthogonality, we can proceed to define the frequency constellation for the FSK modulation.
+\newp
+At the beggining we define the 16 frequencies around the center frequency of the system that corresponds approximately to 3.2 kHz. Considering a minimum separation of 4 Hz, thats because we want to leave a spectral channel between symbols considering the FFT resolution at the demodulator. With this criteria we can use a minimum bandwidth of 60 Hz to allocate the 16 frequencies.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{img/constellation_old.jpg}
+    \caption{Frequency constellation for 16-FSK modulation.}
+    \label{fig:frequency-constellation}
+\end{figure}
+
+In figure \ref{fig:frequency-constellation} we can observe the defined frequency constellation for the 16-FSK modulation scheme and a measure o  the spectrum of noise in one of the locations where the system was tested in Cerro Calán. The noise, that is also, filtered by a digital filter shows an electrical grid harmonic at 3150 Hz, that is close to the first symbol frequency.
+\newp
+After doing several measurements of teh spectral distribution of Noise in different locations, it was observed that the odd harmonics of the electrical grid (i.e., 3150 Hz, 3250 Hz, etc.) were really prominent, while the even harmonics were less significant. Here are some examples of noise spectrums measured in different locations.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{img/100m 200m and noise/power_spectrum_density_of_noise_at_calicata.png}
+        \caption{Two measurements of noise at Calicata in Cerro Calán.}
+        \label{fig:noise-spectrum-1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{img/100m 200m and noise/power_spectrum_density_of_noise_at_copa.png}
+        \caption{Two measurements of noise at Copa in Cerro Calán.}
+        \label{fig:noise-spectrum-2}
+    \end{subfigure}
+    
+    \vspace{1em} % Add some vertical space between rows
+
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{img/100m 200m and noise/power_spectrum_density_of_noise_at_lab.png}
+        \caption{Two measurements of noise at Millimeter Wave Laboratory in Cerro Calán.}
+        \label{fig:noise-spectrum-3}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{img/100m 200m and noise/DB Selec.png}
+        \caption{Noise at Gautier.}
+        \label{fig:noise-spectrum-4}
+    \end{subfigure}
+    \caption{Noise spectrum measurements at different locations in Cerro Calán.}
+    \label{fig:noise-spectrums}
+\end{figure}
+
+Here is the noise spectral density measured at different locations in Cerro Calán, combined:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{img/100m 200m and noise/Ruido dB scale.png}
+    \caption{Combined noise spectrum from different locations in Cerro Calán.}
+    \label{fig:combined-noise-spectrum}
+\end{figure}
+
+
+Although the even electricac grid harmonics are strangely less significant, to avoid potential interference, the frequency constellation was designed to avoid these harmonics as well. Therefore, the selected frequencies for the FSK modulation scheme was modified, defining flagged bands without symbols around both odd and even harmonics. Here is the final frequency constellation used in the system:
+
+
+\begin{table}
+    \centering
+    \begin{tabular}{|c|c|}
+    \hline
+    \textbf{Symbol} & \textbf{Frequency (Hz)} \\ \hline
+    0               & 3136                    \\ \hline
+    1               & 3164                    \\ \hline
+    2               & 3168                    \\ \hline
+    3               & 3172                    \\ \hline
+    4               & 3176                    \\ \hline
+    5               & 3180                    \\ \hline
+    6               & 3184                    \\ \hline
+    7               & 3188                    \\ \hline
+    8               & 3212                    \\ \hline
+    9               & 3216                    \\ \hline
+    A               & 3220                    \\ \hline
+    B               & 3224                    \\ \hline
+    C               & 3228                    \\ \hline
+    D               & 3232                    \\ \hline
+    E               & 3236                    \\ \hline
+    F               & 3264                    \\ \hline
+    \end{tabular}
+    \caption{Final frequency constellation for 16-FSK modulation.}
+    \label{tab:final-frequency-constellation}
+\end{table}
+
+As result here is a spectrum of noise with the frequency symbols marked:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{img/100m 200m and noise/new constellation.png}
+    \caption{Final frequency constellation over noise spectrum.}
+    \label{fig:final-constellation-with-noise}
+\end{figure}
+
+
+\subsection{Receiver}
+
+ The detection system works as a typical non-coherent FSK receiver. The data is aquired using an ADC at a sample rate of 48 kHz, then the digital signal is processed in real-time to determine when the message is coming. The main steps of the receiver algorithm are filtering, correlation, demodulation and decoding. 
+
+%is there any best way of describing this? What are the others benefits of filtering the signas with a digital bandpassfilter,if are any ?
+
+\newp
 In comparisson for example models based on PSK or QAM, that are more sensitive to phase noise and frequency offsets. FSK modulation allows the receiver to detect the transmitted symbols based on energy detection in specific frequency bands, without requiring precise phase synchronization. This characteristic makes non-coherent FSK particularly suitable for TTE communication systems, where the channel conditions can be highly variable and unpredictable.
-Here is a diagram of the non-coherent FSK modulation and demodulation process in Figure \ref{fig:fsk-mod-demod}.
+Here is a diagram of the receiver algorithm \ref{fig:fsk-mod-demod}.
 
 \begin{figure}[H]
     \centering
@@ -221,8 +436,35 @@ Here is a diagram of the non-coherent FSK modulation and demodulation process in
     \label{fig:fsk-mod-demod}
 \end{figure}
 
-As I mentiones brewly the last paragraph, at the beggining the digital signal in filtered and then passes to a Window of len N, that is an important number, the dimensions of this Window
-determine the cost of the processing process, that's because the bigger the window is, the main process that's comes right after is the correlation.
+At the beggining the digital signal is filtered and then passes to a Window of len N, that is an important number, the dimensions of this Window determine the cost of the main process of detection, that's mean, the IQ correlation. The bigger the window is, more calculations occurred in each earing cycle.
+\newp
+The data present con window is processed using the correlation by parts algorithm, that is explained in the next section. The output of this process is an array of correlation, in wich we can obtain the maximum, if this peak of correlation is above a certain threshold, thats is previously determined by the place conditions, we save that value and their position. If not, we discard the time older data chunk to put a new one. That's why the window is also a queue structure, specifically a \textit{deque} from the collections library of python.
+\newp
+If we have detected a peak of correlation, we repeat the process saving the peaks and their position in the next earing cycles, when the peak is identified as a global one, achieving a increase and then a decrease in its value, we proceed to save the data that temporally is next from preamble, that's is, counting samples from the position of the peak plus the size of the preamble. Once the message position is known, proceeds to save the following symbols knowing beforehand the size of the total message.
+\newp
+The demodulation process is performed by calculating the FFT of each symbol received and determining which frequency has the highest energy. This frequency is then mapped back to the corresponding symbol in the FSK constellation. Finally, the decoded symbols are converted back into characters using the inverse of the encoding scheme used at the transmitter. Also parity symbols anre checked to correct possible errors in the received message.
+
+\subsubsection{Digital Filter}
+
+The digital filter used in the receiver is a bandpass filter designed to isolate the frequency band of interest around the FSK symbol frequencies while attenuating noise and interference outside this band. The filter is implemented using butterworth design due to its maximally flat frequency response in the passband, which helps preserve the integrity of the received signal. for this design we use the scipy function \textit{buttord} to define the performance and frequency response of the filter and \textit{butter} to create the filter coefficients. The specifications are:
+
+\begin{itemize}
+    \item Passband frequencies: 3130 Hz to 3270 Hz
+    \item Stopband frequencies: 3110 Hz and 3290 Hz
+    \item Passband loss: 1 dB
+    \item Stopband attenuation: 40 dB
+\end{itemize}
+
+The filter is applied with function \textit{filtfilt} from scipy library, that performs zero-phase filtering by processing the input signal in both the forward and reverse directions. This approach helps to eliminate phase distortion introduced by the filter, which is particularly important in communication systems where phase information can be critical for accurate symbol detection. \cite{filtfilt-SciPy}
+\newp
+Here is the frequency response of the designed bandpass filter:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{img/Respuesta_filtro.png}
+    \caption{Frequency response of the designed bandpass filter.}
+    \label{fig:filter-response}
+\end{figure}
 
 \subsubsection{Correlation Process}
 
@@ -239,7 +481,7 @@ The correlation formula (\ref{eq:Correlation_dig}), given in previous chapter, i
 
 
 
-\subsubsection{Correlation by parts algorithm}
+\subsubsubsection{Correlation by parts algorithm}
 
 The correlation by parts algorithm is a method to efficiently compute the correlation between a received signal and the known parts of the preamble considering the similarity with in phase and cuadrature tones.
 \newp
@@ -305,15 +547,44 @@ As result we can see something like this:
     \label{fig:corr-by-parts-diagram}
 \end{figure}
 
-\subsubsection{Preamble design}
+\subsubsection{Demodulation and Decoding}
 
-Tal y como se explicó en el diseño del sistema de recepción y detección del mensaje, el preámbulo juega un rol fundamental en la sincronización y posterior demodulación de los símbolos transmitidos. El preámbulo debe ser diseñado cuidadosamente para maximizar la probabilidad de detección en presencia de ruido y otras distorsiones del canal.
+The demodulation process occurs ``offline" once the preamble is detected and the message symbols are extracted from the received signal. Each symbol is processed individually to determine which frequency was transmitted.
 \newp
-En este sentido se optó por una secuencia de símbolos aleatorios generada de forma computacional, la cual es conocida tanto por el transmisor como por el receptor. Esta secuencia debe ser lo suficientemente larga para proporcionar una referencia clara para la detección, pero no tan larga como para consumir un tiempo excesivo de transmisión.
+For each symbol, the FFT is computed to analyze its frequency content. The resolution of the FFT is determined by the number of samples in each symbol, which is 24000 in this case. This provides a quantity of spectral bins of 12000, that's because the FFT of a real-valued signal is symmetric, so we only need to consider the first half of the spectrum, that is distributed from 0 Hz to 24 kHz, the Nyquist frequency.
 \newp
-Se definió entonces un largo total de 12 segundos de preámbulo. Este valor fue definido a partir de meses de pruebas a diferentes distancias de comunicación en entornos subterráneos, en tanto el peak de correlación fuese visible en las condiciones de comunicación objetivo del proyecto no había un límite para su extensión temporal. Este largo de preámbulo en particular es la consecuencia del trade off entre probabailidad de detección y un tiempo de transmisión aceptable para la aplicación.
-\newp  
-A continuación se muestran los resultados de correlación por partes para distintas estructuras de preámbulo considerando un largo total de 12 segundos.
+We proofed two demodulation schemes: single channel and multi channel. In the single channel demodulation, we simply identify the frequency bin with the highest magnitude between the spectral channels corresponding to the defined FSK frequencies. In multi channel demodulation, we consider not only the magnitude of the expected frequency bin but also the magnitudes of its adjacent bins, considering a weighted sum to determine the transmitted symbol.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\textwidth]{img/100m 200m and noise/candidate def.png}
+    \caption{Example of spectrum.}
+    \label{fig:demodulation-schemes}
+\end{figure}
+
+In the figure \ref{fig:demodulation-schemes} we can observe an example of the spectrum of a received symbol. In this case, the expected frequency bin corresponds to symbol '5' at 3180 Hz. In single channel demodulation, we would simply select this bin as the detected symbol. This capture of demodulation was a real communication test at 200 meters of distance.
+
+
+
+\subsubsection{Correction Error Code}
+
+The error correction code implemented in the TTE communication system is based on Reed-Solomon coding, which is a block code capable of correcting multiple symbol errors within a codeword. Reed-Solomon codes are particularly well-suited for applications where burst errors are common, as they can correct errors that affect multiple consecutive symbols.
+\newp
+The implementation utilizes the RSCodec class from the $reedsolo$ library \cite{pypiClientChallenge}, which provides a convenient interface for encoding and decoding messages using Reed-Solomon codes. We have to take in mind that this code work at a bytes level, so the parity symbols added are actually pairs of symbols in base 16. 
+\newp
+Since MAGIC's character base also has 256 possible values, the encoding requires two contiguous symbols (in base 16) to form a byte. Thus, Reed Solomon can correct X/2 bytes if X parity bytes are defined. Since each byte consists of 2 symbols in base 16, 4 parity symbols are needed to fix a character. Because each character is composed of 2 symbols, the implemented model does not have the "granularity" to correct each symbol individually, but instead pairs of them.
+
+In this way, if, for example, 20 parity symbols are defined, 5 characters can be corrected, regardless of whether these characters are corrupted by one or both of the symbols that compose them.
+
+\subsection{Preamble design}
+
+As explained in the design of the message reception and detection system, the preamble plays a crucial role in the synchronization and subsequent demodulation of the transmitted symbols. The preamble must be carefully designed to maximize the probability of detection in the presence of noise and other channel distortions.
+\newp
+Therefore, a computationally generated sequence of random symbols, known to both the transmitter and the receiver, was chosen. This sequence must be long enough to provide a clear reference for detection, but not so long as to consume excessive transmission time. A total preamble length of 12 seconds was then defined. This value was determined through months of testing at different communication distances in underground environments.
+\newp
+As long as the peak correlation was visible under the project's target communication conditions, there was no limit to its duration. This particular preamble length is the result of the trade-off between detection probability and an acceptable transmission time for the application.
+\newp
+The following shows the piecewise correlation results for different preamble structures, considering a total length of 12 seconds.
 
 \begin{figure}
     \centering
@@ -335,79 +606,346 @@ Some relevant data about this excersice is summarized in the following table:
 \hline
 \end{tabular}
 
-En la figura %\ref{fig:preamble-corr} 
-se observa que si bien el nivel de correlación IQ es similar para cada topología de preámbulo considerada, a medida que se incrementa el número de símbolos  en la secuencia, el peak de correlación es más "delgado", es decir, se concentra en un menor número de instantes de earing. Esto es beneficioso para el sistema de detección, ya que permite una identificación más precisa del inicio del mensaje transmitido.
+The figure \ref{fig:preamble-corr-models}
+shows that while the IQ correlation level is similar for each preamble topology considered, as the number of symbols in the sequence increases, the correlation peak becomes "thinner," meaning it is concentrated in a smaller number of earing moments. This is beneficial for the detection system, as it allows for more precise identification of the start of the transmitted message.
 
-\subsubsection{Ortogonality and Bandwidth}
 
-Tal y como se mencionó en capítulos anteriores, la ortogonalidad entre las portadoras es un aspecto crucial en los sistemas de modulación FSK, ya que garantiza que las señales transmitidas en diferentes frecuencias no interfieran entre sí, dicho de otra manera, la energía de un símbolo transmitido en una frecuencia determinada no entra en el canal espectral de un símbolo adyacente en cuanto a la constelación de símbolos.
-/newp
-Para que se cumpla la condición de ortogonalidad se debe considerar la relación entre la frecuencia de sampleo y la cantidad de muestras por símbolo, es decir el valor inverso de la duración temporal de cada símbolo. La relación entre las frecuencias de las portadoras $f_1$ y $f_2$ debe cumplir con la siguiente ecuación:
 
-\begin{equation}
-    f_2 - f_1 = \frac{k}{T_s} = \frac{k f_s}{N_s}
-\end{equation}
+\subsection{Decimation?}
 
-En este caso, se tiene que la frecuencia de sampleo es de 48 kHz, y debe definirse la cantidad de muestras por símbolo $N_s$. Para determinar el valor óptimo de $N_s$, se realizaron diversas pruebas variando este parámetro y observando su impacto en la tasa de error de símbolos demodulados (SER) del sistema. A continuación se muestra la variación de SER en función del largo del símbolo para un valor de SNR definido, el cual corresponde al objetivo mínimo a lograr con el sistema de comunicación TTE, en este caso $SNR=-10 dB$ %detallar luego el criterio para cálculo de SNR (en la banda, qué banda) .
+The inclusion of a decimation process in the system's reception stage was evaluated, aiming to reduce the amount of data to be processed and thereby decrease the computation time required for message demodulation. 
+\newp
+Decimation, as explained in Section 2, consists of reducing the sampling rate of the received signal while maintaining the essential information for detection and demodulation. The decimation process was implemented by evaluating two stages of filtering and downsampling. In the first stage, a digital bandpass filter operating between 3100 and 3300 Hz was applied, followed by downsampling by a factor of 12. It is essential to note that when considering this decimation factor, the Nyquist frequency of the resulting system is 4000 Hz; therefore, the recoverable zones are found every 2000 Hz. For this first case, the second Nyquist zone is taken, considering the interval between 2000 and 4000 Hz. The bandpass filter must eliminate all components outside this range to avoid aliasing.
+\newp
+In the second stage, a bandpass filter is applied between 700 and 900 Hz, followed by downsampling by a factor of 4. In this case, the Nyquist frequency of the resulting system is 1000 Hz; therefore, the second zone, between 500 and 1000 Hz, is again selected. Once more, the bandpass filter is within this window, suppressing components outside this range to avoid aliasing.
+\newp
+This reduces the sampling rate of the original 48 kHz system to a final rate of 1000 Hz, representing a significant reduction in the amount of data to be processed.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\textwidth]{img/decimacion/filters_decimation.png}
+    \caption{Decimation filters applied in decimation process.}
+    \label{fig:decimation-process}
+\end{figure}
+
+%Incluir diagrama de la elección de zonas de Nyquist y filtros aplicados.
+
+
+\newp
+While the decimation process reduces the amount of data to be processed, multiple field tests have shown that the variability of the correlation peak increases with this process, making it difficult to detect the start of the transmitted message accurately. 
+\newp
+The following measurement, taken with a direct connection (via cable) between the transmitter and receiver, evaluates the variability of the correlation peak when the decimation process is applied compared to the system without decimation.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{img/SER_vs_Ns.png}
-    \caption{SER vs Ns for 8-FSK and 16-FSK at SNR = -10 dB.}
-    \label{fig:SER-vs-Ns}
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{img/decimacion/Correlation_64_symbols_NW.png}
+        \caption{Correlation form Signal 64 symbols without decimation.}
+        \label{fig:64_NW}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{img/decimacion/Correlation_64_symbols_NW_ D.png}
+        \caption{Correlation form Signal 64 symbols with decimation.}
+        \label{fig:64_NW_D}
+    \end{subfigure}
+    
+    \vspace{1em} % Add some vertical space between rows
+
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{img/decimacion/Correlation_128_symbols_NW.png}
+        \caption{Correlation form Signal 128 symbols without decimation.}
+        \label{fig:128_NW}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{img/decimacion/Correlation_128_symbols_NW_D.png}
+        \caption{Correlation form Signal 128 symbols with decimation.}
+        \label{fig:128_NW_D}
+    \end{subfigure}
+    \caption{Correlation form Signal with and without decimation for signals with 64 and 128 symbols.}
+    \label{fig:corr-peak-variability}
 \end{figure}
 
-Considerando un Bandwidth de 200 Hz se tiene que un largo de símbolo de 24000 es un valor ideal considerando modelos de 8 y 16 FSK, en este punto marcado con una línea punteada roja en la figura \ref{fig:SER-vs-Ns} muestra una tasa de error cercana al 12\% en el caso de 16 símbolos y 5\% en el caso de 8 símbolos. Para ambos modelos este nivel de error es aceptable considerando que posteriormente se incluirá un código de corrección de errores simple. Se opta por este largo de símbolo y no uno mayor que pudiese disminuir aún el SER debido a que no se desea sav¿crificar en demacía la tasa de datos el sistema, manteniendo un compromiso adecuado entre velocidad de transmisión y robustez frente al ruido.
-\newp
-De esta manera ya habiendo fijado el valor de $N_s=24000$, se procede a calcular la separación entre las frecuencias de las portadoras para cumplir con la condición de ortogonalidad. Considerando $k=1$ se tiene que la separación mínima entre las portadoras es de 2 Hz. Sin embargo, teniendo en cuenta que la resolución de la FFT en el demodulador depende de la cantidad de muestras por símbolo, se opta por seleccionar una separación mayor dejando canales espectrales sin utilizar para evitar interferencias entre símbolos adyacentes. Mas adelante se observará la diferencia de desempeño al considerar un modelo de demodulación single channel y tomando el máximo entre el canal del símbolo esperado y sus adyacentes.
+In principe the form of the simple correlation is similar in both cases, however, when analyzing the variability of the peak of correlation over multiple measurements, it is observed that when the data is decimated, the variability increase:
 
+\begin{figure}
+    \centering
+    \begin{subfigure}[b]{0.8\textwidth}
+        \includegraphics[width=\textwidth]{img/decimacion/Power_and_xcorr_64_nw.png}
+        \caption{Variability of correlation at model signal 1.}
+        \label{fig:correlation-peak-variability-no-decimation}
+    \end{subfigure}
+    
+    \vspace{1em} % Add some vertical space between rows
+    
+    \begin{subfigure}[b]{0.8\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{img/decimacion/Power_and_xcorr_64_nw.png}
+        \caption{Variability of correlation peak at model signal 2.}
+        \label{fig:correlation-peak-variability-decimation}
+    \end{subfigure}
+    \caption{Variability of correlation peak with and without decimation.}
+    \label{fig:correlation-peak-variability-graph}
+\end{figure}
 
-
-
-\subsubsection{Decimation?}
-
-Se evaluó la inclusión de un proceso de decimación en la etapa de recepción del sistema, con el objetivo de reducir la cantidad de datos a procesar y así disminuir el tiempo de cálculo necesario para la demodulación del mensaje. La decimación como se explicó en la sección 2 consiste en reducir la tasa de sampleo del señal recibida, manteniendo la información esencial para la detección y demodulación.
-\newp
-De esta manera se implemenntó el proceso de decimación evaluando 2 etapas de filtrado y downsampling. En la primera etapa se aplicó un filtro digital basa banda que funciona entre 3100 y 3300 Hz, seguido de un downsampling por un factor de 12. Es importante destacar que al considerar tal factor de decimación, la frecuencia de Nyquist del sistema resultante es de 4000 Hz, por lo que las zonas rescatables se encuentran cada 2000 Hz, para este primer caso se toma la segunda zona de Nyquist, considerando el intervalo entre 2000 y 4000 Hz, el filtro pasabanda debe eliminar todas las componentes fuera de este rango para evitar aliasing.
-\newp
-En la segunda etapa se aplica un filtro pasabanda entre 700 y 900 Hz, seguido de un downsampling por un factor de 4. En este caso la frecuencia de Nyquist del sistema resultante es de 1000 Hz, por lo que se rescata nuevamente la segunda zona entre 500 y 1000 Hz. Nuevamente se cumple que el filtro pasabanda está dentro de esa ventana, suprimiendo las componentes fuera de ese rango para evitar aliasing.
-\newp
-De esta manera se logra reducir la tasa de sampleo del sistema original de 48 kHz a una tasa final de 1000 Hz, lo que representa una reducción significativa en la cantidad de datos a procesar.
-\newp
-Si bien el proceso de decimación logra reducir la cantidad de datos a procesar, se observa luego de la realización de múltiples pruebas en terreno que la variabilidad del "peak" de correlación se incrementa al aplicar este proceso, lo que dificulta la detección precisa del inicio del mensaje transmitido.
-\newp
-A continuación se muestra una medición hecha con una conexión directa (a través de un cable) entre el emisor y el receptor para evaluar la variabilidad del peak de correlación al aplicar el proceso de decimación en comparación con el sistema sin decimación.
-
-%\begin{figure}[H]
-%    \centering
-%    \includegraphics[width=0.7\textwidth]{img/Correlacion_decimation_vs_no_decimation.png}
-%    \caption{Correlation peak variability with and without decimation.}
-%    \label{fig:corr-peak-variability}
-%\end{figure}
-
-De esta manera se decide no incluir el proceso de decimación en la versión final del sistema de recepción, considerando que los equipos utilizados para realizar los procesos de detección en tiempo real poseen capacidad de computo suficiente para no demorar más del tiempo disponible entre ciclos de escucha.
-
-\subsubsection{Correction Error Code}
-
-Se busca determianr teóricamente la capacidad de corrección de reed solomon implementado en el sistema. Se utiliza RSCodec de la librería  reedsolo, la cual trabaja sobre una base de bytes. Como la base de caracteres de MAGIC también son 256 valores posibles la codificación toma dos símbolos contiguos (base 16) para formar un byte, así reed solomon es capaz de corregir X/2 bytes si se definen X bytes de paridad, como cada byte son 2 símbolos en base 16 se necesitarán 4 símbolos de paridad para poder corregir un caracter. Como cada caracter está compuesto por 2 símbolos el modelo implementado no posee la "granularidad" para corregir cada símbolo sinó que pares de los mismos. 
-
-De esta manera si se definen por ejemplo 20 símbolos de paridad, podrán corregirse 5 caracteres, independientemente de si estos caracteres están corruptos por 1 o los 2 símbolos que lo forman...
+It's clear that for both signals the variability of the peak of correlation is significantly higher when the decimation process is applied. This increased variability generates a lot of cases of no detection of the preamble, which is unacceptable for the system's operation. That's why MAGIC's final design does not include the decimation process in the reception stage.
 
 
 \section{Testing and Validation}
-\subsection{Radiolink simulation}
+
+During the development of the TTE communication system, multiple tests were conducted to evaluate its performance in various scenarios. These tests aimed to validate the design choices made and to assess the system's ability to operate effectively in real-world conditions. The following subsections detail the different testing scenarios, results obtained and some other tests.
+
 \subsection{Induction Pattern}
+ The decaiment of the power available in the reeiver coil as a function of the relative angle between coils was measure at surface level in a open field. The transmitter coil was fixed in a horizontal position, while the receiver coil was rotated in steps of 5$\degree$ 
+from -45$\degree$ to 45$\degree$ considering 0$\degree$ when coils are perfectly aligned.
+\begin{figure}
+    \centering
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{img/MAGIC_PI.png}
+        \caption{Setup for transmitter.}
+        \label{fig:induction-pattern-TX}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{img/MAGIC PI 2.png}
+        \caption{Setup for receiver.}
+        \label{fig:induction-pattern-RX}
+    \end{subfigure}
+    \caption{Induction pattern measurement setup.}
+\end{figure}
+
+The resulted induction pattern is shown in the figure below:
+
+ \begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{img/patron.jpg}
+    \caption{Resulted induction pattern (horizontal cut).}
+    \label{fig:induction-pattern-setup}
+ \end{figure}
+
 \subsection{Measurements underground}
 
-El sistema de comunicación TTE denominado MAGIC (Magnetic Induction Communication) fue probado en las dependecnias del observatorio astronómico nacional de la universidad de Chile, ubicado en la comuna de Las Condes, Santiago. El entorno subterráneo del observatorio proporciona un escenario adecuado para evaluar el desempeño del sistema en condiciones similares a las que se encontrarían en aplicaciones reales de comunicación TTE. Particularmente se probó el sistema en dos líneas de comunicación las cuales están a 100 y 200 metros de distancia respectivamente. Estas líneas de comunicación se denominaran:
+The TTE communication system called MAGIC (Magnetic Induction Communication) was tested at the facilities of the National Astronomical Observatory of the University of Chile, located in the Las Condes district of Santiago. The observatory's underground environment provides a suitable setting to evaluate the system's performance under conditions similar to those encountered in real-world TTE communication applications.
+
+Specifically, the system was tested on two communication lines located 100 and 200 meters apart, respectively. These communication lines are designated as follows:
+
 \begin{itemize}
-    \item \textbf{Gautier-Copa de Agua:} Corresponde a la línea de comunicación más corta, con una distancia aproximada de 100 metros entre el transmisor y el receptor. Uno de los equipos será ubicado en el sibterráneo de uno de los telescopios ópticos del observatorio, a una profundidas aproximada de 3 metros. En tanto, el otro nodo se ubicará en el subterráneo de una antigua copa de agua a una profundidad aproximada de 20 metros bajo tierra.
-    \item \textbf{Gautier-Calicata:} Corresponde a la línea de comunicación más larga, con una distancia aproximada de 200 metros entre el transmisor y el receptor. Nuevamente uno de los equipos se ubica en el subterráneo del telescopio Gautier, mientras que el otro nodo se ubicará en una calicata de estudio geológico en los límites de las dependencias del observatorio, esta posee una profundidad aproximada de 5 metros.
+    \item \textbf{Gautier-Copa de Agua} This corresponds to the shorter communication line, with an approximate distance of 100 meters between the transmitter and receiver. One of the units will be located in the basement of one of the observatory's optical telescopes, at an approximate depth of 3 meters. The other node will be located in the basement of an old water cup, at an approximate depth of 20 meters underground.
+    
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.7\textwidth]{img/100m 200m and noise/100m.png}
+        \caption{Communication line Gautier- Copa de Agua.}
+        \label{fig:communication-line-1}
+    \end{figure}
+
+    Here are some pictures of the setup in both locations:
+    \begin{figure}
+        \centering
+        \begin{subfigure}[b]{0.49\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{img/100m 200m and noise/Gautier Setup.png}
+            \caption{Node at Gautier underground.}
+            \label{fig:gautier-setup}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}[b]{0.49\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{img/100m 200m and noise/Copa_setup.png}
+            \caption{Node at Copa de Agua underground.}
+            \label{fig:copa-de-agua-setup}
+        \end{subfigure}
+        \caption{Setup of MAGIC nodes in Gautier and Copa de Agua undergrounds.}
+        \label{fig:magic-setup-100m}
+    \end{figure}
+    
+        \item \textbf{Gautier-Calicata:} This corresponds to the longest communication line, with an approximate distance of 200 meters between the transmitter and receiver. Again, one of the units is located underground at the Gautier telescope. In contrast, the other node will be located in a geological study pit on the edge of the observatory grounds, approximately 5 meters deep.
+        \begin{figure}
+            \centering
+            \includegraphics[width=0.7\textwidth]{img/100m 200m and noise/200m.png}
+            \caption{Communication line Gautier-Calicata.}
+            \label{fig:communication-line-2}
+        \end{figure}
+
+        Here is a pictures of the setup in calicata:
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.7\textwidth]{img/100m 200m and noise/calicata.jpg}
+            \caption{Node at Calicata underground.}
+            \label{fig:calicata-setup}
+        \end{figure}
+
 \end{itemize}
 
-A lo largo del desarrollo del proyecto se realizaron múltiples pruebas en terreno para evaluar el desempeño del sistema de comunicación TTE en las líneas de comunicación descritas anteriormente. Estas pruebas incluyeron la transmisión y recepción de mensajes utilizando diferentes configuraciones del sistema, así como la medición de parámetros clave como la tasa de error de símbolos (SER) y la relación señal a ruido (SNR) en el canal de comunicación. A continuación se muestran los resultados logrados en las últimas prueas realizadas en ambos escenarios de comunicación.
+Throughout the project, multiple field tests were conducted to evaluate the performance of the TTE communication system on the communication lines described above. These tests included the transmission and reception of messages using different system configurations, as well as the measurement of key parameters such as the symbol error rate (SER) and the signal-to-noise ratio (SNR) on the communication channel. The results obtained in the latest tests conducted in both communication scenarios are presented below.
 
-\subsection{Performance in operational scenario}
+\subsubsection{Simple Correlation vs Correlation by parts}
+
+When the correlation by parts algorithm was implemented, it was necessary to validate its performance against the simple correlation method previously used in the system. For this purpose, It was udes the 100 m communication line to provide a controlled environment for comparison.
+\newp
+The results obtained from both correlation methods are summarized in the following graphs:
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{img/100m 200m and noise/corr_old_100_m.png}
+        \caption{Simple Correlation at 100m line. RX Copa de Agua}
+        \label{fig:simple-100m}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{img/100m 200m and noise/corr_IQ_100_m.png}
+        \caption{Correlation by parts at 100m line. RX Copa de Agua}
+        \label{fig:corr-by-parts-100m}
+    \end{subfigure}
+    
+    \vspace{1em} % Add some vertical space between rows
+
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{img/100m 200m and noise/xcorr_wf_old_not_adapted.png}
+        \caption{Simple Correlation at 100m line. RX Gautier}
+        \label{fig:simple-100m_gau}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{img/100m 200m and noise/xcorr_wf_iq_not_adapted.png}
+        \caption{Correlation by parts at 100m line. RX Gautier}
+        \label{fig:corr-by-parts-100m_gau}
+    \end{subfigure}
+    \caption{Comparison between Simple Correlation and Correlation by parts at 100m communication line.}
+    \label{fig:correlation-methods-comparison}
+\end{figure}
+
+The performance in terms of correlation peak variability achieved with both methods are summarized in the following graphs:
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{1\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{img/100m 200m and noise/Max_peak_variation_copa.png}
+        \caption{Variation of Correlation peak IQ Correlation (left) vs Simple Correlation (right) RX Copa de Agua.}
+        \label{fig:ser-comparison-100m}
+    \end{subfigure}
+    
+    \vspace{1em} % Add some vertical space between subfigures
+    
+    \begin{subfigure}[b]{1\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{img/100m 200m and noise/Max_peak_variation_gau.png}
+        \caption{Variation of Correlation peak IQ Correlation (left) vs Simple Correlation (right) RX Gautier.}
+        \label{fig:ser-comparison-100m-gau}
+    \end{subfigure}
+    \caption{Performance comparison between Simple Correlation and Correlation by parts at 100m communication line.}
+    \label{fig:perf-comp_100m}
+\end{figure}
+
+The Symbol Error Rate (SER) was registered but both methods achieved a SER of 0\% to 2\% in all tests conducted at the 100m communication line. However, the correlation by parts method demonstrated a significantly lower variability in the correlation peak compared to the simple correlation method. This reduced variability enhances the reliability of preamble detection, leading to more consistent performance in message reception.
+
+
+\subsubsection{Preamble models comparison}
+
+An interesting test was made to compare the performance of different preamble structures in terms of correlation peak variability and Symbol Error Rate (SER). For this purpose, two preamble models were evaluated: one with 12 symbols and another with 24 symbols, both with a total length of 12 seconds.
+\newp
+The results obtained from both preamble models are summarized in the following graphs for Receiver at both locations (Gautier and Calicata):
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{1\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{img/100m 200m and noise/XCorr_forms_12x48_cal.png}
+        \caption{Correlation form Preamble 12 X 48000. RX Calicata.}
+        \label{fig:12x48_calicata}
+    \end{subfigure}
+    
+    \vspace{1em} % Add some vertical space between subfigures
+    
+    \begin{subfigure}[b]{1\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{img/100m 200m and noise/Corr_forms_24x24_cal.png}
+        \caption{Correlation form Preamble 24 X 24000. RX Calicata.}
+        \label{fig:24x24_calicata}
+    \end{subfigure}
+    \caption{Comparison between Preamble models at 200m communication line. RX Calicata.}
+    \label{fig:preamble-models-comparison-calicata}
+\end{figure}      
+
+The results with the receiver at Gautier are summarized in the following graphs:
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{1\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{img/100m 200m and noise/Corr_forms_12x48_gau.png}
+        \caption{Correlation form Preamble 12 X 48000. RX Gautier.}
+        \label{fig:12x48_gau}
+    \end{subfigure}
+    
+    \vspace{1em} % Add some vertical space between subfigures
+    
+    \begin{subfigure}[b]{1\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{img/100m 200m and noise/Corr_forms_24x24_gau.png}
+        \caption{Correlation form Preamble 24 X 24000. RX Gautier.}
+        \label{fig:24x24_gau}
+    \end{subfigure}
+    \caption{Comparison between Preamble models at 200m communication line. RX Gautier.}
+    \label{fig:preamble-models-comparison-gau}
+
+\end{figure}
+
+The performance in terms of correlation peak variability achieved and Symbol Error Rate (SER) are summarized in the following graphs:
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{img/100m 200m and noise/12x48_cal.png}
+        \caption{Correlation peak variation and SER Preamble 12 X 48000. RX Calicata.}
+        \label{fig:12x48_ser_cal}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{img/100m 200m and noise/24x24_cal.png}
+        \caption{Correlation peak variation and SER Preamble 24 X 24000. RX Calicata.}
+        \label{fig:24x24_ser_cal}
+    \end{subfigure}
+    
+    \vspace{1em} % Add some vertical space between rows
+
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{img/100m 200m and noise/12x48_gau.png}
+        \caption{Correlation peak variation and SER Preamble 12 X 48000. RX Gautier.}
+        \label{fig:12x48_ser_gau}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{img/100m 200m and noise/24x24_gau.png}
+        \caption{Correlation peak variation and SER Preamble 24 X 24000. RX Gautier.}
+        \label{fig:24x24_ser_gau}
+    \end{subfigure}
+    \caption{Performance comparison between Preamble models at 200m communication line.}
+    \label{fig:performance-comparison-preamble-models}
+\end{figure}
+
+both models have similar performance in terms of Symbol Error Rate (SER). However, the preamble model with 24 symbols demonstrates lower variability in the correlation peak compared to the model with 12 symbols. This reduced variability enhances the reliability of preamble detection, leading to more consistent performance in message reception. Based on these results, the preamble model with 24 symbols was selected for the final design of the MAGIC communication system.
+
+
+\subsubsection{Operational test in a real mine}
 
 Due to good performance obtained in previous test, the system was tested in an operational scenario, that means a real mine. MAGIC system was tested in the "Mina Benjamin", part of the mining company "José Iván Rojas Virraroel" located in the V region of Chile.
 

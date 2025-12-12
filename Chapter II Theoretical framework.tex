@@ -98,6 +98,37 @@ where $m_{d}=N_{tx}I_{tx}\pi a^{2}$ is the magnetic dipole moment of the transmi
 % TODO: Conditions for quasi-static approximation (r << lambda/2π), near-field decay (1/r^3) components.
 
 \subsection{Magnetic Flux, Mutual Inductance and Coupling Coefficient}\label{subsec:mutual-inductance}
+
+The mutual inductance $(M)$ between two coils (Loop 1 and Loop 2) is defined as the constant of proportionality relating the magnetic flux ($\psi$) passing through the secondary coil $(S)$ to the current $(I)$ flowing in the primary coil (P), such that:
+
+\begin{equation}
+    \label{equation_of_mutual_inductance}
+    M = \frac{\psi_{S}}{I_{P}}
+\end{equation}
+
+$M$ is a purely geometric parameter that depends on the shape, size, of the two coils. For two parallel circular coils centered on a single axis, where $r_P$ and $r_s$ are the primary and secondary radii, $N_P$ and $N_S$ are the number of turns, and $d$ is the distance separating them, M is approximated by:
+\begin{equation}
+    M = \frac{\mu N_{P} N_{S} \pi r_{P}^{2} r_{S}^{2}}{2 (r_{P}^{2} + d^{2})^{3/2}}
+\end{equation}
+%%only if rs << rP and rs??
+The coupling coefficient $(k)$ is a dimensionless parameter that quantifies the strength of the magnetic coupling between the two coils, defined as.  It is inherently proportional to the efficiency of the link. In loosely coupled systems, the coupling coefficient is typically small, often around 10 \cite{agbinya2022principles}. $k$ It is formally defined in terms of the mutual inductance (M) and the self-inductances ($L_1$ and $L_2$) of the two coils: 
+
+\begin{equation}
+    \label{equation_of_coupling_coefficient}
+    k = \frac{M}{\sqrt{L_{1} L_{2}}}
+\end{equation}
+
+
+
+
+\subsection{Transfer Function of Inductive Coupling model}\label{subsec:transfer-function-inductive-coupling}
+
+\begin{equation}
+    H(s) = \frac{V_{out}(s)}{V_{in}(s)} = \frac{s M R_L}{(sL + R + \frac{1}{sC})^2 + (sM)^2 + (sL + R + \frac{1}{sC}) R_L}
+\end{equation}
+
+Where $M$ is the mutual inductance between the two coils, $R_L$ is the load resistance at the receiver side, $R$ is the resistance of each coil, $L$ is the inductance of each coil and $C$ is the capacitance of each coil.
+
 % TODO: Derive M for coaxial circular loops, mention misalignment effects (appendix option).
 
 \subsection{Skin Depth and Frequency-Dependent Attenuation in Rock}\label{subsec:skin-depth}
@@ -207,8 +238,20 @@ where $m_{d}=N_{tx}I_{tx}\pi a^{2}$ is the magnetic dipole moment of the transmi
 % TODO: Off-resonance degradation.
 
 % ------------------------------------------------------------------
-\section{Error Control Coding}\label{sec:error-control-coding}
-\subsection{Role of FEC in MI Links}\label{subsec:role-fec}
+\section{Error Control Coding: Reed-solomon}\label{sec:error-control-coding}
+
+Reed-Solomon (R-S) codes constitute a powerful class of nonbinary cyclic codes. These codes utilize symbols composed of m-bit sequences, where m is any positive integer greater than two. A conventional R-S code is designated as R-S $(n,k)$, where k represents the number of data symbols being encoded, and n is the total number of code symbols in the resulting block. The relationship defining a conventional R-S code is $(n, k) = (2^{m}-1, 2^{m}-1-2t)$, where $2t = n-k$ is the number of parity symbols, and t is the code's symbol-error correcting capability \cite{sklar2001reed}.
+
+\subsection{Role of FEC in MI Links}
+
+TTE communication systems, often necessary for underground mines, face channels characterized by large attenuation and operate using very low frequencies (VLF). This difficult scenario imposes severe restrictions on the communication system design, including dealing with high levels of atmospheric and electrical equipment noise,. This environment leads to extremely limited bandwidth and capacity in the TTE channels,. Due to the presence of non-Gaussian noise and the low capacity, the use of higher-order digital modulations is often challenging \cite{ma2025through}.
+
+In this context, Forward Error Correction (FEC) techniques, such as Reed-Solomon coding, become essential. FEC allows the system to detect and correct errors that occur during transmission without the need for retransmission, which is particularly beneficial in TTE scenarios where latency and reliability are critical. By adding redundancy to the transmitted data, FEC improves the robustness of the communication link against noise and interference, thereby enhancing the overall performance and reliability of TTE MI communication systems.
+
+
+
+
+\label{subsec:role-fec}
 % TODO: Reliability vs power.
 
 \subsection{Block Codes (Hamming, BCH, Reed--Solomon)}\label{subsec:block-codes}

@@ -2,12 +2,19 @@
 \chapter{Analysis}\label{ch:analysis}
 
 \section{Hardware developement}
+ The hardware developement of MAGIC is relatively simple, considering the components used and the way they are assembled. However, during the process appear several challenges related to operation in hazardouz environments, portability, and robustness.
+ \newp
+    The design of the resonant coils it's a critical aspect of the hardware developement, and scale the system in terms of current, área and turns is not trivial. The trade-offs between size, weight, and performance must be carefully considered to achieve an optimal design that meets the requirements of partcular underground applications.
+ \newp
+    Additionally, the choice of materials and construction techniques must take into account the environmental conditions in which the system will operate, including temperature variations, moisture, and mechanical stresses.
 
 \section{Software developement}
 
-
-
-\section{Measurements analysis}
+There are several aspects to analyze in the software developement of MAGIC. First, the choice of modulation scheme (M-FSK) was accured and the implementation of signal proccessing techniques, including filtering, decimation, error correction coding and different ways to demodulate generate that MAGIC works propertly.
+\newp
+There are a lot of possible improvments in the software developement, especially in the area of adaptive detection, channel estimation and synchronization techniques. These improvements could enhance the system's performance and reliability in more challenging underground environments.
+\newp
+Overall, the software developement of MAGIC demonstrates the potential of TTE technology for underground applications, and highlights the importance of signal processing techniques to achieve reliable communication in challenging environments. 
 
 
 \section{Mine measurements}
@@ -16,3 +23,39 @@ Here the results obtained on section 4.3.4 will be analyzed. The performance of 
 \newp
 First of all, was complicated to find the correct alineation between the two coils. Due to the missinformation about the exact geographical location of the two emplacements, the team had to determine the best relative angle by trial and error. Of course these misalignments affected the performance of the system, as it was explained in section 2.2. Here is a first error source that could be improved in future tests.
 \newp
+Second, the test of 120m provides a lot of information. We have no null SER that is bad, but give us a lot of information about new onditions of operation. A plot of error of demodulation are provided for a particular test at 120m, in figure \ref{fig:120m}. 
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\textwidth]{img/mina/mal.png}
+    \caption{Error in symbol demodulation at 120m in mine.}
+    \label{fig:120m}
+\end{figure}
+
+
+Here is possible to see that there was noise components with higher amplitude in comparisson with received tone signal. If we compare the noise distribution in mine and the noise in the astronomical observatory, we can see that in the mine the noise is more impulsive and with higher amplitude and colored. \ref{fig:noisy}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\textwidth]{img/ruidos_res_data_accumulada.png}
+    \caption{Comparison of noise in mine and astronomical observatory (bottom).}
+    \label{fig:noisy}
+\end{figure}
+
+This kind of noise affects directly the performance of the demodulator. After discount the mean spectral distribution of noise we could repair a certain amount of symbol demodulation as is shown in figure \ref{fig:120m-fixed}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\textwidth]{img/mina/mejor.png}
+    \caption{Error in symbol demodulation at 120m in mine after noise spectral subtraction.}
+    \label{fig:120m-fixed}
+\end{figure}
+
+Altough, there is still a certain amount of error. This process allow us to understand better the characteristics of the underground channel in the mine, and the kind of noise that affect the communication system. Finally if we look the temporal change of noise distribution at the mine at figure \ref{fig:water} we can see that are interference sources that are changing with time. It's important to consider this to improve the system in future works.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\textwidth]{img/mina/Refugio.png}
+    \caption{Waterfall of Noise in the mine.}
+    \label{fig:water}
+\end{figure}

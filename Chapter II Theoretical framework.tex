@@ -13,40 +13,74 @@
 % ------------------------------------------------------------------
 \section{Overview of Through-The-Earth (TTE) Magnetic Induction Communication}
 
-En este capítulo se presentan los fundamentos teóricos y el marco conceptual para lograr comunicación efectiva a través de la roca. Se abordan los principios físicos de la inducción magnética, las características del medio geológico, el modelado del canal, el diseño de transductores (bobinas), y los fundamentos de la comunicación digital aplicados a sistemas TTE. Además, se discuten técnicas de procesamiento de señales digitales (DSP) relevantes y se identifican los principales desafíos técnicos asociados con la comunicación TTE mediante inducción magnética.
-\label{sec:overview-mI-TTE}
-\subsection{Definition and Scope of TTE MI Communication}
+This chapter presents the theoretical foundations and conceptual framework for achieving effective through-rock communication. It covers the physical principles of magnetic induction, the characteristics of the geological medium, channel modeling, transducer (coil) design, and the fundamentals of digital communication applied to TTE systems. Furthermore, relevant digital signal processing (DSP) techniques are discussed, and the main technical challenges associated with TTE communication using magnetic induction are identified.
+
 % (From: What is a TTE Communication System?)
 % TODO: Define TTE, near-field magnetic induction vs radiative propagation.
+% TODO: Safety, mining, drilling, rescue operations, structural monitoring, underground sensing.
 
 \subsection{System Architecture}\label{subsec:system-architecture}
 % (From: TTE Communication System Architecture)
 % TODO: High-level block diagram: Transmitter coil, power amplifier, matching network, channel (rock), receiver coil, LNA, filtering, demodulation, decoding.
 
-\subsection{Motivation and Application Domains}\label{subsec:motivation-applications}
-% (From: Motivation and Applications)
-% TODO: Safety, mining, drilling, rescue operations, structural monitoring, underground sensing.
+The typical architecture of a TTE magnetic induction communication system consists of a transmitter and receiver, each equipped with resonant coils designed to operate at low frequencies. The transmitter generates a time-varying current that produces a magnetic field, which propagates through the geological medium. The receiver coil captures the magnetic flux, inducing a voltage that is processed to recover the transmitted information. Key components include power amplifiers, impedance matching networks, filters, demodulators, and error correction decoders.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{img/simple_diagram.png}
+    \caption{Block diagram of a typical TTE magnetic induction communication system.}
+    \label{fig:tte_system_architecture}
+\end{figure}
 
 \subsection{Key Technical Challenges (Preview)}\label{subsec:key-challenges-preview}
 % (From: Main technical challenges, brief intro; detailed in Section \ref{sec:challenges-limitations})
 % TODO: Severe attenuation, limited bandwidth, alignment sensitivity, coil size constraints, interference, power budget.
 
+Communication through the rock is particularly challenging due to several technical factors. Here are some of the main challenges:
+
+\begin{itemize}
+    \item \textbf{Severe Attenuation and Limited Bandwidth:} The dense media significantly attenuates electromagnetic signals, especially at higher frequencies, it's necessary the use of very low frequencies (VLF), typically leading to limited bandwidth and data rates. \cite{carreno2016through}
+    
+    \item \textbf{Channel Instability and Fading :} : The channel power gain is often unstable, leading to "remarkable fast fading" caused by the uncertainty of the medium over large spaces and the vibration of mobile antennas. This unpredictability complicates existing wireless communication system solutions
+
+    \item \textbf{Alignment Sensitivity:} The performance of magnetic induction links is highly dependent on the relative orientation and alignment of the transmitter and receiver coils.
+    
+    \item \textbf{Coil Size Constraints and Power consumption:} To achieve sufficient magnetic flux, coils often need to be large, which can be impractical for portable or deployable systems. Greater power means more magnetic flux. Limited power availability in underground environments necessitates energy-efficient system designs.
+    
+    \item \textbf{Interference and Noise:} External electromagnetic interference and geological noise sources can degrade signal quality.
+    \item \textbf{Power Budget:} Limited power availability in underground environments necessitates energy-efficient system designs.
+\end{itemize}
+
+
 \subsection{State of the Art Overview}\label{subsec:state-of-art}
 % (From: State of the art)
 % TODO: Summarize major research milestones, typical frequency ranges (kHz--MHz), achieved ranges, data rates.
 
-\subsection{Comparison with Alternative Underground Technologies}\label{subsec:comparison-alternative-tech}
+There are several TTE systems based on magnetic induction that have been developed and tested in various underground environments. Commonly, these systems operate in the low-frequency (LF) and very low-frequency (VLF) bands, typically ranging from a few kHz to several hundred kHz.
+\newp
+However, commercial systems are limited and mostly of them have notable limitations in terms of range, portability or capabilities. Some of this systems are:
+
+\begin{itemize}
+    \item Magnelink from lookheed Martin: It is a commercial TTE communication system that uses magnetic induction to provide voice and data communication in underground environments. It operates in the VLF band and can achieve ranges of up to 300 meters in ideal conditions. However, the system is very heavy and bulky. \cite{teslasociety}
+    
+    \item CannaryCommPac from Vital Alert:It is considered a benchmark standard in TTE, enabling bidirectional voice and text communication. It is small and lightweight, but its range is short (approximately 50 m), though it can achieve communication distances of up to 300 m using a much larger external magnetic antenna. It also boasts an 8-hour battery life. While it offers interesting advantages and a portable format, it is pretty expensive (approximately USD 30,000) and has limited availability outside the US.
+     \cite{vitalalert}
+\end{itemize}
+
+
+%PENDIENTE!!!!
+
+
+%\subsection{Comparison with Alternative Underground Technologies and Cenventional RF in Lossy media}\label{subsec:comparison-alternative-tech}
 % (From: TTE and other technologies for underground communication)
 % TODO: Compare MI vs RF (higher freq), acoustic, ELF, seismic, optical (impractical), leaky feeder, wired.
 
-\subsection{Comparison with Conventional RF in Lossy Media}\label{subsec:overview-mi-vs-rf}
 % (High-level comparison; deeper analysis in Section \ref{subsec:detailed-mi-rf-comparison})
 % TODO: Penetration advantages of quasi-static magnetic fields, reduced susceptibility to multipath, bandwidth trade-offs.
-
 % ------------------------------------------------------------------
+
 \section{Electromagnetic Fundamentals for MI Links}\label{sec:em-fundamentals}
 % (From: Physical Principles of transmission by Magnetic Induction)
-
 
 Ampère's Law, in the context of magnetostatics, provides the fundamental relationship between a circulating magnetic field (B) and the electric current (J) that produces it. Specifically, the differential form states that the curl of the magnetic field is directly proportional to the current density \cite{griffiths2023introduction}:
 
@@ -78,7 +112,7 @@ According to Faraday's law, the voltage induced by a magnetic field that goes th
 
 where $N_{rx}e~S_{rx}$ are the number of turns and the area of the receiving loop, respectively, and is the angle between the magnetic field and the loop axis, that is orthogonal to its plane. 
 
-La aproximación más simple para el campo magnético creado por una pequeña antena de bucle (usando una aproximación de campo cuasi-estático) es:
+The simplest approximation for the magnetic field created by a small loop antenna (using a quasi-static field approximation) is:
 
 \begin{equation}
     \label{equation_of_magnetic_field}
@@ -89,9 +123,6 @@ where $m_{d}=N_{tx}I_{tx}\pi a^{2}$ is the magnetic dipole moment of the transmi
 
 \cite{carreno2016through}.
 
-\subsection{Magnetic Induction Fundamentals}\label{subsec:magnetic-induction-fundamentals}
-% (From: Magnetic Induction)
-% TODO: Faraday's law, mutual inductance basics, coupling coefficient.
 
 \subsection{Quasi-Static Magnetic Field Regime}\label{subsec:quasi-static}
 % (From: Cuasistatic Magnetic Field)
@@ -119,36 +150,64 @@ The coupling coefficient $(k)$ is a dimensionless parameter that quantifies the 
 \end{equation}
 
 
-
-
 \subsection{Transfer Function of Inductive Coupling model}\label{subsec:transfer-function-inductive-coupling}
 
+The solution of transfer equation considering series RLC resonant circuits for both the transmitter and receiver coils results in the following transfer function \cite{agbinya2022principles}:
+
 \begin{equation}
-    H(s) = \frac{V_{out}(s)}{V_{in}(s)} = \frac{s M R_L}{(sL + R + \frac{1}{sC})^2 + (sM)^2 + (sL + R + \frac{1}{sC}) R_L}
+    H(s) = \frac{V_{out}(s)}{V_{in}(s)} = \frac{s M R_L}{(Z_1) *  (Z_2) + (sM)^2 +}
 \end{equation}
 
-Where $M$ is the mutual inductance between the two coils, $R_L$ is the load resistance at the receiver side, $R$ is the resistance of each coil, $L$ is the inductance of each coil and $C$ is the capacitance of each coil.
+
+Where $M$ is the mutual inductance between the two coils, $R_L$ is the load resistance at the receiver side. $Z_1$ and $Z_2$ are the impedances of the transmitter and receiver circuits, respectively, given by:
+
+\begin{equation}
+    Z_1 = R_1 + sL_1 + \frac{1}{sC_1}
+\end{equation}
+\begin{equation}
+    Z_2 = R_2 + sL_2 + \frac{1}{sC_2} + R_L
+\end{equation}
+
+
+
 
 % TODO: Derive M for coaxial circular loops, mention misalignment effects (appendix option).
 
 \subsection{Skin Depth and Frequency-Dependent Attenuation in Rock}\label{subsec:skin-depth}
+
+Influence on Attenuation and Penetration: The propagation of the magnetic field in a conductive medium is governed by the magnetic permeability ($\mu$) of that medium,. The penetration depth is quantified by the skin depth ($\delta$), which is inversely related to permeability: 
+\begin{equation}
+    \label{equation_of_skin_depth}
+    \delta = \sqrt{\frac{2}{\omega \mu \sigma}}
+\end{equation}
+ where $\omega$ is the angular frequency of the signal, and $\sigma$ is the electrical conductivity of the medium. In geological materials like rock, could be highly variable depending on composition. When the medium contains ferromagnetic materials, which have high permeability, the skin depth decreases. This means the signal experiences greater attenuation and a shorter effective communication range, as the energy transfer relies heavily on magnetic field diffusion.
 % TODO: δ = \sqrt{2/(\omega \mu \sigma)}; impact on optimal frequency selection.
 
-\subsection{Propagation Models in Conductive Geological Media}\label{subsec:propagation-models}
-% (From: Magnetic propagation models in conductive media)
-% TODO: Analytical models, homogeneous vs layered media, empirical fits.
 
-\subsection{Equivalent Circuit Representations}\label{subsec:equivalent-circuit}
-% (From: Equivalent Circuit Model)
-% TODO: Series/parallel RLC, reflected impedance, transformer analogy.
+%PENDIENTE!!!!
 
-\subsection{Energy Transfer and Power Budget Foundations}\label{subsec:energy-transfer}
+\subsection{Geometric Configuration: Coil Orientation, Separation, Misalignment}\label{subsec:geometry}
+% TODO: Rotation matrices, coupling dependence.
+
+
+
+%\subsection{Energy Transfer and Power Budget Foundations}\label{subsec:energy-transfer}
 % TODO: Link budget formulation in magnetic domain, transmit current, induced voltage, received power, SNR.
 
-\subsection{Detailed Comparison with RF Approaches}\label{subsec:detailed-mi-rf-comparison}
-% (From: Comparison of MI with Conventional RF communication in lossy media)
-% TODO: Loss mechanisms: conductive attenuation vs dielectric/ multipath; near-field stability vs fading.
+%\subsection{Coil Geometry: Radius, Turns, Wire Gauge}\label{subsec:coil-geometry}
+% TODO: Trade-offs: inductance vs resistance.
 
+%\subsection{Core Materials: Air-Core vs Ferrite}\label{subsec:core-materials}
+% TODO: Permeability impact, saturation concerns.
+
+%\subsection{Resonance, Quality Factor (Q) and Bandwidth}\label{subsec:q-bandwidth}
+% TODO: Q-limited symbol rate, detuning sensitivity.
+
+%\subsection{Impedance Matching and Drive Circuits}\label{subsec:matching-networks}
+% TODO: L-match, transformer coupling, class D/E/F amplifiers.
+
+%\subsection{Magnetic Field Pattern and Spatial Decay}\label{subsec:field-pattern}
+% TODO: 1/r^3 near-field decay, transition region.
 % ------------------------------------------------------------------
 \section{Geological Medium Characterization}\label{sec:geological-medium}
 % (From: Characterization of the Medium)
@@ -158,188 +217,118 @@ Where $M$ is the mutual inductance between the two coils, $R_L$ is the load resi
 \subsection{Heterogeneity, Stratification and Anisotropy}\label{subsec:heterogeneity}
 % TODO: Impact on channel variability; probabilistic modeling.
 
-\subsection{Temperature, Moisture and Mineral Content Effects}\label{subsec:environmental-effects}
-% TODO: Parameter sensitivity.
-
-\subsection{Effective Medium and Mixing Models}\label{subsec:mixing-models}
-% TODO: Maxwell-Garnett, Bruggeman approximations.
-
 \subsection{Measurement Techniques for Material Parameters}\label{subsec:material-measurement}
 % TODO: Lab sample measurements, impedance spectroscopy, inductive probes.
 
-% ------------------------------------------------------------------
-\section{Magnetic Induction Channel Modeling}\label{sec:channel-modeling}
-\subsection{Geometric Configuration: Coil Orientation, Separation, Misalignment}\label{subsec:geometry}
-% TODO: Rotation matrices, coupling dependence.
+\subsection{Propagation Models in Conductive Geological Media}\label{subsec:propagation-models}
+% (From: Magnetic propagation models in conductive media)
+% TODO: Analytical models, homogeneous vs layered media, empirical fits.
 
-\subsection{Lumped-Element Channel Models}\label{subsec:lumped-models}
-% TODO: Mutual inductance + loss resistance representation.
+%PENDIENTE!!!!
 
-\subsection{Extended / Semi-Analytical or Distributed Models}\label{subsec:extended-models}
+%\subsection{Extended / Semi-Analytical or Distributed Models}\label{subsec:extended-models}
 % TODO: When lumped fails; frequency-dependent media parameters.
 
-\subsection{Channel Frequency Response H(f) and Impulse Response}\label{subsec:channel-response}
+%\subsection{Channel Frequency Response H(f) and Impulse Response}\label{subsec:channel-response}
 % TODO: Derive |H(f)| for resonant matched coils.
 
-\subsection{Noise Sources: Thermal, Geological, External EMI}\label{subsec:noise-sources}
+%\subsection{Noise Sources: Thermal, Geological, External EMI}\label{subsec:noise-sources}
 % TODO: Noise modeling assumptions (AWGN + colored components).
 
-\subsection{SNR, Link Margin and Capacity Considerations}\label{subsec:snr-capacity}
+%\subsection{SNR, Link Margin and Capacity Considerations}\label{subsec:snr-capacity}
 % TODO: Shannon capacity adaptation to narrowband MI.
 
 % ------------------------------------------------------------------
-\section{Transducer (Coil) and Resonant Antenna Design}\label{sec:coil-design}
-% (From: Resonant coils and antennas for TTE)
-\subsection{Coil Geometry: Radius, Turns, Wire Gauge}\label{subsec:coil-geometry}
-% TODO: Trade-offs: inductance vs resistance.
 
-\subsection{Core Materials: Air-Core vs Ferrite}\label{subsec:core-materials}
-% TODO: Permeability impact, saturation concerns.
-
-\subsection{Resonance, Quality Factor (Q) and Bandwidth}\label{subsec:q-bandwidth}
-% TODO: Q-limited symbol rate, detuning sensitivity.
-
-\subsection{Impedance Matching and Drive Circuits}\label{subsec:matching-networks}
-% TODO: L-match, transformer coupling, class D/E/F amplifiers.
-
-\subsection{Magnetic Field Pattern and Spatial Decay}\label{subsec:field-pattern}
-% TODO: 1/r^3 near-field decay, transition region.
-
-\subsection{Power Amplification, Drive Current and Efficiency}\label{subsec:power-amplification}
-% TODO: Current limits, thermal constraints.
-
-% ------------------------------------------------------------------
-\section{Digital Communication Fundamentals for MI Systems}\label{sec:digital-fundamentals}
+%\section{Digital Communication Fundamentals for MI Systems}\label{sec:digital-fundamentals}
 % (From: Fundamentals of Digital Communication Systems)
-\subsection{Signal Representation and Baseband vs Passband Considerations}\label{subsec:signal-representation}
-% TODO: Narrowband approximation.
 
-\subsection{Sampling, Aliasing and Bandlimitation Constraints}\label{subsec:sampling}
+%PENDIENTE!!!!
+%\subsection{Sampling, Aliasing and Bandlimitation Constraints}\label{subsec:sampling}
 % TODO: Coil bandwidth vs sampling rate.
 
-\subsection{Noise Modeling and Detection Basics}\label{subsec:noise-detection-basics}
+%\subsection{Noise Modeling and Detection Basics}\label{subsec:noise-detection-basics}
 % TODO: Energy detection foundations.
 
 % ------------------------------------------------------------------
 \section{Non-Coherent FSK Modulation for MI Communication}\label{sec:noncoherent-fsk}
-\subsection{Rationale for Selecting Non-Coherent FSK}\label{subsec:rationale-fsk}
+
+Non-Coherent Frequency Shift Keying (NCFSK) is a digital bandpass modulation technique that belongs to the class of noncoherent detection methods. Unlike coherent detection, noncoherent detection simplifies receiver implementation because it does not require the receiver to track the carrier phase.
+\newp
+In the case of FSK, detection involves processing signals that shift between different frequencies. In a model of M-FSK, every symbol has a respectively frequency $f_m$. For noncoherent orthogonal FSK specifically, there is a required tone spacing necessary for proper operation. This separation is the double of the required for coherent FSK.
+\newp
+A detector for non-coherent M-FSK signals can be implemented using correlators. In figure \ref{FSK_detec} is shown a scheme of a non coherent binary FSK detector based on correlators, this scope is essentially the \textit{Correlate by parts} algorith explained in the following chapter. \cite{sklar2021digital}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{img/quadrature.png}
+    \caption{Non-coherent binary FSK detector based on correlators.}
+    \label{FSK_detec}
+\end{figure}
+
+Another possible implementation of a non-coherent M-FSK detector is based on filterbanks, or bandpass filters tunned at $f_m$ frequencies followed by an envelope detectors, as shown in figure \ref{FSK_detec_filterbank}. \cite{sklar2021digital}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{img/matchedfil.png}
+    \caption{Non-coherent M-FSK detector based on filterbanks and envelope detectors.}
+    \label{FSK_detec_filterbank}
+\end{figure}
+
 % TODO: Robustness to phase instability; simple receiver.
 
-\subsection{Signal Space and Frequency Separation}\label{subsec:frequency-separation}
+\subsection{Signal Space and Frequency Separation. Orthogonality}\label{subsec:frequency-separation}
 % TODO: Δf selection vs symbol duration.
+The ortogonallity condition means that the integral of the product of two different basis functions over the symbol period is zero. For M-FSK, this condition can be expressed mathematically as:
+\begin{equation}
+    \int_{0}^{T} s_i(t) s_j(t) dt = 0, \quad i \neq j
+\end{equation}
+where $s_i(t)$ and $s_j(t)$ are the signals corresponding to different frequencies, and T is the symbol duration. To ensure orthogonality, the frequency separation ($\Delta f$) between adjacent frequencies must satisfy the following condition:
+\begin{equation}
+    \Delta f = \frac{k}{T}
+\end{equation}
+where k is a positive integer (k = 1, 2, 3, ...). The most common choice is k = 1, which gives the minimum frequency separation required for orthogonality. This means that the frequencies used in M-FSK modulation should be spaced at intervals of 1/T to ensure that they are orthogonal over the symbol duration T.
+\newp
+Satisfy the orthogonality condition is crucial for minimizing interference between different frequency components in M-FSK modulation. When the frequencies are orthogonal, the receiver can effectively distinguish between them, leading to improved performance in terms of error rates and overall communication reliability.
 
-\subsection{Demodulation Techniques: Filterbanks, Energy Detectors}\label{subsec:demodulation}
-% TODO: Implementation complexity trade-offs.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{img/orto.png}
+    \caption{spectral separation between tones.}
+    \label{fig:mfsk_signals}
+\end{figure}
 
-\subsection{BER Performance in AWGN}\label{subsec:ber-awgn}
+
+\subsection{SER Performance in AWGN}\label{subsec:ber-awgn}
 % TODO: Closed-form BER expressions (appendix reference).
 
-\subsection{Impact of Channel Frequency Selectivity and Detuning}\label{subsec:selectivity-detuning}
+%\subsection{Impact of Channel Frequency Selectivity and Detuning}\label{subsec:selectivity-detuning}
 % TODO: Off-resonance degradation.
 
-% ------------------------------------------------------------------
-\section{Error Control Coding: Reed-solomon}\label{sec:error-control-coding}
+The theoretical symbol error rate (SER) for non-coherent M-FSK in an additive white Gaussian noise (AWGN) is shown below:
 
-Reed-Solomon (R-S) codes constitute a powerful class of nonbinary cyclic codes. These codes utilize symbols composed of m-bit sequences, where m is any positive integer greater than two. A conventional R-S code is designated as R-S $(n,k)$, where k represents the number of data symbols being encoded, and n is the total number of code symbols in the resulting block. The relationship defining a conventional R-S code is $(n, k) = (2^{m}-1, 2^{m}-1-2t)$, where $2t = n-k$ is the number of parity symbols, and t is the code's symbol-error correcting capability \cite{sklar2001reed}.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\textwidth]{img/teo_ser.png}
+    \caption{Symbol Error Rate (SER) performance of non-coherent M-FSK in AWGN channels for different values of M.}
+    \label{fig:ser_mfsk}
+\end{figure}
 
-\subsection{Role of FEC in MI Links}
+Notice that the x axis is represented in terms of energy per bit to noise power spectral density ratio $(E_b/N_0)$, which is related to SNR (Signal to Noise Ratio) by the following expression:
 
-TTE communication systems, often necessary for underground mines, face channels characterized by large attenuation and operate using very low frequencies (VLF). This difficult scenario imposes severe restrictions on the communication system design, including dealing with high levels of atmospheric and electrical equipment noise,. This environment leads to extremely limited bandwidth and capacity in the TTE channels,. Due to the presence of non-Gaussian noise and the low capacity, the use of higher-order digital modulations is often challenging \cite{ma2025through}.
+\begin{equation}
+    \label{eq:ebn0_snr}
+    SNR = \frac{E_b}{N_0}*\frac{R_b}{B}
+\end{equation}
+where $R_b$ is the bit rate and $B$ is the bandwidth of the system.
 
-In this context, Forward Error Correction (FEC) techniques, such as Reed-Solomon coding, become essential. FEC allows the system to detect and correct errors that occur during transmission without the need for retransmission, which is particularly beneficial in TTE scenarios where latency and reliability are critical. By adding redundancy to the transmitted data, FEC improves the robustness of the communication link against noise and interference, thereby enhancing the overall performance and reliability of TTE MI communication systems.
+\subsection{System-Level Synchronization and Framing}\label{sec:synchronization}
 
-
-
-
-\label{subsec:role-fec}
-% TODO: Reliability vs power.
-
-\subsection{Block Codes (Hamming, BCH, Reed--Solomon)}\label{subsec:block-codes}
-% TODO: Use cases (short frame protection).
-
-\subsection{Convolutional Codes and Viterbi Decoding}\label{subsec:convolutional}
-% TODO: Latency vs performance.
-
-\subsection{Modern Codes (LDPC, Polar) Suitability}\label{subsec:modern-codes}
-% TODO: Complexity vs embedded constraints.
-
-\subsection{Interleaving for Burst Error Mitigation}\label{subsec:interleaving}
-% TODO: Channel memory scenarios.
-
-\subsection{Coding Gain and Trade-offs}\label{subsec:coding-gain}
-% TODO: Example link budget improvement.
-
-% ------------------------------------------------------------------
-\section{System-Level Synchronization and Framing}\label{sec:synchronization}
-\subsection{Preamble Design and Frequency Stabilization}\label{subsec:preamble}
-% TODO: Non-coherent requirements.
-
-\subsection{Symbol Timing Recovery}\label{subsec:timing-recovery}
-% TODO: Energy envelope methods.
-
-\subsection{Packet Structure and Overhead}\label{subsec:packet-structure}
-% TODO: Header, payload, FEC, CRC.
-
-% ------------------------------------------------------------------
-\section{Measurement and Channel Characterization Techniques}\label{sec:measurement-techniques}
-\subsection{Laboratory Experimental Setups}\label{subsec:labb-setup}
-% TODO: Rock analogues, coil fixtures.
-
-\subsection{Transfer Function Measurement (Swept-Sine, MLS, Chirp)}\label{subsec:transfer-measurement}
-% TODO: Pros/cons of excitation signals.
-
-\subsection{Field Strength Measurement (Magnetometers, Search Coils)}\label{subsec:field-strength}
-% TODO: Calibration methods.
-
-\subsection{Calibration and Error Sources}\label{subsec:calibration}
-% TODO: Alignment, temperature drift, instrumentation noise.
-
-\subsection{Parameter Extraction (Mutual Inductance, Effective Conductivity)}\label{subsec:parameter-extraction}
-% TODO: Curve fitting strategies.
-
-\subsection{Uncertainty Analysis and Repeatability}\label{subsec:uncertainty}
-% TODO: Statistical treatment.
-
-% ------------------------------------------------------------------
-\section{Performance Metrics and Evaluation Framework}\label{sec:performance-metrics}
-\subsection{BER, FER, Throughput and Latency}\label{subsec:basic-metrics}
-% TODO: Definitions and measurement.
-
-\subsection{Energy per Bit and Efficiency Metrics}\label{subsec:energy-metrics}
-% TODO: E_b/N_0 vs P_tx constraints.
-
-\subsection{Range--Data Rate--Reliability Trade Space}\label{subsec:trade-space}
-% TODO: Pareto analysis concept.
-
-\subsection{Robustness to Misalignment and Orientation}\label{subsec:robustness-misalignment}
-% TODO: Orientation statistics.
-
-% ------------------------------------------------------------------
-\section{Challenges and Limitations}\label{sec:challenges-limitations}
-% (Expands on subsection Key Technical Challenges)
-\subsection{Severe Attenuation and Limited Bandwidth}\label{subsec:attenuation-bandwidth}
-\subsection{Coil Size vs Portability Constraints}\label{subsec:coil-size}
-\subsection{Frequency Drift and Detuning}\label{subsec:frequency-drift}
-\subsection{Coupling Variability and Misalignment}\label{subsec:coupling-variability}
-\subsection{Interference and Regulatory Considerations}\label{subsec:interference}
-\subsection{Detection System}
-
-
-% ------------------------------------------------------------------
-\section{Signal Processing (DSP) Techniques in TTE MI Systems}\label{sec:dsp-tte}
-% (From: DSP in TTE)
-\subsection{Filtering and Noise Reduction}\label{subsec:filtering-noise}
-% TODO: Narrowband filters, adaptive filtering.
-
-\subsection{Adaptive Thresholding and Detection}\label{subsec:adaptive-detection}
-% TODO: Non-coherent detection improvements.
-
-\subsection{Channel Estimation / Tracking Approaches}\label{subsec:channel-estimation}
-% TODO: Estimating effective gain via pilots.
-
-\subsection{Time/Frequency Synchronization Enhancements}\label{subsec:dsp-synchronization}
-% TODO: Sliding correlation.
-
+We can also try to syncronize the system. This is typically achieved through the search of a known signal called preamble that is before the message.
+\newp
+For time synchronization in non-coherent M-FSK model we can use correlation techniques between received signal and the known reference signal. The correlation outputs are then analyzed to determine the presence of an incoming message.
+\newp
+The correlation operation for continuous-time signals is defined as:
 \begin{equation}
     \label{eq:Correlation}
     z_i(T) = \int_{0}^{T} r(t)s_i(t) \, dt, \quad i=1, \dots, M
@@ -351,19 +340,84 @@ The version for digital signals is given by:
     z_i[n] = \sum_{k=0}^{N-1} r[k]s_i[k+n], \quad i=1, \dots, M
 \end{equation}
 
-\subsection{Resource-Constrained Implementation Considerations}\label{subsec:resource-constraints}
+%\subsection{Preamble Design and Frequency %Stabilization}\label{subsec:preamble}
+% TODO: Non-coherent requirements.
+
+%\subsection{Symbol Timing Recovery}\label{subsec:timing-recovery}
+% TODO: Energy envelope methods.
+
+%\subsection{Packet Structure and Overhead}\label{subsec:packet-structure}
+% TODO: Header, payload, FEC, CRC.
+
+% ------------------------------------------------------------------
+\section{Error Control Coding: Reed-solomon}\label{sec:error-control-coding}
+
+
+\subsection{Role of FEC in MI Links}
+
+TTE communication systems, often necessary for underground mines, face channels characterized by large attenuation and operate using very low frequencies (VLF). This difficult scenario imposes severe restrictions on the communication system design, including dealing with high levels of atmospheric and electrical equipment noise,. This environment leads to extremely limited bandwidth and capacity in the TTE channels,. Due to the presence of non-Gaussian noise and the low capacity, the use of higher-order digital modulations is often challenging \cite{ma2025through}.
+
+In this context, Forward Error Correction (FEC) techniques, such as Reed-Solomon coding, become essential. FEC allows the system to detect and correct errors that occur during transmission without the need for retransmission, which is particularly beneficial in TTE scenarios where latency and reliability are critical. By adding redundancy to the transmitted data, FEC improves the robustness of the communication link against noise and interference, thereby enhancing the overall performance and reliability of TTE MI communication systems.
+
+\label{subsec:role-fec}
+% TODO: Reliability vs power.
+
+\subsection{Block Codes (Hamming, BCH, Reed--Solomon)}\label{subsec:block-codes}
+
+Reed-Solomon (R-S) codes constitute a powerful class of nonbinary cyclic codes. These codes utilize symbols composed of m-bit sequences, where m is any positive integer greater than two. A conventional R-S code is designated as R-S $(n,k)$, where k represents the number of data symbols being encoded, and n is the total number of code symbols in the resulting block. The relationship defining a conventional R-S code is $(n, k) = (2^{m}-1, 2^{m}-1-2t)$, where $2t = n-k$ is the number of parity symbols, and t is the code's symbol-error correcting capability \cite{sklar2001reed}.
+
+% TODO: Use cases (short frame protection).
+
+%\subsection{Convolutional Codes and Viterbi Decoding}\label{subsec:convolutional}
+% TODO: Latency vs performance.
+
+%\subsection{Modern Codes (LDPC, Polar) Suitability}\label{subsec:modern-codes}
+% TODO: Complexity vs embedded constraints.
+
+%\subsection{Interleaving for Burst Error Mitigation}\label{subsec:interleaving}
+% TODO: Channel memory scenarios.
+
+%PENDIENTE!!!!
+\subsection{Coding Gain and Trade-offs}\label{subsec:coding-gain}
+% TODO: Example link budget improvement.
+
+%\subsection{BER, FER, Throughput and Latency}\label{subsec:basic-metrics}
+% TODO: Definitions and measurement.
+
+%\subsection{Energy per Bit and Efficiency Metrics}\label{subsec:energy-metrics}
+% TODO: E_b/N_0 vs P_tx constraints.
+
+% ------------------------------------------------------------------
+%PENDIENTE!!!!
+
+%\section{Measurement and Characterization Techniques}\label{sec:measurement-techniques}
+
+%\subsection{Transfer Function Measurement (Swept-Sine, MLS, Chirp)}\label{subsec:transfer-measurement}
+% TODO: Pros/cons of excitation signals.
+
+%\subsection{Field Strength Measurement (Magnetometers, Search Coils)}\label{subsec:field-strength}
+% TODO: Calibration methods.
+
+%\subsection{Calibration and Error Sources}\label{subsec:calibration}
+% TODO: Alignment, temperature drift, instrumentation noise.
+
+%\subsection{Uncertainty Analysis and Repeatability}\label{subsec:uncertainty}
+% TODO: Statistical treatment.
+
+
+
+%\subsection{Resource-Constrained Implementation Considerations}\label{subsec:resource-constraints}
 % TODO: MCU vs FPGA vs ASIC trade-offs.
 
 % ------------------------------------------------------------------
-\section{Emerging Enhancements and Research Directions}\label{sec:emerging}
-\subsection{Adaptive Frequency and Power Control}\label{subsec:adaptive-frequency}
-\subsection{Multi-Coil Arrays and MIMO Concepts}\label{subsec:multi-coil}
-\subsection{Hybrid MI--Acoustic or MI--RF Schemes}\label{subsec:hybrid-schemes}
-\subsection{Machine Learning for Channel Estimation and Detection}\label{subsec:ml-channel}
-\subsection{Ultra-Low-Power Hardware Advances}\label{subsec:ultra-low-power}
-
+%\section{Emerging Enhancements and Research Directions}\label{sec:emerging}
+%\subsection{Adaptive Frequency and Power Control}\label{subsec:adaptive-frequency}
+%\subsection{Multi-Coil Arrays and MIMO Concepts}\label{subsec:multi-coil}
+%\subsection{Hybrid MI--Acoustic or MI--RF Schemes}\label{subsec:hybrid-schemes}
+%\subsection{Machine Learning for Channel Estimation and Detection}\label{subsec:ml-channel}
+%\subsection{Ultra-Low-Power Hardware Advances}\label{subsec:ultra-low-power}
 % ------------------------------------------------------------------
-\section{Summary of Theoretical Foundations}\label{sec:summary-theory}
+%\section{Summary of Theoretical Foundations}\label{sec:summary-theory}
 % TODO: Recap key points, lead into next chapter.
 
 % ------------------------------------------------------------------

@@ -1,4 +1,36 @@
 % ======================= CHAPTER III =======================
 \chapter{Methodology}\label{ch:methodology}
 
+\section{General Design}
 
+The main objective of this thesis is to develop a complete Through the Earth (TTE) communication system for underground environments. The methodology adopted to achieve this objective involves several key stepts, including the design and implementation of hardware and software components, as well as the experimental setup for performance evaluation.
+\newp
+From this point, at the beggining it was necessary to define the general architecture of the TTE communication system, a simple hardware design and implement a well known modulation system that could be adapted to the underground environment. Once achieving a basic working system, the next step was to optimize each of the components and aspects of design considering physical and algoritmic magnitudes. This iterative process of design, implementation, and evaluation allowed for the gradual improvement of the TTE communication system, ultimately leading to a reliable and efficient solution for underground communication and achieving more distance and better performance.
+
+\section{Communication tests}
+
+For communication tests, three main environments were considered: controlled environment tests, TTA (Through The Air) tests, and field tests in underground environments.
+\newp
+Controlled environment tests were conducted in a laboratory through simulations and wired connections to evaluate the performance of the system under ideal conditions.
+TTA tests were performed in open air to assess the system's performance in a more realistic environment, including the main physical phenomena that defines the system, that is, the magnetic induction propagation.
+Finally, field tests were carried out in underground environments to evaluate the system's performance in real-world conditions, including the effects of geological materials and environmental factors on signal propagation.
+\newp
+For TTA and TTE tests, the both nodes were placed at a fixed distance, and multiple messages were transmitted and received to evaluate the system's performance. Key parameters such as the symbol error rate (SER) and the signal-to-noise ratio (SNR) on the communication channel were measured to assess the reliability and efficiency of the TTE communication system.
+\newp
+To facilitate the process of testing, normally the messages was delivered from one direction only, that is, one node acted as the transmitter while the other acted as the receiver, after that, the roles were swapped to perform the reverse communication. This approach allowed for a more straightforward evaluation of the system's performance in both directions of communication, that is, proofing bidirectional communication capability.
+\newp
+Due to the available facilities, the most underground tests were conducted at the National Astronomical Observatory of the University of Chile, Santiago. Here are a few of underground communication lines available, considering distances between 40 to 200 meters approximately, with different depths. The tests were performing progressively, starting from the shortest distance to the longest one.
+\newp
+The final tests were conducted with two operators of the system, each one located at one of the nodes, simulating a real communication scenario, for this tests we define a communication rutine to facilitate the process of sending and receiving messages, considering the limitations and tmanual switching of the system.
+
+\section{Noise and SNR Measurements}
+
+Every communication test included the measurement of noise and signal-to-noise ratio (SNR). Due to the nature of the TTE communication system, which relies on magnetic induction for signal propagation, the noise characteristics can vary significantly depending on the environment and the time of testing. Often the tests were not consistent and it was neccessary to measure the noise level before and after each communication test to ensure accurate SNR calculations. Also, depending on place and time, the noise level could change significantly, interference sources could appear or disappear, affecting the communication performance. Dealing with these variations was crucial to obtain reliable and meaningful results.
+\newp
+The SNR Measurements were calculated mainly considering the power of the received signal plus noise and the power of the noise measured at the receiver at specific bandwidth. The SNR was calculated using the following formula described in Section 2.
+\newp
+
+
+\section{Summary}
+
+The methodology followed in this thesis involved the design, simulations and implementation of a TTE communication system, in several conditions and considering various factors that's were studied in an iterative process. The results obtained from the communication tests provided valuable insights into challenges and aspects to consider when developing TTE communication systems for underground environments. The findings of this thesis contribute to foundation for future research and development in this field, with the ultimate goal of improving safety and operational efficiency in national industries.

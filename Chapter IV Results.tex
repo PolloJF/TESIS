@@ -59,10 +59,10 @@ The resonant coil is the element responsible for transmitting the changing magne
 
 Thus, by choosing this gauge, which corresponds to a diameter of 1.15 mm, and considering a total mass of approximately 1.5 kg, a total length of 156 meters is achieved, which translates to N = 90. With this length, the total resistance of the coil is 2.6 ohms. However, when measured experimentally, the total resistance value is 3 ohms, an ideal value considering the operating resistance of the class D amplifier selected for the project.
 \newp
-With the geometry and characteristics of the coil defined, the associated electrical parameters are calculated. First, the coil's inductance is calculated using the formula for a toroidal coil:
+With the geometry and characteristics of the coil defined, the associated electrical parameters are calculated. First, the coil's inductance is calculated using a quick formula for circular coils \cite{utfsm}:
 
 \begin{equation}
-    L = \frac{\mu N^2 A}{l}  %%Comprobar
+    L = \mu*R*N^2*[ln(\frac{8R}{r}) - 2]
 \end{equation}
 Where:
 
@@ -70,11 +70,11 @@ Where:
     \item $L$ is the inductance in Henries (H).
     \item $\mu$ is the permeability of the core (for air, $\mu_0 = 4\pi \times 10^{-7} H/m$).
     \item $N$ is the number of turns.
-    \item $A$ is the cross-sectional area of the toroid in square meters ($m^2$).
-    \item $l$ is the mean length of the magnetic path in meters (m).
+    \item $R$ is the radius of the coil in meters (m).
+    \item $r$ is the radius of the wire in meters (m).
 \end{itemize}
 
-Considering an approximate cross-sectional area  of $A = -m^2$ and an average magnetic path length of $l = - m$, a theoretical inductance of $L ≈ -H$ is obtained. However, when measuring the inductance of the constructed coil using an LCR meter, experimental values of $L_1 = 10.67 mH$ and $L_2 = 10.55 mH$ are obtained. This discrepancy can be attributed to factors such as the non-uniform distribution of the magnetic field, conductor losses, and tolerances in the coil's construction.
+Considering an approximate radius $R=0.275$, a conductor radius $r=0.00115$, $N=85$, a theoretical inductance of $L ≈ 13.87mH$ is obtained. However, when measuring the inductance of the constructed coil using an LCR meter, experimental values of $L_1 = 10.67 mH$ and $L_2 = 10.55 mH$ are obtained. This discrepancy can be attributed to factors such as the non-uniform distribution of the magnetic field, conductor losses, and tolerances in the coil's construction.
 \newp
 At simulations on ANSYS Maxwell, the inductance results in $L \approx 5.7 mH$, a value that is the half of the experimental one, this difference can be explained because in the simulation the wire is considered as an ideal conductor with no thickness, while in the real coil the wire has a diameter of 1.15 mm that affects the magnetic field distribution and the inductance value. %Revisar
 
@@ -455,7 +455,7 @@ The digital filter used in the receiver is a bandpass filter designed to isolate
     \item Stopband attenuation: 40 dB
 \end{itemize}
 
-The filter is applied with function \textit{filtfilt} from scipy library, that performs zero-phase filtering by processing the input signal in both the forward and reverse directions. This approach helps to eliminate phase distortion introduced by the filter, which is particularly important in communication systems where phase information can be critical for accurate symbol detection. \cite{filtfilt-SciPy}
+The filter is applied with function \textit{filtfilt} from scipy library, that performs zero-phase filtering by processing the input signal in both the forward and reverse directions. This approach helps to eliminate phase distortion introduced by the filter, which is particularly important in communication systems where phase information can be critical for accurate symbol detection.%cita pendiente
 \newp
 Here is the frequency response of the designed bandpass filter:
 
@@ -1059,10 +1059,12 @@ The system was tested in four diferent communication lines, with distances betwe
 
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.7\textwidth]{img/mina/corrs 120 m.png}
+        \includegraphics[width=0.9\textwidth]{img/mina/corrs 120 m.png}
         \caption{Correlation forms at 120m distance in the mine.}
         \label{fig:120m-corr}
     \end{figure}
 \end{itemize}
 
 \section{Results Summary}
+
+The development and testing of the TTE communication system, MAGIC, has yielded promising results that demonstrate its potential for reliable underground communication. The system's design, which incorporates magnetic induction technology, a functional software based on 16 FSK model and error correction coding, has been validated through a series of field tests in various underground environments.

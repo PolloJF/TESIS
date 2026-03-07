@@ -943,6 +943,23 @@ The performance in terms of correlation peak variability achieved and Symbol Err
 \end{figure}
 
 both models have similar performance in terms of Symbol Error Rate (SER). However, the preamble model with 24 symbols demonstrates lower variability in the correlation peak compared to the model with 12 symbols. This reduced variability enhances the reliability of preamble detection, leading to more consistent performance in message reception. Based on these results, the preamble model with 24 symbols was selected for the final design of the MAGIC communication system.
+\newp
+Here is a table of the Symbol Error Rate (SER) obtained in each test considering both preamble models and the aplication of Reed Solomon error correction code with 20 parity symbols:
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    \textbf{Preamble Model} & \textbf{RX Location} & \textbf{SNR (dB)} &    \textbf{SER without RS} & \textbf{SER with RS} \\ \hline 
+    12 X 48000 & Calicata & -10.5 &  2.25\%   &   1.25\% \\ \hline
+    24 X 24000 & Calicata & -10.5 & 6.25\%    &   5.5\%   \\ \hline
+    12 X 48000 & Gautier  & -8.04 dB & 8.25\% & 8\%        \\ \hline
+    24 X 24000 & Gautier  & -8.04 dB & 5.55\% & 4.45\%     \\ \hline
+\end{tabular}
+\caption{Symbol Error Rate comparison between preamble models with and without Reed Solomon error correction.}
+    \label{tab:SER_200M}
+\end{table}
+
 
 
 \subsubsection{Operational test in a real mine}

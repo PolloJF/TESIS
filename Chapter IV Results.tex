@@ -299,7 +299,7 @@ To address this challenge, we can implement a multi-level FSK scheme, where each
 \newp
 For example the character 'A' has an ASCII value of 65, we can obtain two hexadecimal digits from this value: 4 and 1, that corresponds to the integer division and the module of the original value and 16, then we transform the hexadecimal digits to its decimal form and map to the corresponding FSK frequency. In this case 4 maps to $f4$ and 1 maps to $f1$.
 
-\subsubsection{Ortogonality and Bandwidth}
+\subsubsection{Ortogonality and Bandwidth}\label{subsec: ortogonality}
 
 As mentioned in previous chapters, carrier orthogonality is a crucial aspect of FSK modulation systems, ensuring that signals transmitted at different frequencies do not interfere with each other. In other words, the energy of a symbol transmitted at a given frequency does not enter the spectral channel of an adjacent symbol within the symbol constellation. For orthogonality to be met, the relationship between the sampling frequency and the number of samples per symbol must be considered; that is, the inverse of the duration of each symbol. The relationship between the carrier frequencies f1 and f2 must satisfy the following equation:
 
@@ -588,9 +588,9 @@ The following shows the piecewise correlation results for different preamble str
 
 \begin{figure}
     \centering
-    \label{fig:preamble-corr-models}
     \includegraphics[width=1\textwidth]{img/Simulacion corr modelos_2.png}
     \caption{Correlation by parts for different preamble structures with 12 seconds length.}
+    \label{fig:preamble-corr-models}
 \end{figure}
 
 Some relevant data about this excersice is summarized in the following table:

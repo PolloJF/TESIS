@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{griffiths2023introduction}
 D.~J. Griffiths, {\em Introduction to electrodynamics}.
@@ -9,5 +9,60 @@ J.~Carre{\~n}o, L.~Silva, S.~Neves, L.~Aguayo, A.~J. Braga, A.~N. Barreto, and
   L.~U. Garcia, ``Through-the-earth (tte) communications for underground
   mines,'' {\em Journal of Communication and Information Systems}, vol.~31,
   no.~1, 2016.
+
+\bibitem{agbinya2022principles}
+J.~I. Agbinya, {\em Principles of Inductive Near Field Communications for
+  Internet of Things}.
+\newblock River Publishers, 2022.
+
+\bibitem{fotopoulou2007optimum}
+K.~Fotopoulou and B.~W. Flynn, ``Optimum antenna coil structure for inductive
+  powering of passive rfid tags,'' in {\em 2007 IEEE International Conference
+  on RFID}, pp.~71--77, IEEE, 2007.
+
+\bibitem{teslasociety}
+``teslasociety.ch.'' \url{https://www.teslasociety.ch/info/magnetlink/2.pdf}.
+\newblock [Accessed 12-12-2025].
+
+\bibitem{vitalalert}
+``vitalalert.com.''
+  \url{https://vitalalert.com/wp-content/uploads/2015/09/CanaryCommPac2017.pdf}.
+\newblock [Accessed 12-12-2025].
+
+\bibitem{sklar2021digital}
+B.~Sklar, {\em Digital communications: fundamentals and applications}.
+\newblock Pearson, 2021.
+
+\bibitem{ma2025through}
+H.~Ma, E.~Liu, W.~Ni, Z.~Fang, R.~Wang, Y.~Gao, D.~Niyato, and E.~Hossain,
+  ``Through-the-earth magnetic induction communication and networking: A
+  comprehensive survey,'' {\em IEEE Communications Surveys \& Tutorials}, 2025.
+
+\bibitem{sklar2001reed}
+B.~Sklar, ``Reed-solomon codes,'' {\em Downloaded from URL http://www.
+  informit. com/content/images/art. sub.--sklar7.
+  sub.--reed-solomo-n/elementLinks/art. sub.--sklar7. sub.--reed-solomon. pdf},
+  pp.~1--33, 2001.
+
+\bibitem{utfsm}
+``www2.elo.utfsm.cl.''
+  \url{http://www2.elo.utfsm.cl/~elo352/biblio/antenas/Lectura%2011.pdf}.
+\newblock [Accessed 12-12-2025].
+
+\bibitem{pypiClientChallenge}
+``{C}lient {C}hallenge --- pypi.org.''
+  \url{https://pypi.org/project/reedsolo/}.
+\newblock [Accessed 12-12-2025].
+
+\bibitem{mitPyAudioDocumentation}
+``{P}y{A}udio {D}ocumentation \&\#x2014; {P}y{A}udio 0.2.14 documentation ---
+  people.csail.mit.edu.''
+  \url{https://people.csail.mit.edu/hubert/pyaudio/docs/}.
+\newblock [Accessed 22-01-2026].
+
+\bibitem{wang2018adaptive}
+P.~Wang, X.~Zhang, L.~Xu, Z.~Liu, and Y.~Wan, ``Adaptive noise cancellation
+  based on time delay estimation for low frequency communication,'' {\em
+  Applied Sciences}, vol.~8, no.~5, p.~734, 2018.
 
 \end{thebibliography}

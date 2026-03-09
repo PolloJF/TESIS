@@ -2,22 +2,146 @@
 \chapter{Analysis}\label{ch:analysis}
 
 \section{Hardware developement}
- The hardware developement of MAGIC is relatively simple, considering the components used and the way they are assembled. However, during the process appear several challenges related to operation in hazardouz environments, portability, and robustness.
+ The hardware developement of MAGIC is relatively simple, considering the components used and the way they are assembled. However, during the process appear several challenges related to operation in hazardous environments, portability, and robustness.
  \newp
     The design of the resonant coils it's a critical aspect of the hardware developement, and scale the system in terms of current, área and turns is not trivial. The trade-offs between size, weight, and performance must be carefully considered to achieve an optimal design that meets the requirements of partcular underground applications.
  \newp
     Additionally, the choice of materials and construction techniques must take into account the environmental conditions in which the system will operate, including temperature variations, moisture, and mechanical stresses.
+\newp
+Loop antennas developed for MAGIC have an equilibrated performance considering the size and weight of the system,. The total weight of the resonant coil is around 2 kg, which is relatively light for a TTE communication system, but still provides a good performance in terms of intensity of the mafnatic field generated and received. The design of a circular coil permits to uniform magnetic field distribution, and a maximum of magnetic flux at the receiver if it's in the central axis of the structure. Furthermore, this design allows for direct scaling of the system if greater communication distances are desired. Due to the natural trade-off between the current flowing through the coil and the number of turns, the simplest way to scale the system is by increasing the diameter of the antennas. This is because a greater number of turns means the winding conductor must be longer, and therefore the actual resistance of the coil increases, and the amplifier can deliver less current to the coil. However, increasing the diameter of the coil also means more conductive material and therefore more resistance, it's the best way to scale the system, considering also that a larger area means more magnetic flux at the receiver.
+
+\subsection{Topology at Transmitter and Receiver}
+
+At the beginning of the developement of MAGIC, the series configuration between the coil and tunning capacitor was used at the transmitter and the receiver due to it's simplicity and symetrical configuration to permit bidirectional communication. However, it's interesting to analyze other configurations that could be more efficient in terms of power transfer and signal reception.
+
+Here is a simulation of all the four configurations of series and parallel at the transmitter and receiver, considering the same coil and tunning capacitor for all the cases. The results in terms of transfer function is given in the following figure.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\textwidth]{img/diagrams/Transfer_functions.png}
+    \caption{Transfer function for different configurations of series and parallel at the transmitter and receiver.}
+    \label{fig:transfer-function_4}
+\end{figure}
+
+It's clear that the actual configuration used in MAGIC works, but is not the most efficient in terms of power transfer. Redarding to the transmitter, the parallel configuration is suboptimal due to high impedance of the circuit, the impedance of a parallell LC circuit at resonance is:
+
+\begin{equation}
+    Z_{paralelo} = \frac{R + j\omega L}{1 - \omega^2 LC + j\omega RC}
+\end{equation}
+
+Where R is the resistance of the coil, L is the inductance of the coil, C is the capacitance of the tunning capacitor, and $\omega$ is the angular frequency. At resonance, where $\omega^2 LC = 1$, the impedance becomes:
+
+\begin{equation}
+    Z_{paralelo} \approx \frac{L}{RC} = Q^2 R
+\end{equation}
+
+Where Q = $\frac{1}{R}sqrt{frac{L}{C}}$ is the quality factor of the coil. This means that the impedance of the parallel configuration at resonance is much higher than the resistance of the coil, so less current can be delivered to the transmitter coil.
+
+On the other hand, the series configuration at the transmitter has an impedance at resonance of:
+\begin{equation}
+    Z_{serie} = R + j \left( \omega L - \frac{1}{\omega C} \right)
+\end{equation}
+
+At resonance, the impedance decomes:
+\begin{equation}
+    Z_{serie} = R
+\end{equation}
+
+So the series configuration at the transmitter allows for maximum current to be delivered to the coil. Actually in this case the resistance of the transmitter is only 3 $\Omega$, so the amplifier can deliver a maximum current of around 3 A.
+
+Regarding the receiver, the parallel configuration is more efficient in terms of signal reception. Although it has higher impedance, a parallel LC circuit works as a pure resonator, meaning the energy stored in the coil is transferred to the capacitor and then back to the coil, and so on. That results in a higher voltage across the capacitor, which is where the signal is measured, this voltage depends on the quality factor. Additionally, the audio interface's impedance is closer to the impedance of the parallel configuration, which is beneficial for signal transfer. On the other hand, the series configuration at the receiver has a lower voltage it's only corresponds to the voltage drop across the resistance of the circuit but isn't a voltage amplification mechanism as the parallel configuration. For that reason, the parallel configuration at the receiver is more efficient in terms of signal reception.
+\newp
+A short test was made to compare the performance of parallel and series configuration at the receiver, using the same coil and tunning capacitor for both cases. Here is a spectrum plot of the noise captured by the receiver at Cerro Calán in both configurations, shown in figure \ref{fig:receiver-configurations}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\textwidth]{img/Noise_p_s.png}
+    \caption{Spectrum of noise captured by the receiver in parallel and series configuration.}
+    \label{fig:receiver-configurations}
+\end{figure}
+
+
+The results showed that the parallel configuration at the receiver provided a stronger signal compared to the series configuration, confirming the theoretical analysis.
+\newp
+Measuring communication performance in terms of SNR, correlation peak and SER the results are:
+
+\begin{table}
+    \centering
+    \begin{tabular}{c|c|c|c}
+        Configuration of Receiver & mean SNR (dB) & Max Correlation Peak & SER (\%) \\
+        \hline
+        Series & 6.47 & 144.18 & 0.0 \\
+        Parallel & 7.42 & 19.25 & 0.0 \\
+    \end{tabular}
+    \caption{Performance comparison between series and parallel configuration at the receiver.}
+    \label{tab:receiver-performance}
+\end{table}
+
+The results show that the parallel configuration at the receiver provides a slightly higher SNR compared to the series configuration. Considering the LC tank's amplificates both noise and signal this result could be casuality. However, a parallel configuration demonstrates a higher mean correlation peak that is useful to take advantage of the dynamic range of the audio interface.
+
+\subsection{Interference and electromagnetic compatibility}
+
+Interference was a significant challange during the hardware developement of MAGIC. Primarly the noise sources were not well known, and it was through testing that they began to appear. for example at the beggining when MAGIC hasn't an own power supply (battery) and the module was to be connected to the power grid, the noise from the power lines made the difference between detecting the signal or not at low SNR. In figure \ref{fig:noise-grid} is a measure of the noise captured by the receiver when the module is connected to the power grid, considering two measure for each configuration, this test was made in Millimeter Wave Laboratory of Universidad de Chile.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\textwidth]{img/noise.jpeg}
+    \caption{Spectrum of noise captured by the receiver when the module is connected to the power grid.}
+    \label{fig:noise-grid}
+\end{figure}
+
+It is clear that when the MAGIC central module is connected to the power grid, i.e., the amplifier is powered on. The noise level increases significantly and also the correlation peaks.
+\newp
+To mitigate this issue, the decision was to use a battery as the power supply for the module and switch the power of the amplifier on only during the transmission of the signal.
+\newp
+Another noise source, also coming from the power grid, appeared when The received laptop was connected to the power grid. Aditionallu, noise from the proper laptop was also a problem, if it was too close to the coil, there could be false positives in the correlation, it was necessary to define a minimum distance free of electronic devices around the coil to avoid this kind of interference. For future versions of MAGIC, it would be interesting to implement a more robust shielding of the receiver path from the coil to the audio interface, using high quality audio cables and connectors, also keeping a proper grounding of the system.
+
+ 
+
 
 \section{Software developement}
 
-There are several aspects to analyze in the software developement of MAGIC. First, the choice of modulation scheme (M-FSK) was accured and the implementation of signal proccessing techniques, including filtering, decimation, error correction coding and different ways to demodulate generate that MAGIC works propertly.
+There are several aspects to discuss in the software developement of MAGIC. First, the choice of modulation scheme (M-FSK) was accured, other modulation schemes that depend on phase like PSK (Phase Shift Keying) or QAM (Quadrature Amplitude Modulation) could not work well considering the naturally dispersive system and changing conditions. Some signal proccessing techniques, including filtering and error correction coding generate that MAGIC works propertly and others, such as decimation, proved counterproductive due to the implementation of the algorithm.
+
+\subsection{Codification and Symbol Mapping}
+
+The choise of extended ASCII is a consequence od available bandwidth. Depending on symbol duration is defined the spectral difference between symbols to mantain orthogonality, as it was explained in section \ref{subsec: ortogonality}, the minimum spectral distance between symbols is 2 $Hz$. As the spectral channels of the FFT at demodulator has the same width is proper to define symbol frequencies leaving an empty spectral channel between symbols to avoid leakage if the symbol generated don't match exactly with the spectral channels of the FFT. For that reason we can distribute a maximum of $\sim$112 symbols considering an analog bandwidth of 450 $Hz$.
+Furthermore, considering that there are harmonics in the electrical grid within the band, the space reduces significantly. For example if we defined a flagged band of 20 $Hz$ around every even or odd harmonic, 270 $Hz$ of the bandwidth are available, and to have more than $\sim$ 67 characters we have to encode two symbols per character, thats why our bitrate is 8 bps.
+\newp
+To avoid leakage between symbols, it´s necessary demostrate that the variability of frequency of the generated tones is lower than the spectral distance between symbols. In figure \ref{fig:variability} is shown the variability of a generated tone by the audio interface for a defined amount of time.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\textwidth]{img/variability.jpeg}
+    \caption{Variability of a generated tone by the audio interface for a defined amount of time.}
+    \label{fig:variability}
+\end{figure}
+
+At the upper left section of figure \ref{fig:variability} is shown tah variability of spectral peak considering a FFT resolution of 2 $Hz$, like the one used in the demodulator, it's clear that sometimes the peak moves for a little time to the adjacent spectral channel, but not invade the spectral channel of the adjacent symbol. At the upper right section the audio interface was heated to induce more variability. At the bottom left section is shown the variability of the spectral peak considering a FFT resolution of 0.25 $Hz$, the peak looks more inestable but the variations of frequency are close to the FFT resolution wich is good enough. Finally, at the bottom right section is shown the variability of the spectral peak considering a FFT resolution of 0.25 $Hz$ and the audio interface was heated, the variability is higher but still good enough to have good performance.
+
+\subsection{Processing capability}
+
+The most computationally intensive part of the software developement is the correlation by parts algorithm, that is used for preamble detection. Considering that the lenght of the preamble is 12 seconds, at a frequency rate of 48000 $Hz$, in every cicle is need to process an operation between a vector of 576000  (Symbol samples [M] $\times$ N° Symbols [N]) samples and a vector of the window size, that have to be at least a $samples-per-buffer$ [X] larger than preamble. This operation is computationally intensive, because is a loop of a [X] iterations that execute [N] simple correlations of two [M]-size vectors. The total amount of time available to do this operation is defined by the $frames_per_buffer$ parameter of pyaudio instance \cite{mitPyAudioDocumentation}, this condition secures that there will be one instance when the preamble is fully contained in the window and a correlation peak can be detected. 
+\newp
+So if the cost of the total operation increases linearlly with [X] because the cost can be expresed as:
+
+\begin{equation}
+    Cost = O(X \cdot [N \cdot (M\log(M))])
+    \end{equation}
+
+Where $O(M\log(M))$ is the cost of a single correlation between two [M]-size vectors using FFT method of scipy correlate operation.
+
+
+
+
+
 \newp
 There are a lot of possible improvments in the software developement, especially in the area of adaptive detection, channel estimation and synchronization techniques. These improvements could enhance the system's performance and reliability in more challenging underground environments.
 \newp
 Overall, the software developement of MAGIC demonstrates the potential of TTE technology for underground applications, and highlights the importance of signal processing techniques to achieve reliable communication in challenging environments. 
 
 
-\section{Performance evaluation at Cerro Calan}
+\section{Performance evaluation at Cerro Calan}\label{subsec: Performance evaluation at Cerro Calan}
 
 
 \section{Mine measurements}

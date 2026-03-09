@@ -56,13 +56,13 @@ INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\generic\babel\txtbabel.def
 INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\latex\arabi\bblopts.cfg
 INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\latex\arabi\bblopts.cfg
 INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\latex\arabi\bblopts.cfg
-INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\latex\babel-spanish\spanish.ldf
-INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\latex\babel-spanish\spanish.ldf
-INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\latex\babel-spanish\spanish.ldf
-INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\generic\babel\locale\es\babel-spanish.tex
-INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\generic\babel\locale\es\babel-spanish.tex
-INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\generic\babel\locale\es\babel-spanish.tex
-INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\generic\babel\locale\es\babel-es.ini
+INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\latex\babel-english\english.ldf
+INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\latex\babel-english\english.ldf
+INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\latex\babel-english\english.ldf
+INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\generic\babel\locale\en\babel-english.tex
+INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\generic\babel\locale\en\babel-english.tex
+INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\generic\babel\locale\en\babel-english.tex
+INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\generic\babel\locale\en\babel-en.ini
 INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\latex\sectsty\sectsty.sty
 INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\latex\sectsty\sectsty.sty
 INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\latex\base\inputenc.sty
@@ -164,14 +164,11 @@ INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\latex\fmtcount\fcprefix.st
 INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\latex\fmtcount\fcprefix.sty
 INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\latex\fmtcount\fcnumparser.sty
 INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\latex\fmtcount\fcnumparser.sty
-INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\latex\fmtcount\fc-spanish.def
-INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\latex\fmtcount\fc-spanish.def
-INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\latex\fmtcount\fc-spanish.def
+INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\latex\fmtcount\fc-english.def
+INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\latex\fmtcount\fc-english.def
+INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\latex\fmtcount\fc-english.def
 INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\latex\datetime\datetime-defaults.sty
 INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\latex\datetime\datetime-defaults.sty
-INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\latex\datetime\dt-spanish.def
-INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\latex\datetime\dt-spanish.def
-INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\latex\datetime\dt-spanish.def
 INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\latex\sttools\floatpag.sty
 INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\latex\sttools\floatpag.sty
 INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\latex\floatrow\floatrow.sty
@@ -500,7 +497,6 @@ INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ts1-lmr10.
 INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ts1-lmr8.tfm
 INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ts1-lmr5.tfm
 INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmri12.tfm
-INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmbxi10.tfm
 INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmr17.tfm
 INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmbx12.tfm
 INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmbx12.tfm
@@ -559,6 +555,55 @@ INPUT .\Chapter II Theoretical framework.tex
 INPUT .\Chapter II Theoretical framework.tex
 INPUT Chapter II Theoretical framework.tex
 INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-mathex.enc
+INPUT .\img\eqs\angular.png
+INPUT .\img\eqs\angular.png
+INPUT .\img\eqs\angular.png
+INPUT .\img\eqs\angular.png
+INPUT .\img\eqs\angular.png
+INPUT .\img\eqs\angular.png
+INPUT .\img\eqs\angular.png
+INPUT .\img\eqs\lateral.png
+INPUT .\img\eqs\lateral.png
+INPUT .\img\eqs\lateral.png
+INPUT .\img\eqs\lateral.png
+INPUT .\img\eqs\lateral.png
+INPUT .\img\eqs\lateral.png
+INPUT .\img\eqs\lateral.png
+INPUT .\img\simple_diagram.png
+INPUT .\img\simple_diagram.png
+INPUT .\img\simple_diagram.png
+INPUT .\img\simple_diagram.png
+INPUT .\img\simple_diagram.png
+INPUT .\img\simple_diagram.png
+INPUT .\img\simple_diagram.png
+INPUT .\img\quadrature.png
+INPUT .\img\quadrature.png
+INPUT .\img\quadrature.png
+INPUT .\img\quadrature.png
+INPUT .\img\quadrature.png
+INPUT .\img\quadrature.png
+INPUT .\img\quadrature.png
+INPUT .\img\matchedfil.png
+INPUT .\img\matchedfil.png
+INPUT .\img\matchedfil.png
+INPUT .\img\matchedfil.png
+INPUT .\img\matchedfil.png
+INPUT .\img\matchedfil.png
+INPUT .\img\matchedfil.png
+INPUT .\img\orto.png
+INPUT .\img\orto.png
+INPUT .\img\orto.png
+INPUT .\img\orto.png
+INPUT .\img\orto.png
+INPUT .\img\orto.png
+INPUT .\img\orto.png
+INPUT .\img\teo_ser.png
+INPUT .\img\teo_ser.png
+INPUT .\img\teo_ser.png
+INPUT .\img\teo_ser.png
+INPUT .\img\teo_ser.png
+INPUT .\img\teo_ser.png
+INPUT .\img\teo_ser.png
 INPUT .\Chapter III Methodology.tex
 INPUT .\Chapter III Methodology.tex
 INPUT Chapter III Methodology.tex
@@ -579,6 +624,13 @@ INPUT .\img\schematic.png
 INPUT .\img\schematic.png
 INPUT .\img\schematic.png
 INPUT .\img\schematic.png
+INPUT .\img\Maxwell_1.png
+INPUT .\img\Maxwell_1.png
+INPUT .\img\Maxwell_1.png
+INPUT .\img\Maxwell_1.png
+INPUT .\img\Maxwell_1.png
+INPUT .\img\Maxwell_1.png
+INPUT .\img\Maxwell_1.png
 INPUT .\img\coil.png
 INPUT .\img\coil.png
 INPUT .\img\coil.png
@@ -586,6 +638,27 @@ INPUT .\img\coil.png
 INPUT .\img\coil.png
 INPUT .\img\coil.png
 INPUT .\img\coil.png
+INPUT .\img\spice.png
+INPUT .\img\spice.png
+INPUT .\img\spice.png
+INPUT .\img\spice.png
+INPUT .\img\spice.png
+INPUT .\img\spice.png
+INPUT .\img\spice.png
+INPUT .\img\spicetf.png
+INPUT .\img\spicetf.png
+INPUT .\img\spicetf.png
+INPUT .\img\spicetf.png
+INPUT .\img\spicetf.png
+INPUT .\img\spicetf.png
+INPUT .\img\spicetf.png
+INPUT .\img\tfpython.png
+INPUT .\img\tfpython.png
+INPUT .\img\tfpython.png
+INPUT .\img\tfpython.png
+INPUT .\img\tfpython.png
+INPUT .\img\tfpython.png
+INPUT .\img\tfpython.png
 INPUT .\img\TF_L1_L2.png
 INPUT .\img\TF_L1_L2.png
 INPUT .\img\TF_L1_L2.png
@@ -643,27 +716,34 @@ INPUT .\img\sbp3.png
 INPUT .\img\sbp3.png
 INPUT .\img\sbp3.png
 INPUT .\img\sbp3.png
-INPUT .\img\Diagrama_Receptor.png
-INPUT .\img\Diagrama_Receptor.png
-INPUT .\img\Diagrama_Receptor.png
-INPUT .\img\Diagrama_Receptor.png
-INPUT .\img\Diagrama_Receptor.png
-INPUT .\img\Diagrama_Receptor.png
-INPUT .\img\Diagrama_Receptor.png
-INPUT .\img\Simulacion corr IQ.png
-INPUT .\img\Simulacion corr IQ.png
-INPUT .\img\Simulacion corr IQ.png
-INPUT .\img\Simulacion corr IQ.png
-INPUT .\img\Simulacion corr IQ.png
-INPUT .\img\Simulacion corr IQ.png
-INPUT .\img\Simulacion corr IQ.png
-INPUT .\img\Simulacion corr modelos_2.png
-INPUT .\img\Simulacion corr modelos_2.png
-INPUT .\img\Simulacion corr modelos_2.png
-INPUT .\img\Simulacion corr modelos_2.png
-INPUT .\img\Simulacion corr modelos_2.png
-INPUT .\img\Simulacion corr modelos_2.png
-INPUT .\img\Simulacion corr modelos_2.png
+INPUT .\img\battery_and_buck.png
+INPUT .\img\battery_and_buck.png
+INPUT .\img\battery_and_buck.png
+INPUT .\img\battery_and_buck.png
+INPUT .\img\battery_and_buck.png
+INPUT .\img\battery_and_buck.png
+INPUT .\img\battery_and_buck.png
+INPUT .\img\Ensamblaje_bat.jpg
+INPUT .\img\Ensamblaje_bat.jpg
+INPUT .\img\Ensamblaje_bat.jpg
+INPUT .\img\Ensamblaje_bat.jpg
+INPUT .\img\Ensamblaje_bat.jpg
+INPUT .\img\Ensamblaje_bat.jpg
+INPUT .\img\Ensamblaje_bat.jpg
+INPUT .\img\Ensamblaje_case_MAGIC_V1.jpg
+INPUT .\img\Ensamblaje_case_MAGIC_V1.jpg
+INPUT .\img\Ensamblaje_case_MAGIC_V1.jpg
+INPUT .\img\Ensamblaje_case_MAGIC_V1.jpg
+INPUT .\img\Ensamblaje_case_MAGIC_V1.jpg
+INPUT .\img\Ensamblaje_case_MAGIC_V1.jpg
+INPUT .\img\Ensamblaje_case_MAGIC_V1.jpg
+INPUT .\img\MAGIC_complete_system.png
+INPUT .\img\MAGIC_complete_system.png
+INPUT .\img\MAGIC_complete_system.png
+INPUT .\img\MAGIC_complete_system.png
+INPUT .\img\MAGIC_complete_system.png
+INPUT .\img\MAGIC_complete_system.png
+INPUT .\img\MAGIC_complete_system.png
 INPUT .\img\SER_vs_Ns.png
 INPUT .\img\SER_vs_Ns.png
 INPUT .\img\SER_vs_Ns.png
@@ -671,6 +751,291 @@ INPUT .\img\SER_vs_Ns.png
 INPUT .\img\SER_vs_Ns.png
 INPUT .\img\SER_vs_Ns.png
 INPUT .\img\SER_vs_Ns.png
+INPUT .\img\constellation_old.jpg
+INPUT .\img\constellation_old.jpg
+INPUT .\img\constellation_old.jpg
+INPUT .\img\constellation_old.jpg
+INPUT .\img\constellation_old.jpg
+INPUT .\img\constellation_old.jpg
+INPUT .\img\constellation_old.jpg
+INPUT .\img\100m 200m and noise\power_spectrum_density_of_noise_at_calicata.png
+INPUT .\img\100m 200m and noise\power_spectrum_density_of_noise_at_calicata.png
+INPUT .\img\100m 200m and noise\power_spectrum_density_of_noise_at_calicata.png
+INPUT .\img\100m 200m and noise\power_spectrum_density_of_noise_at_calicata.png
+INPUT .\img\100m 200m and noise\power_spectrum_density_of_noise_at_calicata.png
+INPUT .\img\100m 200m and noise\power_spectrum_density_of_noise_at_calicata.png
+INPUT .\img\100m 200m and noise\power_spectrum_density_of_noise_at_calicata.png
+INPUT .\img\100m 200m and noise\power_spectrum_density_of_noise_at_copa.png
+INPUT .\img\100m 200m and noise\power_spectrum_density_of_noise_at_copa.png
+INPUT .\img\100m 200m and noise\power_spectrum_density_of_noise_at_copa.png
+INPUT .\img\100m 200m and noise\power_spectrum_density_of_noise_at_copa.png
+INPUT .\img\100m 200m and noise\power_spectrum_density_of_noise_at_copa.png
+INPUT .\img\100m 200m and noise\power_spectrum_density_of_noise_at_copa.png
+INPUT .\img\100m 200m and noise\power_spectrum_density_of_noise_at_copa.png
+INPUT .\img\100m 200m and noise\power_spectrum_density_of_noise_at_lab.png
+INPUT .\img\100m 200m and noise\power_spectrum_density_of_noise_at_lab.png
+INPUT .\img\100m 200m and noise\power_spectrum_density_of_noise_at_lab.png
+INPUT .\img\100m 200m and noise\power_spectrum_density_of_noise_at_lab.png
+INPUT .\img\100m 200m and noise\power_spectrum_density_of_noise_at_lab.png
+INPUT .\img\100m 200m and noise\power_spectrum_density_of_noise_at_lab.png
+INPUT .\img\100m 200m and noise\power_spectrum_density_of_noise_at_lab.png
+INPUT .\img\100m 200m and noise\DB Selec.png
+INPUT .\img\100m 200m and noise\DB Selec.png
+INPUT .\img\100m 200m and noise\DB Selec.png
+INPUT .\img\100m 200m and noise\DB Selec.png
+INPUT .\img\100m 200m and noise\DB Selec.png
+INPUT .\img\100m 200m and noise\DB Selec.png
+INPUT .\img\100m 200m and noise\DB Selec.png
+INPUT .\img\100m 200m and noise\Ruido dB scale.png
+INPUT .\img\100m 200m and noise\Ruido dB scale.png
+INPUT .\img\100m 200m and noise\Ruido dB scale.png
+INPUT .\img\100m 200m and noise\Ruido dB scale.png
+INPUT .\img\100m 200m and noise\Ruido dB scale.png
+INPUT .\img\100m 200m and noise\Ruido dB scale.png
+INPUT .\img\100m 200m and noise\Ruido dB scale.png
+INPUT .\img\100m 200m and noise\new constellation.png
+INPUT .\img\100m 200m and noise\new constellation.png
+INPUT .\img\100m 200m and noise\new constellation.png
+INPUT .\img\100m 200m and noise\new constellation.png
+INPUT .\img\100m 200m and noise\new constellation.png
+INPUT .\img\100m 200m and noise\new constellation.png
+INPUT .\img\100m 200m and noise\new constellation.png
+INPUT .\img\Diagrama_Receptor.png
+INPUT .\img\Diagrama_Receptor.png
+INPUT .\img\Diagrama_Receptor.png
+INPUT .\img\Diagrama_Receptor.png
+INPUT .\img\Diagrama_Receptor.png
+INPUT .\img\Diagrama_Receptor.png
+INPUT .\img\Diagrama_Receptor.png
+INPUT .\img\Respuesta_filtro.png
+INPUT .\img\Respuesta_filtro.png
+INPUT .\img\Respuesta_filtro.png
+INPUT .\img\Respuesta_filtro.png
+INPUT .\img\Respuesta_filtro.png
+INPUT .\img\Respuesta_filtro.png
+INPUT .\img\Respuesta_filtro.png
+INPUT .\img\Simulacion corr IQ.png
+INPUT .\img\Simulacion corr IQ.png
+INPUT .\img\Simulacion corr IQ.png
+INPUT .\img\Simulacion corr IQ.png
+INPUT .\img\Simulacion corr IQ.png
+INPUT .\img\Simulacion corr IQ.png
+INPUT .\img\Simulacion corr IQ.png
+INPUT .\img\100m 200m and noise\candidate def.png
+INPUT .\img\100m 200m and noise\candidate def.png
+INPUT .\img\100m 200m and noise\candidate def.png
+INPUT .\img\100m 200m and noise\candidate def.png
+INPUT .\img\100m 200m and noise\candidate def.png
+INPUT .\img\100m 200m and noise\candidate def.png
+INPUT .\img\100m 200m and noise\candidate def.png
+INPUT .\img\Simulacion corr modelos_2.png
+INPUT .\img\Simulacion corr modelos_2.png
+INPUT .\img\Simulacion corr modelos_2.png
+INPUT .\img\Simulacion corr modelos_2.png
+INPUT .\img\Simulacion corr modelos_2.png
+INPUT .\img\Simulacion corr modelos_2.png
+INPUT .\img\Simulacion corr modelos_2.png
+INPUT .\img\decimacion\filters_decimation.png
+INPUT .\img\decimacion\filters_decimation.png
+INPUT .\img\decimacion\filters_decimation.png
+INPUT .\img\decimacion\filters_decimation.png
+INPUT .\img\decimacion\filters_decimation.png
+INPUT .\img\decimacion\filters_decimation.png
+INPUT .\img\decimacion\filters_decimation.png
+INPUT .\img\decimacion\Correlation_64_symbols_NW.png
+INPUT .\img\decimacion\Correlation_64_symbols_NW.png
+INPUT .\img\decimacion\Correlation_64_symbols_NW.png
+INPUT .\img\decimacion\Correlation_64_symbols_NW.png
+INPUT .\img\decimacion\Correlation_64_symbols_NW.png
+INPUT .\img\decimacion\Correlation_64_symbols_NW.png
+INPUT .\img\decimacion\Correlation_64_symbols_NW.png
+INPUT .\img\decimacion\Correlation_64_symbols_NW_ D.png
+INPUT .\img\decimacion\Correlation_64_symbols_NW_ D.png
+INPUT .\img\decimacion\Correlation_64_symbols_NW_ D.png
+INPUT .\img\decimacion\Correlation_64_symbols_NW_ D.png
+INPUT .\img\decimacion\Correlation_64_symbols_NW_ D.png
+INPUT .\img\decimacion\Correlation_64_symbols_NW_ D.png
+INPUT .\img\decimacion\Correlation_64_symbols_NW_ D.png
+INPUT .\img\decimacion\Correlation_128_symbols_NW.png
+INPUT .\img\decimacion\Correlation_128_symbols_NW.png
+INPUT .\img\decimacion\Correlation_128_symbols_NW.png
+INPUT .\img\decimacion\Correlation_128_symbols_NW.png
+INPUT .\img\decimacion\Correlation_128_symbols_NW.png
+INPUT .\img\decimacion\Correlation_128_symbols_NW.png
+INPUT .\img\decimacion\Correlation_128_symbols_NW.png
+INPUT .\img\decimacion\Correlation_128_symbols_NW_D.png
+INPUT .\img\decimacion\Correlation_128_symbols_NW_D.png
+INPUT .\img\decimacion\Correlation_128_symbols_NW_D.png
+INPUT .\img\decimacion\Correlation_128_symbols_NW_D.png
+INPUT .\img\decimacion\Correlation_128_symbols_NW_D.png
+INPUT .\img\decimacion\Correlation_128_symbols_NW_D.png
+INPUT .\img\decimacion\Correlation_128_symbols_NW_D.png
+INPUT .\img\decimacion\Power_and_xcorr_64_nw.png
+INPUT .\img\decimacion\Power_and_xcorr_64_nw.png
+INPUT .\img\decimacion\Power_and_xcorr_64_nw.png
+INPUT .\img\decimacion\Power_and_xcorr_64_nw.png
+INPUT .\img\decimacion\Power_and_xcorr_64_nw.png
+INPUT .\img\decimacion\Power_and_xcorr_64_nw.png
+INPUT .\img\decimacion\Power_and_xcorr_64_nw.png
+INPUT .\img\decimacion\Power_and_xcorr_64_nw.png
+INPUT .\img\decimacion\Power_and_xcorr_64_nw.png
+INPUT .\img\decimacion\Power_and_xcorr_64_nw.png
+INPUT .\img\decimacion\Power_and_xcorr_64_nw.png
+INPUT .\img\MAGIC_PI.png
+INPUT .\img\MAGIC_PI.png
+INPUT .\img\MAGIC_PI.png
+INPUT .\img\MAGIC_PI.png
+INPUT .\img\MAGIC_PI.png
+INPUT .\img\MAGIC_PI.png
+INPUT .\img\MAGIC_PI.png
+INPUT .\img\MAGIC PI 2.png
+INPUT .\img\MAGIC PI 2.png
+INPUT .\img\MAGIC PI 2.png
+INPUT .\img\MAGIC PI 2.png
+INPUT .\img\MAGIC PI 2.png
+INPUT .\img\MAGIC PI 2.png
+INPUT .\img\MAGIC PI 2.png
+INPUT .\img\patron.jpg
+INPUT .\img\patron.jpg
+INPUT .\img\patron.jpg
+INPUT .\img\patron.jpg
+INPUT .\img\patron.jpg
+INPUT .\img\patron.jpg
+INPUT .\img\patron.jpg
+INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-ts1.enc
+INPUT .\img\100m 200m and noise\100m.png
+INPUT .\img\100m 200m and noise\100m.png
+INPUT .\img\100m 200m and noise\100m.png
+INPUT .\img\100m 200m and noise\100m.png
+INPUT .\img\100m 200m and noise\100m.png
+INPUT .\img\100m 200m and noise\100m.png
+INPUT .\img\100m 200m and noise\100m.png
+INPUT .\img\100m 200m and noise\Gautier Setup.png
+INPUT .\img\100m 200m and noise\Gautier Setup.png
+INPUT .\img\100m 200m and noise\Gautier Setup.png
+INPUT .\img\100m 200m and noise\Gautier Setup.png
+INPUT .\img\100m 200m and noise\Gautier Setup.png
+INPUT .\img\100m 200m and noise\Gautier Setup.png
+INPUT .\img\100m 200m and noise\Gautier Setup.png
+INPUT .\img\100m 200m and noise\Copa_setup.png
+INPUT .\img\100m 200m and noise\Copa_setup.png
+INPUT .\img\100m 200m and noise\Copa_setup.png
+INPUT .\img\100m 200m and noise\Copa_setup.png
+INPUT .\img\100m 200m and noise\Copa_setup.png
+INPUT .\img\100m 200m and noise\Copa_setup.png
+INPUT .\img\100m 200m and noise\Copa_setup.png
+INPUT .\img\100m 200m and noise\200m.png
+INPUT .\img\100m 200m and noise\200m.png
+INPUT .\img\100m 200m and noise\200m.png
+INPUT .\img\100m 200m and noise\200m.png
+INPUT .\img\100m 200m and noise\200m.png
+INPUT .\img\100m 200m and noise\200m.png
+INPUT .\img\100m 200m and noise\200m.png
+INPUT .\img\100m 200m and noise\calicata.jpg
+INPUT .\img\100m 200m and noise\calicata.jpg
+INPUT .\img\100m 200m and noise\calicata.jpg
+INPUT .\img\100m 200m and noise\calicata.jpg
+INPUT .\img\100m 200m and noise\calicata.jpg
+INPUT .\img\100m 200m and noise\calicata.jpg
+INPUT .\img\100m 200m and noise\calicata.jpg
+INPUT .\img\100m 200m and noise\corr_old_100_m.png
+INPUT .\img\100m 200m and noise\corr_old_100_m.png
+INPUT .\img\100m 200m and noise\corr_old_100_m.png
+INPUT .\img\100m 200m and noise\corr_old_100_m.png
+INPUT .\img\100m 200m and noise\corr_old_100_m.png
+INPUT .\img\100m 200m and noise\corr_old_100_m.png
+INPUT .\img\100m 200m and noise\corr_old_100_m.png
+INPUT .\img\100m 200m and noise\corr_IQ_100_m.png
+INPUT .\img\100m 200m and noise\corr_IQ_100_m.png
+INPUT .\img\100m 200m and noise\corr_IQ_100_m.png
+INPUT .\img\100m 200m and noise\corr_IQ_100_m.png
+INPUT .\img\100m 200m and noise\corr_IQ_100_m.png
+INPUT .\img\100m 200m and noise\corr_IQ_100_m.png
+INPUT .\img\100m 200m and noise\corr_IQ_100_m.png
+INPUT .\img\100m 200m and noise\xcorr_wf_old_not_adapted.png
+INPUT .\img\100m 200m and noise\xcorr_wf_old_not_adapted.png
+INPUT .\img\100m 200m and noise\xcorr_wf_old_not_adapted.png
+INPUT .\img\100m 200m and noise\xcorr_wf_old_not_adapted.png
+INPUT .\img\100m 200m and noise\xcorr_wf_old_not_adapted.png
+INPUT .\img\100m 200m and noise\xcorr_wf_old_not_adapted.png
+INPUT .\img\100m 200m and noise\xcorr_wf_old_not_adapted.png
+INPUT .\img\100m 200m and noise\xcorr_wf_iq_not_adapted.png
+INPUT .\img\100m 200m and noise\xcorr_wf_iq_not_adapted.png
+INPUT .\img\100m 200m and noise\xcorr_wf_iq_not_adapted.png
+INPUT .\img\100m 200m and noise\xcorr_wf_iq_not_adapted.png
+INPUT .\img\100m 200m and noise\xcorr_wf_iq_not_adapted.png
+INPUT .\img\100m 200m and noise\xcorr_wf_iq_not_adapted.png
+INPUT .\img\100m 200m and noise\xcorr_wf_iq_not_adapted.png
+INPUT .\img\100m 200m and noise\Max_peak_variation_copa.png
+INPUT .\img\100m 200m and noise\Max_peak_variation_copa.png
+INPUT .\img\100m 200m and noise\Max_peak_variation_copa.png
+INPUT .\img\100m 200m and noise\Max_peak_variation_copa.png
+INPUT .\img\100m 200m and noise\Max_peak_variation_copa.png
+INPUT .\img\100m 200m and noise\Max_peak_variation_copa.png
+INPUT .\img\100m 200m and noise\Max_peak_variation_copa.png
+INPUT .\img\100m 200m and noise\Max_peak_variation_gau.png
+INPUT .\img\100m 200m and noise\Max_peak_variation_gau.png
+INPUT .\img\100m 200m and noise\Max_peak_variation_gau.png
+INPUT .\img\100m 200m and noise\Max_peak_variation_gau.png
+INPUT .\img\100m 200m and noise\Max_peak_variation_gau.png
+INPUT .\img\100m 200m and noise\Max_peak_variation_gau.png
+INPUT .\img\100m 200m and noise\Max_peak_variation_gau.png
+INPUT .\img\100m 200m and noise\XCorr_forms_12x48_cal.png
+INPUT .\img\100m 200m and noise\XCorr_forms_12x48_cal.png
+INPUT .\img\100m 200m and noise\XCorr_forms_12x48_cal.png
+INPUT .\img\100m 200m and noise\XCorr_forms_12x48_cal.png
+INPUT .\img\100m 200m and noise\XCorr_forms_12x48_cal.png
+INPUT .\img\100m 200m and noise\XCorr_forms_12x48_cal.png
+INPUT .\img\100m 200m and noise\XCorr_forms_12x48_cal.png
+INPUT .\img\100m 200m and noise\Corr_forms_24x24_cal.png
+INPUT .\img\100m 200m and noise\Corr_forms_24x24_cal.png
+INPUT .\img\100m 200m and noise\Corr_forms_24x24_cal.png
+INPUT .\img\100m 200m and noise\Corr_forms_24x24_cal.png
+INPUT .\img\100m 200m and noise\Corr_forms_24x24_cal.png
+INPUT .\img\100m 200m and noise\Corr_forms_24x24_cal.png
+INPUT .\img\100m 200m and noise\Corr_forms_24x24_cal.png
+INPUT .\img\100m 200m and noise\Corr_forms_12x48_gau.png
+INPUT .\img\100m 200m and noise\Corr_forms_12x48_gau.png
+INPUT .\img\100m 200m and noise\Corr_forms_12x48_gau.png
+INPUT .\img\100m 200m and noise\Corr_forms_12x48_gau.png
+INPUT .\img\100m 200m and noise\Corr_forms_12x48_gau.png
+INPUT .\img\100m 200m and noise\Corr_forms_12x48_gau.png
+INPUT .\img\100m 200m and noise\Corr_forms_12x48_gau.png
+INPUT .\img\100m 200m and noise\Corr_forms_24x24_gau.png
+INPUT .\img\100m 200m and noise\Corr_forms_24x24_gau.png
+INPUT .\img\100m 200m and noise\Corr_forms_24x24_gau.png
+INPUT .\img\100m 200m and noise\Corr_forms_24x24_gau.png
+INPUT .\img\100m 200m and noise\Corr_forms_24x24_gau.png
+INPUT .\img\100m 200m and noise\Corr_forms_24x24_gau.png
+INPUT .\img\100m 200m and noise\Corr_forms_24x24_gau.png
+INPUT .\img\100m 200m and noise\12x48_cal.png
+INPUT .\img\100m 200m and noise\12x48_cal.png
+INPUT .\img\100m 200m and noise\12x48_cal.png
+INPUT .\img\100m 200m and noise\12x48_cal.png
+INPUT .\img\100m 200m and noise\12x48_cal.png
+INPUT .\img\100m 200m and noise\12x48_cal.png
+INPUT .\img\100m 200m and noise\12x48_cal.png
+INPUT .\img\100m 200m and noise\24x24_cal.png
+INPUT .\img\100m 200m and noise\24x24_cal.png
+INPUT .\img\100m 200m and noise\24x24_cal.png
+INPUT .\img\100m 200m and noise\24x24_cal.png
+INPUT .\img\100m 200m and noise\24x24_cal.png
+INPUT .\img\100m 200m and noise\24x24_cal.png
+INPUT .\img\100m 200m and noise\24x24_cal.png
+INPUT .\img\100m 200m and noise\12x48_gau.png
+INPUT .\img\100m 200m and noise\12x48_gau.png
+INPUT .\img\100m 200m and noise\12x48_gau.png
+INPUT .\img\100m 200m and noise\12x48_gau.png
+INPUT .\img\100m 200m and noise\12x48_gau.png
+INPUT .\img\100m 200m and noise\12x48_gau.png
+INPUT .\img\100m 200m and noise\12x48_gau.png
+INPUT .\img\100m 200m and noise\24x24_gau.png
+INPUT .\img\100m 200m and noise\24x24_gau.png
+INPUT .\img\100m 200m and noise\24x24_gau.png
+INPUT .\img\100m 200m and noise\24x24_gau.png
+INPUT .\img\100m 200m and noise\24x24_gau.png
+INPUT .\img\100m 200m and noise\24x24_gau.png
+INPUT .\img\100m 200m and noise\24x24_gau.png
 INPUT .\img\mina\Catemu.jpg
 INPUT .\img\mina\Catemu.jpg
 INPUT .\img\mina\Catemu.jpg
@@ -751,20 +1116,82 @@ INPUT .\img\mina\corrs 120 m.png
 INPUT .\Chapter V Analysis.tex
 INPUT .\Chapter V Analysis.tex
 INPUT Chapter V Analysis.tex
+INPUT .\img\diagrams\Transfer_functions.png
+INPUT .\img\diagrams\Transfer_functions.png
+INPUT .\img\diagrams\Transfer_functions.png
+INPUT .\img\diagrams\Transfer_functions.png
+INPUT .\img\diagrams\Transfer_functions.png
+INPUT .\img\diagrams\Transfer_functions.png
+INPUT .\img\diagrams\Transfer_functions.png
+INPUT .\img\Noise_p_s.png
+INPUT .\img\Noise_p_s.png
+INPUT .\img\Noise_p_s.png
+INPUT .\img\Noise_p_s.png
+INPUT .\img\Noise_p_s.png
+INPUT .\img\Noise_p_s.png
+INPUT .\img\Noise_p_s.png
+INPUT .\img\noise.jpeg
+INPUT .\img\noise.jpeg
+INPUT .\img\noise.jpeg
+INPUT .\img\noise.jpeg
+INPUT .\img\noise.jpeg
+INPUT .\img\noise.jpeg
+INPUT .\img\noise.jpeg
+INPUT .\img\variability.jpeg
+INPUT .\img\variability.jpeg
+INPUT .\img\variability.jpeg
+INPUT .\img\variability.jpeg
+INPUT .\img\variability.jpeg
+INPUT .\img\variability.jpeg
+INPUT .\img\variability.jpeg
+INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmr8.tfm
+INPUT .\img\mina\mal.png
+INPUT .\img\mina\mal.png
+INPUT .\img\mina\mal.png
+INPUT .\img\mina\mal.png
+INPUT .\img\mina\mal.png
+INPUT .\img\mina\mal.png
+INPUT .\img\mina\mal.png
+INPUT .\img\ruidos_res_data_accumulada.png
+INPUT .\img\ruidos_res_data_accumulada.png
+INPUT .\img\ruidos_res_data_accumulada.png
+INPUT .\img\ruidos_res_data_accumulada.png
+INPUT .\img\ruidos_res_data_accumulada.png
+INPUT .\img\ruidos_res_data_accumulada.png
+INPUT .\img\ruidos_res_data_accumulada.png
+INPUT .\img\mina\mejor.png
+INPUT .\img\mina\mejor.png
+INPUT .\img\mina\mejor.png
+INPUT .\img\mina\mejor.png
+INPUT .\img\mina\mejor.png
+INPUT .\img\mina\mejor.png
+INPUT .\img\mina\mejor.png
+INPUT .\img\mina\Refugio.png
+INPUT .\img\mina\Refugio.png
+INPUT .\img\mina\Refugio.png
+INPUT .\img\mina\Refugio.png
+INPUT .\img\mina\Refugio.png
+INPUT .\img\mina\Refugio.png
+INPUT .\img\mina\Refugio.png
 INPUT .\Chapter VI Conclusions and Future Work.tex
 INPUT .\Chapter VI Conclusions and Future Work.tex
 INPUT Chapter VI Conclusions and Future Work.tex
+INPUT .\img\diagrams\diagramdef.png
+INPUT .\img\diagrams\diagramdef.png
+INPUT .\img\diagrams\diagramdef.png
+INPUT .\img\diagrams\diagramdef.png
+INPUT .\img\diagrams\diagramdef.png
+INPUT .\img\diagrams\diagramdef.png
+INPUT .\img\diagrams\diagramdef.png
+INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\generic\stringenc\se-utf8.def
+INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\generic\stringenc\se-utf8.def
+INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\generic\stringenc\se-utf8.def
 INPUT .\main.bbl
 INPUT .\main.bbl
 INPUT main.bbl
-INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\generic\stringenc\se-utf8.def
-INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\generic\stringenc\se-utf8.def
-INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\tex\generic\stringenc\se-utf8.def
 INPUT main.aux
 INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmbx12.pfb
 INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmbx12.pfb
-INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmbxi10.pfb
-INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmbxi10.pfb
 INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmex10.pfb
 INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmex10.pfb
 INPUT C:\Users\Juan\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmmi10.pfb

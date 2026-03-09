@@ -5,7 +5,7 @@
 \section{Conclusions}
 In conclusion the developement of MAGIC has demonstrated the feasibility of a complete Through the Earth (TTE) communication system for underground environments using relatively simple hardware and software components. The system has shown promising results in achieving text messaging through at least 200 meters rock and solid material. MAGIC is a valuable tool for mining and other industries that need a reliable communication solution in challenging underground environments, considering relatively low cost.
 \newp
-The iterative design and testing process allowed the optimization of the system's performance, finally reaching a 100\% success rate in the communication tests considering detection, a data transmission rate of 8 bits per second (bps) and SER (Symbol Error Rate) lower tan 5\%. The use of Reed Solomon error correction with 20 parity symbols permitted to reduce the SER from 5.57\% to 4.48\%, so consists not a great improvement, but it could be more useful if the encoding model change to a symbol per character as it was explained in section \ref{subsec: Performance evaluation at Cerro Calan}.
+The iterative design and testing process allowed the optimization of the system's performance, finally reaching a 100\% success rate in the communication tests considering detection, a data transmission rate of 8 bits per second (bps) and SER (Symbol Error Rate) lower tan 5\%. The use of Reed Solomon error correction with 20 parity symbols permitted to reduce the SER from 5.57\% to 4.48\%, so consists not a great improvement, but it could be more useful if the encoding model change to a symbol per character as it was explained in section \ref{subsec: Analysis-codification}.
 \newp
 The model of preamble with 24 symbols demonstrated lower variability in the correlation peak compared to the model with 12 symbols, enhancing the reliability of preamble detection and leading to more consistent performance in message reception. But the cost of processing the correlation by parts algorithm is higher, that's why the model with 12 symbols was used in the final implementation of MAGIC, and is the current model implemented in Raspberry Pi. However, the model with 24 symbols could be implemented in future works if the processing power of the hardware is improved.
 \newp
@@ -26,6 +26,7 @@ There are several areas for future work to enhance the performance and reliabili
     \item \textbf{Channel Estimation}
     \item \textbf{Intelligent Tunning}
     \item \textbf{Optimize Coupling Variability and Misalignment}
+    \item \textbf{Automatic Switching and adaptation to underground environments}
 \end{itemize}
 
 After measurements done in the mine, it's clear that the noise has a different spectral distribution compared to the astronomical observatory. Besides of knowing better the behavior of possible noise sources in VLF and ULF, that are primarly energy systems to substract their spectral influence digitally to improve the performance of the demodulator, it's possible to implement robust algorithms to mitigate the effect of impulsive noise in an adaptive way, for example using adaptive filters based on maximum correntropy criterion (MCC) \cite{wang2018adaptive} that´s has demonstrated to be effective in mitigating impulsive noise in communication systems, specifically in VLF bands. Additionally implement an adaptive thresholding technique that can adjust the detection threshold based on constant tests of communication and constant measure of correlation with noise could improve the performance of the system in changing noise conditions.
@@ -34,7 +35,7 @@ Channel estimation could be implemented to estimate the effective gain of the ch
 \newp
 Intelligent tunning is key to implement MAGIC in different environments and scenarios. In some places to reach more distance it could be necessary to deploy larger coils, to mantain MAGIC's portable characteristics this coil has to be able to disassembled and reassembled in short time. For that reason, the design of the coil has to be optimized to be easily tunable by variable capacitors, because the natural inductance of the coil can change depending of it's form. Additionally, the system could be designed to automatically adjust the tuning based on feedback from the received signal strength or quality and relatively clean bands of spectrum to set symbol frequencies, ensuring optimal performance in different environments. %Incluir referencia a analisis del ruido realizado en la seccion de analisis de resultados en la mina.
 \newp
-Finally, the coupling variability and misalignment is a critical aspect to consider in future works. As it was explained in previous sections, the performance of the system can be significantly affected by misalignment between the transmitter and receiver coils, as well as variations in the coupling due to changes in the environment or movement of the coils. Future work could focus on developing techniques to optimize the coil design to minimize the effects of misalignment and coupling variability, such as using multiple coils in orthogonal planes to secure message detection and transmission, a conceptual diagram is shown below.
+The coupling variability and misalignment is a critical aspect to consider in future works. As it was explained in previous sections, the performance of the system can be significantly affected by misalignment between the transmitter and receiver coils, as well as variations in the coupling due to changes in the environment or movement of the coils. Future work could focus on developing techniques to optimize the coil design to minimize the effects of misalignment and coupling variability, such as using multiple coils in orthogonal planes to secure message detection and transmission, a conceptual diagram is shown below.
 
 \begin{figure}
     \centering
@@ -42,6 +43,22 @@ Finally, the coupling variability and misalignment is a critical aspect to consi
     \caption{Conceptual diagram of a system with multiple coils in orthogonal planes to improve robustness against coupling variability.}
     \label{fig:multiple-coils}
 \end{figure}
+
+Finally, the system has to automatically switch between transmission and reception modes, takings advatage of series and parallel resonant modes of the coil to optimize the performance in each mode. In figure \ref{new_schematic} is shown an electrical schematic of the system with the necessary components to implement this functionality.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{img/diagrams/new.jpg}
+    \caption{Electrical schematic of the system with components for automatic switching between transmission and reception modes.}
+    \label{new_schematic}
+\end{figure}
+
+In the previus figure, the principal switch could be a multiple relay module that can switch the resonant coil terminals (in series or parallel) between amplifier output and audio interface input. This switch ideally has to compose by solid state relays due to electromagnetic compatibility issues, a electromecanic relay could not work properly due to the strong magnetic field generated by te proper coil in transmission mode.
+\newp
+The automatic version of MAGIC is currently being tested considering the integration with a Raspberry Pi 500, regards to it's GPIO pins and processing power, this device could be able to control the switching of the coil run automatically the transmission and reception rutines.
+\newp
+A following step is to implement a more robust version of the system that can operate in hostile environments.In minery for example, the system has to function properly under harsh conditions such as high temperatures, humidity, dust, and vibrations. To achieve this, the hardware will be redesigned with ruggedized components and enclosures.
+
 %\subsection{Filtering and Noise Reduction}
 % TODO: Narrowband filters, adaptive filtering.
 

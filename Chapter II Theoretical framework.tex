@@ -134,7 +134,7 @@ In the case of angular misalignment as is shown in the figure \ref{fig:angular-m
 
 \begin{equation}
     \label{equation_of_flux_density_angular_misalignment}
-    H = \int_0^\pi \frac{a^2 - a\Delta\cos\varphi}{\left(\sqrt{a^2 + D^2 + \Delta^2 - 2a\Delta\cos\varphi}\right)^3} \, d\varphi
+    H = \frac{a^2  \pi  cos\gamma}{\left(\sqrt{a^2 + D^2}\right)^3}
 \end{equation}
 
 \begin{figure}
@@ -147,8 +147,8 @@ In the case of angular misalignment as is shown in the figure \ref{fig:angular-m
 In case of lateral misalignment as is shown in the figure \ref{fig:lateral-misalignment}, the flux density is also reduced and the expression is given by:\cite{fotopoulou2007optimum}
 
 \begin{equation}
+    H = \int_0^\pi \frac{a^2 - a\Delta\cos\varphi}{\left(\sqrt{a^2 + D^2 + \Delta^2 - 2a\Delta\cos\varphi}\right)^3} \, d\varphi
     \label{equation_of_flux_density_lateral_misalignment}
-    H = \frac{a^2  \pi  cos\gamma}{\left(\sqrt{a^2 + D^2}\right)^3}
 \end{equation}
 
 \begin{figure}
@@ -269,16 +269,28 @@ However, commercial systems are limited and mostly of them have notable limitati
 \subsection{Electrical Properties of Rock: Conductivity, Permittivity, Permeability}\label{subsec:rock-properties}
 % TODO: Typical ranges, anisotropy.
 
-\subsection{Heterogeneity, Stratification and Anisotropy}\label{subsec:heterogeneity}
+The propagation characteristics in underground environments are intrinsically linked to the electrical properties of the soil and rocks: electrical conductivity ($sigma$), permittivity ($epsilon$) and magnetic permeability ($mu$).
+\newp
+Most geological materials (soil, rock, water) have a permeability very similar to that of a vacuum ($\mu_0$), which is approximately $4\pi \times 10^{-7}$ H/m. This means that the magnetic field can penetrate through these materials with minimal attenuation, which is a fundamental advantage for magnetic induction (MI) communications, since the medium becomes practically "transparent" to the magnetic field, unlike what happens with electric fields. \cite{wait1982geoelectromagnetism}
+\newp
+In ground-based communication (TTE) scenarios, the medium is rarely homogeneous or isotropic.
+Stratification is a common feature where the ground is composed of multiple layers (such as sandstone, coal, or siltstone) with distinct electrical and magnetic properties. Some of thse material can have high magnetic permeability, which can significantly affect the propagation of the magnetic field and reduce the effective communication range. Particularly the ferromagnetic materias as ferrite or magnetite have the ability to allow a very large flux density for a given magnetizing force, thus enabling the constriction of the flux into desired paths.
+\newp
+This ability to "guide" or concentrate the flux is what physically causes the distortion of the original magnetic field
+
+
+%\subsection{Heterogeneity, Stratification and Anisotropy}\label{subsec:heterogeneity}
 % TODO: Impact on channel variability; probabilistic modeling.
 
-\subsection{Measurement Techniques for Material Parameters}\label{subsec:material-measurement}
+%\subsection{Measurement Techniques for Material Parameters}\label{subsec:material-measurement}
 % TODO: Lab sample measurements, impedance spectroscopy, inductive probes.
 
 \subsection{Propagation Models in Conductive Geological Media}\label{subsec:propagation-models}
 % (From: Magnetic propagation models in conductive media)
 % TODO: Analytical models, homogeneous vs layered media, empirical fits.
 
+
+the penetration of the magnetic field H in a conductive medium like high concentration ferrite rock follows the diffusion equation $\nabla^{2}H=\mu\sigma\partial H/\partial t$, instead of the wave equation $\nabla^{2}H=\mu\epsilon(\partial^{2}H)/(\partial t^{2})$, with an exponentially decaying field as a function of distance, angular frequency $\omega$ and electric conductivity of the proapagation medium. In a good conductor (with $\sigma(\epsilon\omega)>>1)$ the signal attenuation is described by the skin depth \ref{equation_of_skin_depth}.  \cite{carreno2016through}. That inverse square root dependency on the frequency justifies the use of low frequencies, usually below 30 kHz for TTE communication.
 %PENDIENTE!!!!
 
 %\subsection{Extended / Semi-Analytical or Distributed Models}\label{subsec:extended-models}

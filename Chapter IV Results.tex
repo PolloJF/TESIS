@@ -142,26 +142,25 @@ When measuring the transfer function for a system where one coil is tuned and an
     \label{fig:transfer-function}
 \end{figure}
 
-The transfer function of the complete system (end-to-end) measured at a distance of 2 meters between the coils is shown below.
+The phase difference of the complete system (end-to-end) measured at a distance of 2 meters between the coils is shown below.
 
 \begin{figure}[H]
     \centering
-    \begin{subfigure}[b]{0.49\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{img/Desfase_end_2_end_2.jpg}
+    
+    \includegraphics[scale=0.7]{img/Desfase_end_2_end_2.jpg}
         \caption{Phase shift}
-        \label{fig:sub2-transfer-function-system}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.49\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{img/Relacion_de_potencia_end_2_end_3.jpg}
-        \caption{Power relation}
-        \label{fig:sub1-transfer-function-system}
-    \end{subfigure}
-    \caption{Transfer function of complete system at 2 meters distance.}
-    \label{fig:transfer-function-system}
+    \label{fig:sub2-transfer-function-system}
 \end{figure}
+
+The power relation of the complete system (end-to-end) measured at a distance of 2 meters between the coils is shown below.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{img/Relacion_de_potencia_end_2_end_3.jpg}
+    \caption{Power relation}
+    \label{fig:sub1-transfer-function-system}
+\end{figure}
+
 
 
 If we review particularly the power relation graph in figure \ref{fig:sub1-transfer-function-system} we can observe that the maximum power transfer occurs at a frequency of approximately 3.2 kHz, specifically at 3150 Hz, at this point we have an approximaly analog bandwidth of ~450 Hz considering a decaiment of 3 dB from center frequency. Here it's a zoom of this graph in figure \ref{fig:zoom-transfer-function-system}.
@@ -566,7 +565,7 @@ In the figure \ref{fig:demodulation-schemes} we can observe an example of the sp
 
 
 
-\subsubsection{Correction Error Code}
+\subsubsection{Correction Error Code}\label{subsec: error_correction_code}
 
 The error correction code implemented in the TTE communication system is based on Reed-Solomon coding, which is a block code capable of correcting multiple symbol errors within a codeword. Reed-Solomon codes are particularly well-suited for applications where burst errors are common, as they can correct errors that affect multiple consecutive symbols.
 \newp
@@ -701,7 +700,7 @@ It's clear that for both signals the variability of the peak of correlation is s
 During the development of the TTE communication system, multiple tests were conducted to evaluate its performance in various scenarios. These tests aimed to validate the design choices made and to assess the system's ability to operate effectively in real-world conditions. The following subsections detail the different testing scenarios, results obtained and some other tests.
 
 \subsection{Induction Pattern}
- The decaiment of the power available in the reeiver coil as a function of the relative angle between coils was measure at surface level in a open field. The transmitter coil was fixed in a horizontal position, while the receiver coil was rotated in steps of 5$\degree$ 
+ The decaiment of the power available in the receiver coil as a function of the relative angle between coils was measure at surface level in a open field. The transmitter coil was fixed in a horizontal position, while the receiver coil was rotated in steps of 5$\degree$ 
 from -45$\degree$ to 45$\degree$ considering 0$\degree$ when coils are perfectly aligned.
 \begin{figure}
     \centering
@@ -730,7 +729,7 @@ The resulted induction pattern is shown in the figure below:
     \label{fig:induction-pattern-setup}
  \end{figure}
 
-\subsection{Measurements underground}
+As expected, the power received is maximum when the coils are perfectly aligned (0$\degree$) and decreases as the angle of missalignment increases. The decaiment of voltage induced in the receiver coil follows a cosine pattern, which is consistent with the theoretical model of angular missalignment \ref{equation_of_flux_density_angular_misalignment}. In this case the power delivered is proportional to the square of the voltage, so the decaiment of power follows a cosine squared pattern. At 45$\degree$, the power received is approximately 50\% of the maximum value (-3 dB).
 
 The TTE communication system called MAGIC (Magnetic Induction Communication) was tested at the facilities of the National Astronomical Observatory of the University of Chile, located in the Las Condes district of Santiago. The observatory's underground environment provides a suitable setting to evaluate the system's performance under conditions similar to those encountered in real-world TTE communication applications.
 

@@ -29,6 +29,10 @@ K.~Fotopoulou and B.~W. Flynn, ``Optimum antenna coil structure for inductive
   \url{https://vitalalert.com/wp-content/uploads/2015/09/CanaryCommPac2017.pdf}.
 \newblock [Accessed 12-12-2025].
 
+\bibitem{wait1982geoelectromagnetism}
+J.~R. Wait, {\em Geo-Electromagnetism}.
+\newblock New York, NY: Academic Press, 1982.
+
 \bibitem{sklar2021digital}
 B.~Sklar, {\em Digital communications: fundamentals and applications}.
 \newblock Pearson, 2021.
@@ -59,6 +63,16 @@ B.~Sklar, ``Reed-solomon codes,'' {\em Downloaded from URL http://www.
   people.csail.mit.edu.''
   \url{https://people.csail.mit.edu/hubert/pyaudio/docs/}.
 \newblock [Accessed 22-01-2026].
+
+\bibitem{scipyCorrelatex2014}
+``correlate \&\#x2014; {S}ci{P}y v1.17.0 {M}anual --- docs.scipy.org.''
+  \url{https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.correlate.html}.
+\newblock [Accessed 21-01-2026].
+
+\bibitem{icnirp2010lf}
+{International Commission on Non-Ionizing Radiation Protection}, ``Guidelines
+  for limiting exposure to time-varying electric and magnetic fields (1 {H}z to
+  100 {k}{H}z),'' {\em Health Physics}, vol.~99, no.~6, pp.~818--836, 2010.
 
 \bibitem{wang2018adaptive}
 P.~Wang, X.~Zhang, L.~Xu, Z.~Liu, and Y.~Wan, ``Adaptive noise cancellation

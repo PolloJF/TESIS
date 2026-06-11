@@ -15,10 +15,68 @@ J.~I. Agbinya, {\em Principles of Inductive Near Field Communications for
   Internet of Things}.
 \newblock River Publishers, 2022.
 
+\bibitem{sadiku}
+C.~K. Alexander and M.~N.~O. Sadiku, {\em Fundamentals of Electric Circuits}.
+\newblock New York, NY: McGraw-Hill Education, 7~ed., 2020.
+
+\bibitem{jiang2015capacity}
+J.~Jiang, K.~Song, G.~Wei, R.~Lu, Q.~Zhang, and C.~Zhu, ``Capacity and
+  bandwidth analysis of symmetric two-coil resonant magnetic communication
+  using frequency divarication,'' {\em IEEE Antennas and Wireless Propagation
+  Letters}, vol.~14, pp.~1117--1120, 2015.
+
+\bibitem{agbinya2012power}
+J.~I. Agbinya and M.~Masihpour, ``Power equations and capacity performance of
+  magnetic induction communication systems,'' {\em Wireless Personal
+  Communications}, vol.~64, no.~4, pp.~831--845, 2012.
+
+\bibitem{yates2004}
+D.~C. Yates, A.~S. Holmes, and A.~J. Burdett, ``Optimal transmission frequency
+  for ultralow-power short-range radio links,'' {\em IEEE Transactions on
+  Circuits and Systems I: Regular Papers}, vol.~51, no.~7, pp.~1405--1413,
+  2004.
+
+\bibitem{utfsm}
+``www2.elo.utfsm.cl.''
+  \url{http://www2.elo.utfsm.cl/~elo352/biblio/antenas/Lectura%2011.pdf}.
+\newblock [Accessed 12-12-2025].
+
+\bibitem{9205830}
+H.~Guo and A.~A. Ofori, ``Joint channel and antenna modeling for magnetic
+  induction communication in inhomogeneous media,'' {\em IEEE Open Journal of
+  the Communications Society}, vol.~1, pp.~1457--1469, 2020.
+
+\bibitem{agbinya2013}
+J.~I. Agbinya, ``A magneto-inductive link budget for wireless power transfer
+  and inductive communication systems,'' {\em Progress In Electromagnetics
+  Research C}, vol.~37, pp.~15--28, 2013.
+
+\bibitem{azad2012}
+U.~Azad, H.~C. Jing, and Y.~E. Wang, ``Link budget and capacity performance of
+  inductively coupled resonant loops,'' {\em IEEE Transactions on Antennas and
+  Propagation}, vol.~60, no.~5, pp.~2453--2461, 2012.
+
 \bibitem{fotopoulou2007optimum}
 K.~Fotopoulou and B.~W. Flynn, ``Optimum antenna coil structure for inductive
   powering of passive rfid tags,'' in {\em 2007 IEEE International Conference
   on RFID}, pp.~71--77, IEEE, 2007.
+
+\bibitem{ngwenyama2024}
+P.~L. Ngwenyama and R.~C.~W. Webber-Youngman, ``A review of the applications of
+  through-the-earth (tte) communication systems for underground mines,'' {\em
+  Mining, Metallurgy \& Exploration}, vol.~41, no.~5, pp.~2291--2323, 2024.
+
+\bibitem{ma2025survey}
+H.~Ma, E.~Liu, W.~Ni, Z.~Fang, R.~Wang, Y.~Gao, D.~Niyato, and E.~Hossain,
+  ``Through-the-earth magnetic induction communication and networking: A
+  comprehensive survey,'' {\em IEEE Communications Surveys \& Tutorials},
+  vol.~28, pp.~2263--2305, 2025.
+
+\bibitem{bae2013}
+S.~Bae, J.~Park, J.~Jalli, G.~Abo, {\em et~al.}, ``Pulsed ferrite magnetic
+  field generator for through-the-earth communication systems for disaster
+  situation in mines,'' {\em Journal of Magnetics}, vol.~18, no.~1, pp.~43--47,
+  2013.
 
 \bibitem{teslasociety}
 ``teslasociety.ch.'' \url{https://www.teslasociety.ch/info/magnetlink/2.pdf}.
@@ -29,18 +87,52 @@ K.~Fotopoulou and B.~W. Flynn, ``Optimum antenna coil structure for inductive
   \url{https://vitalalert.com/wp-content/uploads/2015/09/CanaryCommPac2017.pdf}.
 \newblock [Accessed 12-12-2025].
 
-\bibitem{wait1982geoelectromagnetism}
-J.~R. Wait, {\em Geo-Electromagnetism}.
-\newblock New York, NY: Academic Press, 1982.
+\bibitem{rezaei2020}
+H.~Rezaei, V.~Khilkevich, S.~Yong, {\em et~al.}, ``Mechanical magnetic field
+  generator for communication in the {ULF} range,'' {\em IEEE Transactions on
+  Antennas and Propagation}, vol.~68, no.~3, pp.~2332--2339, 2020.
+
+\bibitem{wang2025}
+Wang {\em et~al.}, ``Performance analysis of transceiver-heterogeneous magnetic
+  induction emergency through-the-earth communication,'' {\em Radio Science},
+  2025.
+
+\bibitem{abrudan2016}
+T.~E. Abrudan, O.~Kypris, N.~Trigoni, and A.~Markham, ``Impact of rocks and
+  minerals on underground magneto-inductive communication and localization,''
+  {\em IEEE Access}, vol.~4, pp.~3999--4010, 2016.
+
+\bibitem{abrudan2016impactrocksmineralsunderground}
+T.~E. Abrudan, O.~Kypris, N.~Trigoni, and A.~Markham, ``Impact of rocks and
+  minerals on underground magneto-inductive communication and localization,''
+  2016.
+
+\bibitem{cohen2010}
+M.~B. Cohen, R.~K. Said, and U.~S. Inan, ``Mitigation of 50--60 {Hz} power line
+  interference in geophysical data,'' {\em Radio Science}, vol.~45, no.~6,
+  p.~RS6002, 2010.
+
+\bibitem{wang2018adaptive}
+P.~Wang, X.~Zhang, L.~Xu, Z.~Liu, and Y.~Wan, ``Adaptive noise cancellation
+  based on time delay estimation for low frequency communication,'' {\em
+  Applied Sciences}, vol.~8, no.~5, p.~734, 2018.
+
+\bibitem{itur_p372}
+{International Telecommunication Union}, ``Recommendation {ITU-R} {P.372-17}:
+  Radio noise,'' Recommendation P.372-17, ITU-R, Geneva, 2024.
+
+\bibitem{jing2008}
+H.~C. Jing and Y.~E. Wang, ``Capacity performance of an inductively coupled
+  near field communication system,'' in {\em IEEE Antennas and Propagation
+  Society International Symposium (AP-S)}, pp.~1--4, IEEE, 2008.
+
+\bibitem{lyons2011}
+R.~G. Lyons, {\em Understanding Digital Signal Processing}.
+\newblock Upper Saddle River, NJ: Prentice Hall, 3~ed., 2011.
 
 \bibitem{sklar2021digital}
 B.~Sklar, {\em Digital communications: fundamentals and applications}.
 \newblock Pearson, 2021.
-
-\bibitem{ma2025through}
-H.~Ma, E.~Liu, W.~Ni, Z.~Fang, R.~Wang, Y.~Gao, D.~Niyato, and E.~Hossain,
-  ``Through-the-earth magnetic induction communication and networking: A
-  comprehensive survey,'' {\em IEEE Communications Surveys \& Tutorials}, 2025.
 
 \bibitem{sklar2001reed}
 B.~Sklar, ``Reed-solomon codes,'' {\em Downloaded from URL http://www.
@@ -48,15 +140,15 @@ B.~Sklar, ``Reed-solomon codes,'' {\em Downloaded from URL http://www.
   sub.--reed-solomo-n/elementLinks/art. sub.--sklar7. sub.--reed-solomon. pdf},
   pp.~1--33, 2001.
 
-\bibitem{utfsm}
-``www2.elo.utfsm.cl.''
-  \url{http://www2.elo.utfsm.cl/~elo352/biblio/antenas/Lectura%2011.pdf}.
-\newblock [Accessed 12-12-2025].
-
 \bibitem{pypiClientChallenge}
 ``{C}lient {C}hallenge --- pypi.org.''
   \url{https://pypi.org/project/reedsolo/}.
 \newblock [Accessed 12-12-2025].
+
+\bibitem{googleVideo_funcionamiento_MAGICmp4}
+``{V}ideo\_funcionamiento\_{M}{A}{G}{I}{C}.mp4 --- drive.google.com.''
+  \url{https://drive.google.com/file/d/1cnkJUDVJRz828hdd-8WWApa4_wT1P5zi/view}.
+\newblock [Accessed 02-01-2026].
 
 \bibitem{mitPyAudioDocumentation}
 ``{P}y{A}udio {D}ocumentation \&\#x2014; {P}y{A}udio 0.2.14 documentation ---
@@ -73,10 +165,5 @@ B.~Sklar, ``Reed-solomon codes,'' {\em Downloaded from URL http://www.
 {International Commission on Non-Ionizing Radiation Protection}, ``Guidelines
   for limiting exposure to time-varying electric and magnetic fields (1 {H}z to
   100 {k}{H}z),'' {\em Health Physics}, vol.~99, no.~6, pp.~818--836, 2010.
-
-\bibitem{wang2018adaptive}
-P.~Wang, X.~Zhang, L.~Xu, Z.~Liu, and Y.~Wan, ``Adaptive noise cancellation
-  based on time delay estimation for low frequency communication,'' {\em
-  Applied Sciences}, vol.~8, no.~5, p.~734, 2018.
 
 \end{thebibliography}

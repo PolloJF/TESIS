@@ -1,80 +1,96 @@
 \babel@toc {english}{}\relax 
-\contentsline {chapter}{\numberline {1}background and motivation}{1}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Introduction}{1}{section.1.1}%
-\contentsline {section}{\numberline {1.2}Motivation}{1}{section.1.2}%
-\contentsline {section}{\numberline {1.3}Hipothesis}{2}{section.1.3}%
-\contentsline {section}{\numberline {1.4}Objectives}{2}{section.1.4}%
-\contentsline {subsection}{\numberline {1.4.1}General Objective}{2}{subsection.1.4.1}%
-\contentsline {subsection}{\numberline {1.4.2}Specific Objectives}{2}{subsection.1.4.2}%
-\contentsline {section}{\numberline {1.5}Document Structure}{2}{section.1.5}%
+\contentsline {chapter}{Acronyms}{xii}{chapter*.13}%
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Motivation}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Hypothesis}{2}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Objectives}{2}{section.1.3}%
+\contentsline {subsection}{\numberline {1.3.1}General Objective}{2}{subsection.1.3.1}%
+\contentsline {subsection}{\numberline {1.3.2}Specific Objectives}{2}{subsection.1.3.2}%
+\contentsline {section}{\numberline {1.4}Document Structure}{2}{section.1.4}%
 \contentsline {chapter}{\numberline {2}Theoretical Framework}{4}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Electromagnetic Fundamentals for MI Links}{4}{section.2.1}%
 \contentsline {subsection}{\numberline {2.1.1}Quasi-Static Magnetic Field Regime}{4}{subsection.2.1.1}%
 \contentsline {subsection}{\numberline {2.1.2} Mutual Inductance and Coupling Coefficient}{5}{subsection.2.1.2}%
-\contentsline {subsection}{\numberline {2.1.3}Transfer Function of Inductive Coupling model}{6}{subsection.2.1.3}%
-\contentsline {subsection}{\numberline {2.1.4}Skin Depth and Frequency-Dependent Attenuation in Rock}{6}{subsection.2.1.4}%
-\contentsline {subsection}{\numberline {2.1.5}Geometric Configuration: Coil Orientation, Separation, Misalignment}{6}{subsection.2.1.5}%
-\contentsline {section}{\numberline {2.2}Overview of Through-The-Earth (TTE) Magnetic Induction Communication}{8}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}System Architecture}{9}{subsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.2}Key Technical Challenges (Preview)}{9}{subsection.2.2.2}%
-\contentsline {subsection}{\numberline {2.2.3}State of the Art Overview}{10}{subsection.2.2.3}%
-\contentsline {section}{\numberline {2.3}Geological Medium Characterization}{10}{section.2.3}%
-\contentsline {subsection}{\numberline {2.3.1}Electrical Properties of Rock: Conductivity, Permittivity, Permeability}{10}{subsection.2.3.1}%
-\contentsline {subsection}{\numberline {2.3.2}Propagation Models in Conductive Geological Media}{11}{subsection.2.3.2}%
-\contentsline {section}{\numberline {2.4}Non-Coherent FSK Modulation for MI Communication}{11}{section.2.4}%
-\contentsline {subsection}{\numberline {2.4.1}Signal Space and Frequency Separation. Orthogonality}{12}{subsection.2.4.1}%
-\contentsline {subsection}{\numberline {2.4.2}SER Performance in AWGN}{13}{subsection.2.4.2}%
-\contentsline {subsection}{\numberline {2.4.3}System-Level Synchronization and Framing}{14}{subsection.2.4.3}%
-\contentsline {section}{\numberline {2.5}Error Control Coding: Reed-solomon}{15}{section.2.5}%
-\contentsline {subsection}{\numberline {2.5.1}Role of FEC in MI Links}{15}{subsection.2.5.1}%
-\contentsline {subsection}{\numberline {2.5.2}Block Codes (Hamming, BCH, Reed--Solomon)}{15}{subsection.2.5.2}%
-\contentsline {subsection}{\numberline {2.5.3}Coding Gain and Trade-offs}{15}{subsection.2.5.3}%
-\contentsline {chapter}{\numberline {3}Methodology}{16}{chapter.3}%
-\contentsline {section}{\numberline {3.1}General Design}{16}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Communication tests}{16}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Noise and SNR Measurements}{17}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Summary}{17}{section.3.4}%
-\contentsline {chapter}{\numberline {4}Results}{18}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Hardware Developement}{18}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Design}{18}{subsection.4.1.1}%
-\contentsline {subsection}{\numberline {4.1.2}Coil}{20}{subsection.4.1.2}%
-\contentsline {subsection}{\numberline {4.1.3}System characterization}{23}{subsection.4.1.3}%
-\contentsline {subsection}{\numberline {4.1.4}Amplifier and GLI}{26}{subsection.4.1.4}%
-\contentsline {subsection}{\numberline {4.1.5}Switching Circuit}{28}{subsection.4.1.5}%
-\contentsline {subsection}{\numberline {4.1.6}Audio Interface}{28}{subsection.4.1.6}%
-\contentsline {subsection}{\numberline {4.1.7}Additional Components and considerations}{29}{subsection.4.1.7}%
-\contentsline {section}{\numberline {4.2}Software Developement}{31}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Design}{31}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Transmitter}{31}{subsection.4.2.2}%
-\contentsline {subsubsection}{\numberline {4.2.2.1}Message coding and modulation}{31}{subsubsection.4.2.2.1}%
-\contentsline {subsubsection}{\numberline {4.2.2.2}Ortogonality and Bandwidth}{32}{subsubsection.4.2.2.2}%
-\contentsline {subsubsection}{\numberline {4.2.2.3}Constellation of frequencies}{33}{subsubsection.4.2.2.3}%
-\contentsline {subsection}{\numberline {4.2.3}Receiver}{38}{subsection.4.2.3}%
-\contentsline {subsubsection}{\numberline {4.2.3.1}Digital Filter}{39}{subsubsection.4.2.3.1}%
-\contentsline {subsubsection}{\numberline {4.2.3.2}Correlation Process}{40}{subsubsection.4.2.3.2}%
-\contentsline {subsubsubsection}{\numberline {4.2.3.2.1}Correlation by parts algorithm}{40}{subsubsubsection.4.2.3.2.1}%
-\contentsline {subsubsection}{\numberline {4.2.3.3}Demodulation and Decoding}{42}{subsubsection.4.2.3.3}%
-\contentsline {subsubsection}{\numberline {4.2.3.4}Correction Error Code}{43}{subsubsection.4.2.3.4}%
-\contentsline {subsection}{\numberline {4.2.4}Preamble design}{44}{subsection.4.2.4}%
-\contentsline {subsection}{\numberline {4.2.5}Decimation?}{45}{subsection.4.2.5}%
-\contentsline {section}{\numberline {4.3}Testing and Validation}{48}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Induction Pattern}{49}{subsection.4.3.1}%
-\contentsline {subsubsection}{\numberline {4.3.1.1}Simple Correlation vs Correlation by parts}{54}{subsubsection.4.3.1.1}%
-\contentsline {subsubsection}{\numberline {4.3.1.2}Preamble models comparison}{56}{subsubsection.4.3.1.2}%
-\contentsline {subsubsection}{\numberline {4.3.1.3}Operational test in a real mine}{60}{subsubsection.4.3.1.3}%
-\contentsline {section}{\numberline {4.4}Results Summary}{63}{section.4.4}%
-\contentsline {chapter}{\numberline {5}Analysis and Discussion}{64}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Hardware development}{64}{section.5.1}%
-\contentsline {subsection}{\numberline {5.1.1}Topology at Transmitter and Receiver}{64}{subsection.5.1.1}%
-\contentsline {subsection}{\numberline {5.1.2}Interference and electromagnetic compatibility}{68}{subsection.5.1.2}%
-\contentsline {section}{\numberline {5.2}Software developement}{69}{section.5.2}%
-\contentsline {subsection}{\numberline {5.2.1}Codification and Symbol Mapping}{69}{subsection.5.2.1}%
-\contentsline {subsection}{\numberline {5.2.2}Processing capability}{70}{subsection.5.2.2}%
-\contentsline {subsection}{\numberline {5.2.3}Summary}{71}{subsection.5.2.3}%
-\contentsline {section}{\numberline {5.3}Mine measurements}{71}{section.5.3}%
-\contentsline {subsection}{\numberline {5.3.1}Field simulation for security}{76}{subsection.5.3.1}%
-\contentsline {subsection}{\numberline {5.3.2}Summary}{77}{subsection.5.3.2}%
-\contentsline {chapter}{\numberline {6}Conclusions}{78}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Conclusions}{78}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Future Work}{79}{section.6.2}%
-\contentsline {chapter}{References}{82}{section*.85}%
+\contentsline {subsection}{\numberline {2.1.3}Resonance and Quality Factor}{6}{subsection.2.1.3}%
+\contentsline {subsection}{\numberline {2.1.4}Transfer Function of the Inductive Coupling Model}{7}{subsection.2.1.4}%
+\contentsline {subsection}{\numberline {2.1.5}Coil Antenna Design Considerations}{8}{subsection.2.1.5}%
+\contentsline {section}{\numberline {2.2}Link Budget and System Margin}{9}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Skin Depth and Frequency-Dependent Attenuation in Rock}{10}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Geometric Configuration: Coil Orientation, Separation, Misalignment}{10}{subsection.2.2.2}%
+\contentsline {section}{\numberline {2.3}Overview of Through-The-Earth (TTE) Magnetic Induction Communication}{12}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}System Architecture}{12}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Key Technical Challenges (Preview)}{13}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}State of the Art Overview}{14}{subsection.2.3.3}%
+\contentsline {paragraph}{Commercial systems.}{14}{section*.17}%
+\contentsline {paragraph}{Recent academic advances.}{14}{section*.18}%
+\contentsline {subsection}{\numberline {2.3.4}Electrical Properties of Rock: Conductivity, Permittivity, Permeability}{15}{subsection.2.3.4}%
+\contentsline {subsection}{\numberline {2.3.5}Propagation Models in Conductive Geological Media}{16}{subsection.2.3.5}%
+\contentsline {section}{\numberline {2.4}Noise in the VLF/ULF Communication Channel}{17}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Man-made Noise}{17}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Noise Quantification}{18}{subsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.4.3}Channel Capacity}{18}{subsection.2.4.3}%
+\contentsline {section}{\numberline {2.5}Digital Signal Processing for the Receiver}{18}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1}Sampling and Decimation}{19}{subsection.2.5.1}%
+\contentsline {subsection}{\numberline {2.5.2}Digital Bandpass Filtering}{19}{subsection.2.5.2}%
+\contentsline {section}{\numberline {2.6}Non-Coherent FSK Modulation for MI Communication}{20}{section.2.6}%
+\contentsline {subsection}{\numberline {2.6.1}Signal Space and Frequency Separation. Orthogonality}{21}{subsection.2.6.1}%
+\contentsline {subsection}{\numberline {2.6.2}Matched Filtering and the Correlation Receiver}{22}{subsection.2.6.2}%
+\contentsline {subsection}{\numberline {2.6.3}SER Performance in AWGN}{23}{subsection.2.6.3}%
+\contentsline {subsection}{\numberline {2.6.4}System-Level Synchronization and Framing}{24}{subsection.2.6.4}%
+\contentsline {section}{\numberline {2.7}Error Control Coding: Reed-Solomon}{24}{section.2.7}%
+\contentsline {subsection}{\numberline {2.7.1}Role of FEC in MI Links}{24}{subsection.2.7.1}%
+\contentsline {subsection}{\numberline {2.7.2} Reed--Solomon coding}{25}{subsection.2.7.2}%
+\contentsline {chapter}{\numberline {3}Methodology}{26}{chapter.3}%
+\contentsline {section}{\numberline {3.1}General Design}{26}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Design Requirements and Criteria}{27}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Experimental Setup and Instrumentation}{28}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Performance Metrics and Evaluation Criteria}{29}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Transfer function of the system}{29}{section.3.5}%
+\contentsline {section}{\numberline {3.6}Communication tests}{30}{section.3.6}%
+\contentsline {section}{\numberline {3.7}Noise and SNR Measurements}{31}{section.3.7}%
+\contentsline {section}{\numberline {3.8}Final Remarks}{32}{section.3.8}%
+\contentsline {chapter}{\numberline {4}Results}{33}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Hardware Development}{33}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Design}{33}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Coil}{35}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.3}System characterization}{38}{subsection.4.1.3}%
+\contentsline {subsection}{\numberline {4.1.4}Amplifier and GLI}{41}{subsection.4.1.4}%
+\contentsline {subsection}{\numberline {4.1.5}Switching Circuit}{43}{subsection.4.1.5}%
+\contentsline {subsection}{\numberline {4.1.6}Audio Interface}{43}{subsection.4.1.6}%
+\contentsline {subsection}{\numberline {4.1.7}Additional Components and Considerations}{44}{subsection.4.1.7}%
+\contentsline {section}{\numberline {4.2}Software Development}{46}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Design}{46}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Transmitter}{47}{subsection.4.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.2.1}Message coding and modulation}{47}{subsubsection.4.2.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2.2}Orthogonality and Bandwidth}{47}{subsubsection.4.2.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.2.3}Constellation of frequencies}{48}{subsubsection.4.2.2.3}%
+\contentsline {subsection}{\numberline {4.2.3}Receiver}{52}{subsection.4.2.3}%
+\contentsline {subsubsection}{\numberline {4.2.3.1}Digital Filter}{53}{subsubsection.4.2.3.1}%
+\contentsline {subsubsection}{\numberline {4.2.3.2}Correlation Process}{54}{subsubsection.4.2.3.2}%
+\contentsline {subsubsubsection}{\numberline {4.2.3.2.1}Correlation by parts algorithm}{54}{subsubsubsection.4.2.3.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.3.3}Demodulation and Decoding}{56}{subsubsection.4.2.3.3}%
+\contentsline {subsubsection}{\numberline {4.2.3.4}Error Correction Code}{57}{subsubsection.4.2.3.4}%
+\contentsline {subsection}{\numberline {4.2.4}Preamble design}{58}{subsection.4.2.4}%
+\contentsline {subsection}{\numberline {4.2.5}Message structure}{59}{subsection.4.2.5}%
+\contentsline {subsection}{\numberline {4.2.6}Decimation}{60}{subsection.4.2.6}%
+\contentsline {section}{\numberline {4.3}Testing and Validation}{63}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Induction Pattern}{63}{subsection.4.3.1}%
+\contentsline {subsubsection}{\numberline {4.3.1.1}Simple Correlation vs Correlation by parts}{67}{subsubsection.4.3.1.1}%
+\contentsline {subsubsection}{\numberline {4.3.1.2}Preamble models comparison}{69}{subsubsection.4.3.1.2}%
+\contentsline {subsubsection}{\numberline {4.3.1.3}Operational test in a real mine}{73}{subsubsection.4.3.1.3}%
+\contentsline {section}{\numberline {4.4}Final Remarks}{76}{section.4.4}%
+\contentsline {chapter}{\numberline {5}Analysis and Discussion}{77}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Hardware Development}{77}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Topology at Transmitter and Receiver}{77}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Interference and electromagnetic compatibility}{81}{subsection.5.1.2}%
+\contentsline {section}{\numberline {5.2}Software development}{82}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Encoding and Symbol Mapping}{82}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Processing capability}{83}{subsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.2.3}Summary}{84}{subsection.5.2.3}%
+\contentsline {section}{\numberline {5.3}Mine measurements}{84}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Field simulation for security}{89}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}Final Remarks}{91}{subsection.5.3.2}%
+\contentsline {chapter}{\numberline {6}Conclusions}{92}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Conclusions}{92}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Future Work}{93}{section.6.2}%
+\contentsline {chapter}{References}{96}{section*.104}%

@@ -16,12 +16,12 @@
 ]{book}
 
 % INFORMACIÓN DEL DOCUMENTO
-\def\documenttitle {Implementation and Characterization of a Low-Cost Through the Earth Communication System for Underground Mining}
+\def\documenttitle {Implementation and Characterization of a Through the Earth Communication System for Underground Mining}
 \def\documentsubtitle {}
 \def\degreetitle {
-	Tesis para optar al grado de magíster en ciencias de la ingeniería, mención área de la ingeniería
+	Tesis para optar al grado de magíster en ciencias de la ingeniería, mención eléctrica \\
+	Memoria para optar al título de ingeniero civil eléctrico \\
 	\bigbreak\vspace{0.3cm}
-	Memoria para optar al título de ingeniero
 }
 
 \def\universityname {Universidad de Chile}
@@ -32,7 +32,7 @@
 \def\universitylocation {Santiago de Chile}
 
 % INTEGRANTES, PROFESORES Y FECHAS
-\def\documentauthor {Juan Francisco Torrejón}
+\def\documentauthor {Juan Francisco Torrejón Herrera}
 \def\documentdate {\the\year}
 
 \def\portrait {
@@ -47,9 +47,9 @@
 		\vspace{1.0cm} \\
 		PROFESOR GUÍA: RICARDO FINGER CAMUS\\
 		\vspace{0.5cm} \\
-		MIEMBROS DE LA COMISIÓN:
+		MIEMBROS DE LA COMISIÓN: \\
 		CÉSAR AZURDIA MEZA \\
-		FRANCO CUROTTO MOLINA\\
+		WALTER MAX-MOERBECK\\
 		\vspace{0.5cm} \\
 		Este trabajo ha sido parcialmente financiado por: \\
 		ANID Basal FB210003\\
@@ -63,7 +63,9 @@
 	\begin{tabular}{l}
 		RESUMEN DE LA MEMORIA PARA OPTAR \\
 		AL TÍTULO DE MAGÍSTER EN CIENCIAS \\
-		DE LA INGENIERÍA \\
+		DE LA INGENIERÍA, MENCIÓN ELÉCTRICA \\
+		Y MEMORIA PARA OPTAR AL TÍTULO DE \\
+		INGENIERO CIVIL ELÉCTRICO. \\
 		POR: \MakeUppercase{\documentauthor} \\
 		FECHA: \MakeUppercase{\documentdate} \\
 		PROF. GUÍA: RICARDO FINGER CAMUS \\
@@ -83,36 +85,109 @@
 % CONFIGURACIÓN DE PÁGINA Y ENCABEZADOS
 \templatePagecfg
 
+\def\documenttitle {Implementación y caracterización de un sistema de comunicación a través de la tierra para minería subterránea.}
+
+\begin{abstractd}
+	Este documento presenta el desarrollo de un sistema completo de comunicación a través de la tierra (TTE, por sus siglas en inglés) diseñado para la minería subterránea. El sistema, denominado MAGIC (\textit{MAGnetic Induction Communication}), utiliza inducción magnética de baja frecuencia y modulación M-FSK no coherente para permitir una comunicación fiable a través de materiales sólidos como roca y suelo. La tesis abarca el diseño, la implementación y la evaluación de los componentes del sistema, incluyendo bobinas resonantes de 56 cm de diámetro, técnicas de procesamiento de señales como filtrado digital y correlación, y protocolos de comunicación. Los resultados experimentales demuestran la capacidad del sistema actual para transmitir mensajes de texto a distancias de hasta 200 metros en condiciones subterráneas, con una corriente media transmitida de 2 A y una tasa de error de símbolo (SER) cercana al 5\%. En cualquier caso, el sistema es escalable y se pueden alcanzar mayores distancias aumentando la corriente o las dimensiones de la bobina.
+
+\end{abstractd}
+
+
+\def\documenttitle {Implementation and Characterization of a Through the Earth Communication System for Underground Mining}
+
 % RESUMEN O ABSTRACT
 \begin{abstractd}
-	This document presents the development of a complete Through the Earth (TTE) communication system designed for underground mining. The system called MAGIC \textit(MAGnetic Induction Communication) utilizes low-frequency magnetic induction and non-coherent M-FSK modulation to enable reliable communication through solid materials such as rock and soil. The thesis covers the design, implementation, and evaluation of the system's components, including resonant coils of 56 cm in diameter, signal processing techniques such as digital filtering and correlation, and communication protocols. Experimental results demonstrate the current system's ability to achieve text messaging over distances up to 200 meters in underground conditions, with a mean transmitted current of 2 A with a symbol error rate (SER) close to 5\%. In any case, the system is scalable, and greater distances can be achieved by increasing the current or the coil's dimensions.
-.
+	This document presents the development of a complete Through the Earth (TTE) communication system designed for underground mining. The system, called MAGIC (\textit{MAGnetic Induction Communication}), utilizes low-frequency magnetic induction and non-coherent M-FSK modulation to enable reliable communication through solid materials such as rock and soil. The thesis covers the design, implementation, and evaluation of the system's components, including resonant coils of 56 cm in diameter, signal processing techniques such as digital filtering and correlation, and communication protocols. Experimental results demonstrate the current system's ability to achieve text messaging over distances up to 200 meters in underground conditions, with a mean transmitted current of 2 A and a symbol error rate (SER) close to 5\%. In any case, the system is scalable, and greater distances can be achieved by increasing the current or the coil's dimensions.
 \end{abstractd}
+
+
 
 % DEDICATORIA
 \begin{dedicatory}
-	To Yansy, always in my heart \\
+	Para Yansy, siempre en mi corazón. \\
 	~ \\
 \end{dedicatory}
 
 % AGRADECIMIENTOS
 \begin{acknowledgments}
-	Primarly thanks to my parents for the inconditional support in all my life decisions, for be the ones who always believed in me, and formed me as the person I am today. Thanks for be example of effort, dedication and love.
-	\newp
-	Thanks to my family in general, for the support and good vibes during this process. Thanks for be aware of me always, even from the distance.
-	\newp
-	Thanks to my friends, for the good moments and the motivation to keep going when things were difficult. Thanks to be there and keep me grounded about the important things in life.
-	\newp
-	Thanks to all the staff of MWL, you are a unvaluable source of knowledge, experience and joyment. I really love to work with you all, and I hope we can keep doing it for a long time.
-	\newp
-	I would like to express my sincere gratitude to my advisor, Ricardo Finger Camus and Franco Curotto for their guidance, support, and encouragement throughout the development of this thesis. Their expertise and insights have been essential to achieve the goals of this work.
-	\newp
-	Finally, I would like to thank to Josefina, a fundamental pillar in my life, for the love, patience, and understanding during this journey.
+	First, I thank to my parents for the unconditional support in all my life decisions, for being the ones who always believed in me, and formed me as the person I am today. Thanks for being an example of effort, dedication, and love.
+\newp
+ Thanks to my family in general for the support and good vibes during this process. Thanks for always being aware of me, even from a distance.
+\newp
+ Thanks to my friends for the good moments and the motivation to keep going when things were difficult. Thanks for being there and keeping me grounded about the important things in life.
+\newp
+ Thanks to all the staff of MWL, you are an invaluable source of knowledge, experience, and joy. I really love working with you all, and I hope we can keep doing so for a long time.
+\newp
+ I want to express my sincere gratitude to my advisor, Ricardo Finger Camus, and Franco Curotto for their guidance, support, and encouragement throughout the development of this thesis. Their expertise and insights have been essential to achieving the goals of this work.
+\newp
+ Finally, I would like to thank Josefina, a fundamental pillar in my life, for her love, patience, and understanding during this journey.
 
 \end{acknowledgments}
 
 % TABLA DE CONTENIDOS - ÍNDICE
 \templateIndex
+
+\chapteranum{Acronyms}
+
+\renewcommand{\arraystretch}{1.25}
+\begin{longtable}{@{}p{0.16\textwidth} p{0.78\textwidth}@{}}
+\toprule
+\textbf{Acronym} & \textbf{Meaning} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Acronym} & \textbf{Meaning} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+ADC    & Analog-to-Digital Converter \\
+ASCII  & American Standard Code for Information Interchange \\
+AWG    & American Wire Gauge \\
+AWGN   & Additive White Gaussian Noise \\
+DAC    & Digital-to-Analog Converter \\
+DC     & Direct Current \\
+DSP    & Digital Signal Processing \\
+EMF    & Electromotive Force \\
+FEC    & Forward Error Correction \\
+FFT    & Fast Fourier Transform \\
+FIR    & Finite Impulse Response \\
+FSK    & Frequency-Shift Keying \\
+GLI    & Ground Loop Isolator \\
+GPIO   & General-Purpose Input/Output \\
+ICNIRP & International Commission on Non-Ionizing Radiation Protection \\
+IEEE   & Institute of Electrical and Electronics Engineers \\
+IIR    & Infinite Impulse Response \\
+IQ     & In-phase and Quadrature \\
+ITU-R  & International Telecommunication Union -- Radiocommunication Sector \\
+LC     & Inductor--Capacitor (circuit) \\
+MAGIC  & MAGnetic Induction Communication \\
+MCS    & Magnetic Communication System (MagneLink) \\
+M-FSK  & $M$-ary Frequency-Shift Keying \\
+MI     & Magnetic Induction \\
+MSHA   & Mine Safety and Health Administration \\
+NIOSH  & National Institute for Occupational Safety and Health \\
+PED    & Personal Emergency Device \\
+PSD    & Power Spectral Density \\
+PSK    & Phase-Shift Keying \\
+PWM    & Pulse-Width Modulation \\
+QAM    & Quadrature Amplitude Modulation \\
+RC     & Resistor--Capacitor (circuit) \\
+RFID   & Radio-Frequency Identification \\
+RLC    & Resistor--Inductor--Capacitor (circuit) \\
+RS     & Reed--Solomon \\
+Rx     & Receiver \\
+SER    & Symbol Error Rate \\
+SMS    & Short Message Service \\
+SNR    & Signal-to-Noise Ratio \\
+TTA    & Through-The-Air \\
+TTE    & Through-The-Earth \\
+Tx     & Transmitter \\
+ULF    & Ultra-Low Frequency \\
+USB    & Universal Serial Bus \\
+VLF    & Very Low Frequency \\
+\end{longtable}
+
 
 % CONFIGURACIONES FINALES
 \templateFinalcfg

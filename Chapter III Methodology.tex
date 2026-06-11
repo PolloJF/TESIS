@@ -1,36 +1,233 @@
 % ======================= CHAPTER III =======================
 \chapter{Methodology}\label{ch:methodology}
 
-\section{General Design}
+This chapter describes the methodology followed to design, implement and
+evaluate the TTE communication system. It first states the overall research
+approach and the design requirements that guided the work
+(Sections~\ref{sec:general_design} and~\ref{sec:requirements}), then details the
+experimental setup and the performance metrics used
+(Sections~\ref{sec:setup} and~\ref{sec:metrics}), and finally presents the
+procedures for characterising the system transfer function, the communication
+tests, and the noise and SNR measurements.
 
-The main objective of this thesis is to develop a complete Through the Earth (TTE) communication system for underground environments. The methodology adopted to achieve this objective involves several key stepts, including the design and implementation of hardware and software components, as well as the experimental setup for performance evaluation.
+\section{General Design}\label{sec:general_design}
+
+The main objective of this thesis is to develop a complete Through the Earth (TTE) communication system for underground environments, providing a valuable tool for industries such as mining and construction. This includes the development of resonant coils as antennas, signal processing techniques, and communication protocols specifically tailored for underground applications.
 \newp
-From this point, at the beggining it was necessary to define the general architecture of the TTE communication system, a simple hardware design and implement a well known modulation system that could be adapted to the underground environment. Once achieving a basic working system, the next step was to optimize each of the components and aspects of design considering physical and algoritmic magnitudes. This iterative process of design, implementation, and evaluation allowed for the gradual improvement of the TTE communication system, ultimately leading to a reliable and efficient solution for underground communication and achieving more distance and better performance.
+
+The methodology adopted to achieve this objective involves several key steps, including the design and implementation of hardware and software components, as well as the experimental setup for performance evaluation.
+
+\newp
+From this point, at the beginning, it was necessary to define the general architecture of the TTE communication system, a simple hardware design, and implement a well-known modulation system that could be adapted to the underground environment. Once achieving a basic working system, the next step was to optimize each of the components and aspects of design, considering physical and algorithmic magnitudes. This iterative process of design, implementation, and evaluation allowed for the gradual improvement of the TTE communication system, ultimately leading to a reliable and efficient solution for underground communication and achieving greater distances and better performance. Figure~\ref{fig:methodology_workflow} summarises this workflow.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\textwidth]{img/diagrams/methodology_workflow.png}
+    \caption{Workflow of the methodology followed in this thesis, showing the iterative process of design, implementation, and evaluation.}
+    \label{fig:methodology_workflow}
+
+\end{figure}
+
+\section{Design Requirements and Criteria}
+\label{sec:requirements}
+
+\begin{table}[H]
+  \centering
+  \caption{Design requirements and criteria for the TTE system.}
+  \label{tab:requirements}
+  \begin{tabular}{p{0.15\textwidth} p{0.24\textwidth} p{0.48\textwidth}}
+    \toprule
+    \textbf{Parameter} & \textbf{Target / constraint} & \textbf{Rationale} \\
+    \midrule
+    Operating frequency & $\leq [5]$ ~kHz (ULF/VLF) & Limit skin-depth
+      attenuation while keeping coils resonant and antennas practical \\
+    Bandwidth & Narrow, $\approx f_0/Q$ & Set by high-$Q$ resonant coils;
+      trade-off with data rate \\
+    Operating SNR point & $\approx -10$~dB & Minimum for reliable detection with
+      FSK and Reed--Solomon \\
+    Modulation & To define (Then Non-coherent $M$-FSK) & Robust to phase/frequency variation; no
+      carrier tracking required \\
+    Error control & To define (ThenReed--Solomon FEC) & Corrects burst errors from impulsive and
+      harmonic noise \\
+    Antenna & Resonant loop (To define configuration) & Maximise magnetic moment
+      and induced voltage \\
+    Antenna size & Portable, $\leq [1]$~m & Confined underground spaces \\
+    Power supply & Battery, low power & Limited underground power; portability \\
+    Cost & Low & Accessibility relative to commercial systems \\
+    Target range & $\geq [100]$~m (text) & Useful for mine emergency communication \\
+    Payload & Text messages & Per the project hypothesis \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Before describing the procedures, this section states the requirements and
+constraints that guided the design, derived from the hypothesis and objectives of
+Chapter~\ref{ch:intro} and from the theoretical analysis of
+Chapter~\ref{ch:theoretical-framework}. The system targets reliable text messaging across tens
+to a few hundred metres of rock using simple, portable and low-cost hardware. The
+operating frequency is kept low to limit the skin-depth attenuation of the ground,
+while remaining high enough for the resonant coils and antennas to be physically
+practical. Non-coherent M-FSK was selected for its robustness to phase and
+frequency variations and because it requires no carrier tracking, and
+Reed--Solomon coding was added to correct the burst errors produced by the
+impulsive and harmonic noise of the channel. Table~\ref{tab:requirements}
+summarises the main design considerations and their rationale.
+
+
+
+\section{Experimental Setup and Instrumentation}
+\label{sec:setup}
+
+The system was built and evaluated using off-the-shelf audio-band hardware
+together with custom resonant coils, and all modulation, demodulation and signal
+processing were implemented in software. Tables~\ref{tab:hardware}
+and~\ref{tab:software} list the hardware components and software tools used,
+respectively. The general arrangement is shown in Figure~\ref{fig:setup_tf};
+signals are generated and acquired through a high-resolution audio interface,
+amplified to drive the transmitting coil, and processed in real time on a
+laptop.
+
+\begin{table}[H]
+  \centering
+  \caption{Hardware components of the experimental platform.}
+  \label{tab:hardware}
+  \begin{tabular}{p{0.26\textwidth} p{0.26\textwidth} p{0.36\textwidth}}
+    \toprule
+    \textbf{Component} & \textbf{Description / model} & \textbf{Key specifications / role} \\
+    \midrule
+    Audio interface & [BEHRINGER U PHORIA UMC202HD / SoundBlaster Play! 3] & 24-bit, 192~kHz / 24-bit, 96~kHz\\
+    Power amplifier & [Class-D audio amplifier] & Drives the transmitter coil \\
+    Transmitter coil & Resonant loop & $N \approx [85]$, $L \approx [10-11]$~mH,
+      $R \approx [3]\ \Omega$; \\
+    Receiver coil & Resonant loop & $N \approx [85]$, $L \approx [10-11]$~mH,
+      $R \approx [3]\ \Omega$; \\
+    Tuning capacitors & [CBB (metallized polypropylene film)] & Set resonance at $f_0$ \\
+    Battery & [Li-ion/10000 mAh] & Portable power supply \\
+    Computer & Laptop PC & Real-time DSP and system control \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \caption{Software tools used in design, simulation and processing.}
+  \label{tab:software}
+  \begin{tabular}{p{0.30\textwidth} p{0.62\textwidth}}
+    \toprule
+    \textbf{Tool} & \textbf{Use} \\
+    \midrule
+    Python (NumPy/SciPy) & Modulation/demodulation, filtering, correlation,
+      decimation, and SER/SNR analysis; real-time processing \\
+    LTSpice & Circuit-level simulation of the resonant coils and the link
+      transfer function \\
+    ANSYS Maxwell & Electromagnetic simulation of the coils and magnetic field \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\section{Performance Metrics and Evaluation Criteria}
+\label{sec:metrics}
+
+The system was assessed with a consistent set of metrics, defined here and used
+throughout the results. At the link level, the \emph{symbol error rate} (SER) is
+the ratio of incorrectly detected symbols to the total number transmitted,
+\begin{equation}
+    \mathrm{SER} = \frac{N_{\mathrm{err}}}{N_{\mathrm{total}}},
+    \label{eq:ser_def}
+\end{equation}
+obtained by comparing the transmitted and received symbol sequences. The
+\emph{detection quality} of the correlation receiver is quantified by the ratio of
+the correlation peak to the mean correlation level in noise,
+\begin{equation}
+    \rho = \frac{\max_n |z[n]|}{\overline{|z_{\mathrm{noise}}|}},
+    \label{eq:detection_ratio}
+\end{equation}
+a symbol being declared detected when $\rho$ exceeds a threshold set from the
+local conditions. At the channel level, the \emph{signal-to-noise ratio} (SNR) is
+computed from the in-band powers of signal-plus-noise and noise alone, as defined in Eq, \ref{eq:snr}. The link is further characterised by the \emph{transfer-function} magnitude and phase versus frequency and by the noise \emph{power spectral density} (PSD). A
+test is considered successful when messages are recovered with an SER below
+[5\%] at the operating distance, with the measured SNR and transfer
+function consistent with the design targets of
+Table~\ref{tab:requirements}.
+
+
+\section {Transfer function of the system}
+
+The transfer function of the system is defined as the mathematical representation of the relationship between the input and output signals of the TTE communication system. This function is primarly simulated by Spice software and python to understand the behavior of each resonant coil separately and the whole system as it shown in the subsection 4.1.3. of the next chapter. The transfer function is crucial for analyzing the system's performance, including its frequency response and  bandwidth. 
+\newp
+In order to obtain the transfer function experimentally, the system was tested in a controlled environment, where known input signals were applied to the transmitter coil, and the corresponding output signals were measured at the receiver coil. Due to the range of frequencies used in the system, the transfer function was measured using an audio interface, which allowed for the generation and measurement of signals in ULF and VLF bands. Specifically an audio interface of 24 bit and 192 kHz sampling rate was used, which provided the necessary resolution and bandwidth for accurate measurements.
+\newp
+To measure the transfer function, several tones were generated and delivered from the Audio Interface output, this signal was splitted and sent to the audio amplifier of the transmitter coil and one of the input channels of the audio interface to have a reference of the input signal. The other input channel of the audio interface was connected to the receiver coil to measure the output signal. By analyzing the input and output signals, the amplitude relation and phase shift at different frequencies were determined, allowing for example the verification of coil tuning.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{img/diagrams/setupp.png}
+    \caption{Experimental setup for measuring the transfer function}
+    \label{fig:setup_tf}
+\end{figure}
+
+To measure the response of each coil separately, the tuned one is defined as the transmitter and the receiver is an untuned coil. To measure the end-to-end transfer function, both coils are tuned.
+
 
 \section{Communication tests}
 
 For communication tests, three main environments were considered: controlled environment tests, TTA (Through The Air) tests, and field tests in underground environments.
 \newp
 Controlled environment tests were conducted in a laboratory through simulations and wired connections to evaluate the performance of the system under ideal conditions.
-TTA tests were performed in open air to assess the system's performance in a more realistic environment, including the main physical phenomena that defines the system, that is, the magnetic induction propagation.
+\newp
+TTA tests were performed in open air to assess the system's performance in a more realistic environment, including the main physical phenomena that define the system, that is, the magnetic induction propagation.
 Finally, field tests were carried out in underground environments to evaluate the system's performance in real-world conditions, including the effects of geological materials and environmental factors on signal propagation.
 \newp
-For TTA and TTE tests, the both nodes were placed at a fixed distance, and multiple messages were transmitted and received to evaluate the system's performance. Key parameters such as the symbol error rate (SER) and the signal-to-noise ratio (SNR) on the communication channel were measured to assess the reliability and efficiency of the TTE communication system.
+For TTA and TTE tests, both nodes were placed at a fixed distance, and multiple messages were transmitted and received to evaluate the system's performance. Key parameters such as the symbol error rate (SER) and the signal-to-noise ratio (SNR) on the communication channel were measured to assess the reliability and efficiency of the TTE communication system.
 \newp
-To facilitate the process of testing, normally the messages was delivered from one direction only, that is, one node acted as the transmitter while the other acted as the receiver, after that, the roles were swapped to perform the reverse communication. This approach allowed for a more straightforward evaluation of the system's performance in both directions of communication, that is, proofing bidirectional communication capability.
+The SER (Symbol Error Rate) was calculated by comparing the transmitted symbols with the received symbols, counting the number of errors, and dividing by the total number of transmitted symbols. Also, the quality of detection was measured defining the ratio between the correlation peak and the mean of the correlation with the noise, defining a certain threshold to determine if the symbol was properly detected or not.
+
 \newp
-Due to the available facilities, the most underground tests were conducted at the National Astronomical Observatory of the University of Chile, Santiago. Here are a few of underground communication lines available, considering distances between 40 to 200 meters approximately, with different depths. The tests were performing progressively, starting from the shortest distance to the longest one.
+
+To facilitate the process of testing, normally the messages were delivered from one direction only, that is, one node acted as the transmitter while the other acted as the receiver. After that, the roles were swapped to perform the reverse communication. This approach allowed for a more straightforward evaluation of the system's performance in both directions of communication, that is, proving bidirectional communication capability.
 \newp
-The final tests were conducted with two operators of the system, each one located at one of the nodes, simulating a real communication scenario, for this tests we define a communication rutine to facilitate the process of sending and receiving messages, considering the limitations and manual switching of the system.
+Due to the available facilities, most underground tests were conducted at the National Astronomical Observatory of the University of Chile, Santiago. Here are a few of the underground communication lines available, considering distances between 40 and 200 meters approximately, with different depths. The tests were performed progressively, starting from the shortest distance to the longest one.
+\newp
+The final tests were conducted with two operators of the system, each one located at one of the nodes, simulating a real communication scenario. We defined a communication routine to facilitate the process of sending and receiving messages, considering the limitations and manual switching of the system.
+\newp
+The three environments and their purpose are summarised in Table~\ref{tab:scenarios}.
+
+\begin{table}[H]
+  \centering
+  \caption{Test environments and their purpose.}
+  \label{tab:scenarios}
+  \begin{tabular}{p{0.1\textwidth} p{0.20\textwidth} p{0.11\textwidth} p{0.11\textwidth} p{0.23\textwidth}}
+    \toprule
+    \textbf{Scenario} & \textbf{Environment} & \textbf{Distance/ depth} &
+    \textbf{Medium} & \textbf{Purpose} \\
+    \midrule
+    Controlled & Laboratory, wired & --- & Wired / air &
+      Validate the system under ideal conditions \\
+    TTA (through-the-air) & Open field & 5--50~m & Air &
+      Isolate MI propagation; induction pattern \\
+    Field (TTE) & Underground, National Astronomical Observatory (Santiago) &
+      40--200~m, varying depth & Rock, soil, concrete &
+      Real-world performance through ground \\
+    \bottomrule
+  \end{tabular}
+\end{table}
 
 \section{Noise and SNR Measurements}
 
-Every communication test included the measurement of noise and signal-to-noise ratio (SNR). Due to the nature of the TTE communication system, which relies on magnetic induction for signal propagation, the noise characteristics can vary significantly depending on the environment and the time of testing. Often the tests were not consistent and it was neccessary to measure the noise level before and after each communication test to ensure accurate SNR calculations. Also, depending on place and time, the noise level could change significantly, interference sources could appear or disappear, affecting the communication performance. Dealing with these variations was crucial to obtain reliable and meaningful results.
-\newp
-The SNR Measurements were calculated mainly considering the power of the received signal plus noise and the power of the noise measured at the receiver at specific bandwidth. The SNR was calculated using the following formula described in Section 2.
+The measure of noise consist in recording the signal at the receiver coil when there is no transmission, the FFT of this signal is calculated to obtain the power spectral density of noise, considering different time windows. This process is repeated in different environments, including the underground mine and the astronomical observatory, to compare the noise characteristics in these environments and understand how they affect the performance of the TTE communication system.
 \newp
 
+Every communication test included the measurement of noise and signal-to-noise ratio (SNR). Due to the nature of the TTE communication system, which relies on magnetic induction for signal propagation, the noise characteristics can vary significantly depending on the environment and the time of testing. Often, the tests were not consistent, and it was necessary to measure the noise level before and after each communication test to ensure accurate SNR calculations. Also, depending on the place and time, the noise level could change significantly, interference sources could appear or disappear, affecting the communication performance. Dealing with these variations was crucial to obtain reliable and meaningful results.
+\newp
+The SNR Measurements were calculated mainly considering the power of the received signal plus noise and the power of the noise measured at the receiver at a specific bandwidth. The SNR was calculated using the relation between the substraction of the mean power of signal plus noise and the mean power of the noise. In every test, the receiving coil was directly connectes to the audio interface and accumulate the power of noise during a few minutes, then the transmitter coil sends a pure tone at the central frequency of the system, and the power of signal plus noise is measured the same amount of time. The SNR is calculated as follows:
 
-\section{Summary}
+\begin{equation}
+    \label{eq:snr}
+    SNR = 10 \log_{10} \left( \frac{P_{signal+noise} - P_{noise}}{P_{noise}} \right)
+\end{equation}
 
-The methodology followed in this thesis involved the design, simulations and implementation of a TTE communication system, in several conditions and considering various factors that's were studied in an iterative process. The results obtained from the communication tests provided valuable insights into challenges and aspects to consider when developing TTE communication systems for underground environments. The findings of this thesis contribute to foundation for future research and development in this field, with the ultimate goal of improving safety and operational efficiency in national industries.
+It's considered the power present in the bandwidth of the system, that is, the power of the signal plus noise and the power of noise are calculated by integrating the power spectral density of the received signal over the bandwidth after a digital filter.
+
+\section{Final Remarks}
+
+The methodology followed in this thesis involved the design, simulations, and implementation of a TTE communication system, in several conditions and considering various factors that were studied in an iterative process. The results obtained from the communication tests provided valuable insights into challenges and aspects to consider when developing TTE communication systems for underground environments. The findings of this thesis contribute to the foundation for future research and development in this field, with the ultimate goal of improving safety and operational efficiency in national industries.
